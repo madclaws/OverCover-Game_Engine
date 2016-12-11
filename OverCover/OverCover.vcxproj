@@ -39,7 +39,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>W:\papichulo\OverCover\dependencies\GLEW\include;W:\papichulo\OverCover\dependencies\GLFW\include;$(IncludePath)</IncludePath>
+    <IncludePath>W:\papichulo\OverCover\dependencies\GLEW\include;W:\papichulo\OverCover\dependencies\GLFW\include;W:\papichulo\OverCover\dependencies\GLM\include\glm;$(IncludePath)</IncludePath>
     <LibraryPath>W:\papichulo\OverCover\dependencies\GLEW\libs;W:\papichulo\OverCover\dependencies\GLFW\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

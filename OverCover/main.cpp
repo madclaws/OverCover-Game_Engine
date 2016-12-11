@@ -50,13 +50,16 @@ int main()
 		glfwSwapBuffers(window);
 
 	}
+	//Releasing Window Resources
 	glfwTerminate();
 
 	return 0;
 	
 }
 void clear_function()
-	{glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+	{
+		//To clear the window each loop by clearing color buffer and depth buffer
+		glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 	glClearColor(0.0f,0.0f,0.0f,1.0f);
 	
 	}
