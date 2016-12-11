@@ -17,7 +17,7 @@ Shaders::Shaders(const GLchar* vert_source,const GLchar* frag_source)
 		glGetShaderInfoLog(VertexID,512,0,infolog);			
 		cout<<"FAILED COMPILING VERTEX SHADER ID::"<<VertexID<<endl;
 		cout<<infolog<<endl;
-		_sleep(2);
+		//_sleep(2);
 		exit(0);								
 	}
 	cout<<"SUCCESS COMPILING VERTEX SHADER ID::"<<VertexID<<endl;
@@ -25,13 +25,13 @@ Shaders::Shaders(const GLchar* vert_source,const GLchar* frag_source)
 	FragmentID=glCreateShader(GL_FRAGMENT_SHADER);		
 	glShaderSource(FragmentID,1,&frag_source,0);			
 	glCompileShader(FragmentID);							
-	glGetShaderiv(FragmentID,GL_COMPILE_STATUS,&sucess);	
+	glGetShaderiv(FragmentID,GL_COMPILE_STATUS,&sucess);	//Retreiving Compile status
 	if(!sucess)
 	{
 		glGetShaderInfoLog(FragmentID,512,0,infolog);
 		cout<<"FAILED COMPILING FRAGMENT SHADER ID::"<<FragmentID<<endl;
 		cout<<infolog<<endl;
-		_sleep(2);
+		//_sleep(2);
 		exit(0);
 	}
 	cout<<"SUCCESS COMPILING FRAGMENT SHADER ID::"<<FragmentID<<endl;
@@ -47,7 +47,7 @@ Shaders::Shaders(const GLchar* vert_source,const GLchar* frag_source)
 		glGetProgramInfoLog(ProgramID,512,0,infolog);
 		cout<<"FAILED LINKING PROGRAM ID::"<<ProgramID<<endl;
 		cout<<infolog<<endl;
-		_sleep(2);
+		//_sleep(2);
 		exit(0);
 	}
 	cout<<"SUCCESS LINKING PROGRAM ID::"<<FragmentID<<endl;

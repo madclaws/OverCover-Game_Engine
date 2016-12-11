@@ -1,6 +1,7 @@
 #pragma once
 class ResourceManager
 {
+	
 	ResourceManager(void);
 	~ResourceManager(void);
 		

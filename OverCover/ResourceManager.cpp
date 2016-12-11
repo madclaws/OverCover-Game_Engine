@@ -1,9 +1,11 @@
 #include "ResourceManager.h"
 
-
+ResourceManager* ResourceManager::Instance;
 ResourceManager::ResourceManager(void)
 {
+
 }
+
 
 
 ResourceManager* ResourceManager::GetInstance()

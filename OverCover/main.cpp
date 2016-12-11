@@ -2,35 +2,53 @@
 #include<GL\glew.h>
 #include<GLFW\glfw3.h>
 #include<iostream>
+#include "Scene.h"
 using namespace std;
 
 void clear_function();
 int main()
-{
+{int ScreenWidth=500,ScreeHeight=500;
+	//Glfw Initializing for creating Window
 	if(!glfwInit())
 	{
-		cout<<"GLFW INITIALISATION FAILED.............\n";
+		cout<<"GLFW INITIALIZATION FAILED.............\n";
 		exit(0);
 	}
+
+	//Configuring Window
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR,3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR,3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE,GLFW_OPENGL_CORE_PROFILE);
-	GLFWwindow* window=glfwCreateWindow(500,500,"MAIN",0,0);
+	
+	//Creating Scene
+	Scene Scene1(ScreenWidth,ScreeHeight);
+
+	//Creating Window
+	GLFWwindow* window=glfwCreateWindow(ScreenWidth,ScreeHeight,"MAIN",0,0);
+
+	//Making Context to Current Window
 	glfwMakeContextCurrent(window);
+
+	//Glew initialization for USING OPENGL FUNCTIONS
 	glewExperimental=true;
 	if(glewInit()!=GLEW_OK)
 	{
 		cout<<"GLEW INITIALIZATION FAILED................\n";
 		exit(0);
 	}
-	
+
+	//Engine Loop repeats unitl window is closed
 	while(!glfwWindowShouldClose(window))
 	{
+		//Poll input Events
 		glfwPollEvents();
 	
-
+		//Clear the Color buffer and Depth buffer each loop
 		clear_function();
+
+		//Swap the Rendering Buffer(Double Buffer)
 		glfwSwapBuffers(window);
+
 	}
 	glfwTerminate();
 
