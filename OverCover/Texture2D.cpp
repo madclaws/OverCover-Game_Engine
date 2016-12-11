@@ -9,7 +9,7 @@ Texture2D::Texture2D(void):Texture_ID(0),Width(0),Height(0),Wrapper_S(GL_REPEAT)
 }
 
 void Texture2D::Generate()
-{
+{ResourceManager* inst=ResourceManager::GetInstance();
 	int n;
 	glBindTexture(GL_TEXTURE_2D,Texture_ID);
 	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,Wrapper_S);
@@ -17,10 +17,10 @@ void Texture2D::Generate()
 	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,Min_Filter);
 	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,Mag_Filter);
 	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,Min_FIlter_Minmap);
-	unsigned char* image=stbi_load("filename",&Width,&Height,&n,0);
+	inst->LoadTexture("filename",Width,Height,n);
 	glTexImage2D(GL_TEXTURE_2D,0,Internal_Format,Width,Height,0,Load_Format,GL_UNSIGNED_BYTE,&image);
 	glGenerateMipmap(GL_TEXTURE_2D);
-	stbi_image_free(image);
+	
 	glBindTexture(GL_TEXTURE_2D,0);
 	
 }

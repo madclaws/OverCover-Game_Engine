@@ -1,6 +1,7 @@
 #pragma once
 #include<GL\glew.h>
-#include<stb-master\stb_image.h>
+
+#include "ResourceManager.h"
 class Texture2D
 {
 	GLuint Texture_ID;
@@ -10,6 +11,7 @@ class Texture2D
 	GLint Min_FIlter_Minmap;
 	GLint Internal_Format;
 	GLint Load_Format;
+	unsigned char* image;
 public:
 	Texture2D(void);
 	void Generate();
