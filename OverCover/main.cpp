@@ -14,7 +14,7 @@ int main()
 		cout<<"GLFW INITIALIZATION FAILED.............\n";
 		exit(0);
 	}
-
+	cout<<"GLFW INITIALIZATION SUCESS.............\n";
 	//Configuring Window
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR,3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR,3);
@@ -36,7 +36,7 @@ int main()
 		cout<<"GLEW INITIALIZATION FAILED................\n";
 		exit(0);
 	}
-
+	cout<<"GLFW INITIALIZATION SUCESS.............\n";
 	//Engine Loop repeats unitl window is closed
 	while(!glfwWindowShouldClose(window))
 	{
