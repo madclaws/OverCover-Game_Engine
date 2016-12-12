@@ -28,7 +28,8 @@ int main()
 
 	//Making Context to Current Window
 	glfwMakeContextCurrent(window);
-
+	//Calls When glclear calls
+	glClearColor(0.0f,0.0f,0.0f,1.0f);
 	//Glew initialization for USING OPENGL FUNCTIONS
 	glewExperimental=true;
 	if(glewInit()!=GLEW_OK)
@@ -60,6 +61,6 @@ void clear_function()
 	{
 		//To clear the window each loop by clearing color buffer and depth buffer
 		glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
-	glClearColor(0.0f,0.0f,0.0f,1.0f);
+	
 	
 	}

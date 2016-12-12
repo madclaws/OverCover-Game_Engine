@@ -21,6 +21,7 @@ public:
 	static ResourceManager*	 GetInstance();
 	Shaders LoadShaders(const GLchar*,const GLchar*);
 	unsigned char* LoadTexture(const GLchar*,GLint&,GLint&,GLint&);
-	void clear();
+	void clear(GLuint&,GLuint&);
+	void clear(unsigned char*);
 };
 

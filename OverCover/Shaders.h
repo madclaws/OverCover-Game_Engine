@@ -4,9 +4,11 @@
 #include<glm\glm.hpp>
 #include<glm\gtc\matrix_transform.hpp>
 #include<glm\gtc\type_ptr.hpp>
+#include "ResourceManager.h"
 using namespace std;
 class Shaders
 {GLuint ProgramID;
+	GLuint VertexID,FragmentID;		
 public:
 	Shaders(const GLchar*,const GLchar*);
 	//call gluseprogram() to use the current shader program for following render code

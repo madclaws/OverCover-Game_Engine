@@ -45,9 +45,15 @@ unsigned char* ResourceManager::LoadTexture(const GLchar* textureloc,GLint &widt
 	return image;
 	//stbi_image_free(image);
 }
-void ResourceManager::clear()
+void ResourceManager::clear(GLuint& v_id,GLuint& f_id)
 {
+	glDeleteShader(v_id);
+	glDeleteShader(f_id);
 
+}
+void ResourceManager::clear(unsigned char* image)
+{
+	stbi_image_free(image);
 }
 ResourceManager::~ResourceManager(void)
 {

@@ -4,7 +4,7 @@
 Shaders::Shaders(const GLchar* vert_source,const GLchar* frag_source)
 {
 	//...........Initializing variables....................................................
-	GLuint VertexID,FragmentID;				
+	//GLuint VertexID,FragmentID;				
 	GLint sucess;							
 	GLchar infolog[512];					
 	//............ COMPILING FRAGMENT SHADER ....................................................										
@@ -59,6 +59,8 @@ void Shaders::use()
 }
 Shaders::~Shaders(void)
 {
+	ResourceManager* inst=ResourceManager::GetInstance();
+	inst->clear(VertexID,FragmentID);
 }
 void Shaders::SetintU(const GLchar* name,GLint& value,GLboolean useshader)
 {
