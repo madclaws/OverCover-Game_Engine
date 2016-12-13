@@ -1,3 +1,6 @@
+// Main Program Contains All GLFW Window Creating and Managing Commands.
+//It is Abstracted Because Any One Uses Engine Source Can Write Their On Window(Main)
+// Program With Suitable Opengl Toolkit(GLUT,SDL)
 #define GLEW_STATIC
 #include<GL\glew.h>
 #include<GLFW\glfw3.h>
