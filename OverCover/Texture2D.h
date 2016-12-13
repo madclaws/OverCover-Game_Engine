@@ -14,7 +14,7 @@ class Texture2D
 	unsigned char* image;
 public:
 	Texture2D(void);
-	void Generate();
+	void Generate(const GLchar*);
 	void Bind();
 	~Texture2D(void);
 };

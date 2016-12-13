@@ -8,7 +8,7 @@ Texture2D::Texture2D(void):Texture_ID(0),Width(0),Height(0),Wrapper_S(GL_REPEAT)
 	glGenTextures(1,&Texture_ID);
 }
 
-void Texture2D::Generate()
+void Texture2D::Generate(const GLchar* Filename)
 {ResourceManager* inst=ResourceManager::GetInstance();
 	int n;
 	glBindTexture(GL_TEXTURE_2D,Texture_ID);
@@ -17,7 +17,7 @@ void Texture2D::Generate()
 	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,Min_Filter);
 	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,Mag_Filter);
 	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,Min_FIlter_Minmap);
-	inst->LoadTexture("filename",Width,Height,n);
+	inst->LoadTexture(Filename,Width,Height,n);
 	glTexImage2D(GL_TEXTURE_2D,0,Internal_Format,Width,Height,0,Load_Format,GL_UNSIGNED_BYTE,&image);
 	glGenerateMipmap(GL_TEXTURE_2D);
 	
