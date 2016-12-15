@@ -14,9 +14,9 @@ class Sprite :public GameObject
 	//Sprite's Texture Instance
 	Texture2D texture;
 	//Vertex Attributes
-	VertexData3 vertexdata[4];
+	VertexData vertexdata[4];
 	//Vertex Indices
-	GLfloat Element_vertices[6];
+	GLuint Element_vertices[6];
 public:
 	//initialize Width,Height and State
 	Sprite(void);
@@ -27,6 +27,7 @@ public:
 	void Generate_Buffer();
 	//Render Code
 	void Draw();
+	void Init();
 	~Sprite(void);
 };
 

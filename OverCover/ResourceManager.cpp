@@ -26,13 +26,32 @@ Shaders ResourceManager::LoadShaders(const GLchar* vertfile,const GLchar* fragfi
 	stringstream Vert_String_Stream,Frag_String_Stream;
 	string v_String,f_String;
 	const GLchar*final_vert_str,*final_frag_str;
+	vertstream.exceptions(ifstream::failbit|ifstream::badbit);
+	fragstream.exceptions(ifstream::failbit|ifstream::badbit);
+	try{
 	vertstream.open(vertfile);
 	Vert_String_Stream<<vertstream.rdbuf();
 	v_String=Vert_String_Stream.str();
 	vertstream.close();
+	}
+	catch(ifstream::failure e)
+	{
+		cout<<"Error Reading file\n";
+		system("pause");
+	}
+	cout<<"Vertex shader read Successfully\n";
+	try{
 	fragstream.open(fragfile);
 	Frag_String_Stream<<fragstream.rdbuf();
 	f_String=Frag_String_Stream.str();
+	fragstream.close();
+	}
+	catch(ifstream::failure e)
+	{
+		cout<<"Error Reading file\n";
+		system("pause");
+	}
+	cout<<"Fragment shader read Successfully\n";
 	final_vert_str=v_String.c_str();
 	final_frag_str=f_String.c_str();
 	Shaders newshader(final_vert_str,final_frag_str);

@@ -3,6 +3,7 @@
 //	Audio etc
 #pragma once
 #include<GL\glew.h>
+#include "Draw_Interface.h"
 enum class GameObject_State{
 	ACTIVE,
 	DISABLED
@@ -12,13 +13,16 @@ class GameObject
 	GLint Width,Height;
 	GameObject_State State;
 public:
+		Draw_Interface* D_interface;
 		//Respective GameObjects Define Dimension and State
 		virtual void SetDim_State(GLint=0,GLint=0,GameObject_State=GameObject_State::ACTIVE);
 		void SetState(GameObject_State state=GameObject_State::ACTIVE);
 		//Respective GameObjects Define Their own Position System
 		//virtual void SetPosition()=0;
-		//Respective GameObjects Define Their Own Init System(Includes Setting State,Width & Height
-		//virtual void Init()=0;
+		//Respective GameObjects Define Their Own Init System(Initializing ,grnrating VBO etc...
+		virtual void Init()=0;
+		//Function for Rendering Code;
+		//virtual void DrawObject()=0;
 
 };
 

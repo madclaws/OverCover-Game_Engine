@@ -1,5 +1,8 @@
 #pragma once
 #include<GL\glew.h>
+#include "ResourceManager.h"
+#include "Shaders.h"
+#include "Sprite.h"
 class Scene
 {
 	
@@ -7,8 +10,12 @@ class Scene
 	GLint SWidth,SHeight;
 	
 public:
-	Scene(GLfloat,GLfloat);
+	Scene(GLint,GLint);
 	~Scene(void);
+	//for debugging
+
+	Shaders shad1;
+	Sprite sprite;
 	//Render Logic
 	void SRender();
 	//Update movements/physics

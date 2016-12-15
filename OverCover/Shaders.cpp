@@ -1,6 +1,9 @@
 #include "Shaders.h"
 
+Shaders::Shaders()
+{
 
+}
 Shaders::Shaders(const GLchar* vert_source,const GLchar* frag_source)
 {
 	//...........Initializing variables....................................................
@@ -18,7 +21,8 @@ Shaders::Shaders(const GLchar* vert_source,const GLchar* frag_source)
 		cout<<"FAILED COMPILING VERTEX SHADER ID::"<<VertexID<<endl;
 		cout<<infolog<<endl;
 		//_sleep(2);
-		exit(0);								
+		system("pause");
+		//exit(0);								
 	}
 	cout<<"SUCCESS COMPILING VERTEX SHADER ID::"<<VertexID<<endl;
 	//............ COMPILING FRAGMENT SHADER ....................................................
@@ -32,7 +36,8 @@ Shaders::Shaders(const GLchar* vert_source,const GLchar* frag_source)
 		cout<<"FAILED COMPILING FRAGMENT SHADER ID::"<<FragmentID<<endl;
 		cout<<infolog<<endl;
 		//_sleep(2);
-		exit(0);
+		system("pause");
+		//exit(0);
 	}
 	cout<<"SUCCESS COMPILING FRAGMENT SHADER ID::"<<FragmentID<<endl;
 
@@ -48,9 +53,10 @@ Shaders::Shaders(const GLchar* vert_source,const GLchar* frag_source)
 		cout<<"FAILED LINKING PROGRAM ID::"<<ProgramID<<endl;
 		cout<<infolog<<endl;
 		//_sleep(2);
-		exit(0);
+		system("pause");
+		//exit(0);
 	}
-	cout<<"SUCCESS LINKING PROGRAM ID::"<<FragmentID<<endl;
+	cout<<"SUCCESS LINKING PROGRAM ID::"<<ProgramID<<endl;
 }
 
 void Shaders::use()
@@ -59,8 +65,8 @@ void Shaders::use()
 }
 Shaders::~Shaders(void)
 {
-	ResourceManager* inst=ResourceManager::GetInstance();
-	inst->clear(VertexID,FragmentID);
+	//ResourceManager* inst=ResourceManager::GetInstance();
+	//inst->clear(VertexID,FragmentID);
 }
 void Shaders::SetintU(const GLchar* name,GLint& value,GLboolean useshader)
 {
@@ -68,7 +74,7 @@ void Shaders::SetintU(const GLchar* name,GLint& value,GLboolean useshader)
 		use();
 	glUniform1i(glGetUniformLocation(ProgramID,name),value);
 }
-void Shaders::SetFloatU(const GLchar* name,GLfloat& value,GLboolean useshader)
+void Shaders::SetFloatU(const GLchar* name,GLfloat value,GLboolean useshader)
 {
 	if(useshader)
 		use();

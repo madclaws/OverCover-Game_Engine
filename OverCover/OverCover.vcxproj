@@ -71,6 +71,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Color.cpp" />
+    <ClCompile Include="Draw_Interface.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Position.cpp" />
@@ -78,6 +79,7 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Shaders.cpp" />
     <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="SpriteDraw.cpp" />
     <ClCompile Include="stb_image.cpp" />
     <ClCompile Include="Texture2D.cpp" />
     <ClCompile Include="UV.cpp" />
@@ -86,16 +88,22 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Color.h" />
+    <ClInclude Include="Draw_Interface.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Position.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Shaders.h" />
     <ClInclude Include="Sprite.h" />
+    <ClInclude Include="SpriteDraw.h" />
     <ClInclude Include="Texture2D.h" />
     <ClInclude Include="UV.h" />
     <ClInclude Include="VertexData.h" />
     <ClInclude Include="VertexData3.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\f1.frag" />
+    <None Include="Shaders\v1.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

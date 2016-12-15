@@ -4,20 +4,20 @@
 #include<glm\glm.hpp>
 #include<glm\gtc\matrix_transform.hpp>
 #include<glm\gtc\type_ptr.hpp>
-#include "ResourceManager.h"
 using namespace std;
 class Shaders
 {GLuint ProgramID;
 	GLuint VertexID,FragmentID;		
 public:
 	Shaders(const GLchar*,const GLchar*);
+	Shaders();
 	//call gluseprogram() to use the current shader program for following render code
 	void use();
 	//Setting integer uniform variable OR Can be used for texture
 	void SetintU(const GLchar*,GLint&,GLboolean);
 
 	//Setting Float uniform variable
-	void SetFloatU(const GLchar*,GLfloat&,GLboolean);
+	void SetFloatU(const GLchar*,GLfloat,GLboolean);
 	
 	//Setting Vector2 uniform variable(input as float)
 	void SetVector2U(const GLchar*,GLfloat&,GLfloat&,GLboolean);
