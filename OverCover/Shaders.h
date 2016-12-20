@@ -14,7 +14,7 @@ public:
 	//call gluseprogram() to use the current shader program for following render code
 	void use();
 	//Setting integer uniform variable OR Can be used for texture
-	void SetintU(const GLchar*,GLint&,GLboolean);
+	void SetintU(const GLchar*,GLint,GLboolean);
 
 	//Setting Float uniform variable
 	void SetFloatU(const GLchar*,GLfloat,GLboolean);

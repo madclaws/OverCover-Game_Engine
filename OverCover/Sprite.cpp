@@ -1,20 +1,29 @@
 #include "Sprite.h"
 
 
-Sprite::Sprite(void):VAO(0),VBO(0),texture()
+Sprite::Sprite(void):VAO(0),VBO(0),texture(),texture_loc('\0')
 {
 	SetDim_State();
 	//Generate_Buffer();
 
 }
-Sprite::Sprite(GLint _width,GLint _height,GameObject_State _state):VAO(0),VBO(0),texture()
+Sprite::Sprite(GLint _width,GLint _height,GameObject_State _state):VAO(0),VBO(0),texture(),texture_loc('\0')
 {
 	SetDim_State(_width,_height,_state);
 	//Generate_Buffer();
 	
 }
+void Sprite::Create(const GLchar* loc)
+{
+	ResourceManager* R=ResourceManager::GetInstance();
+texture_loc=loc;
+R->Set_Texture_Count();
+Init();
+
+}
 void Sprite::Init()
 {
+	
 	Generate_Buffer();
 }
 void Sprite::Generate_VertexData()
@@ -36,7 +45,7 @@ void Sprite::Generate_VertexData()
 }
 void Sprite::Generate_Texture()
 {
-	texture.Generate("W:/papichulo/OverCover/OverCover/Textures/broco.jpg");
+	texture.Generate(texture_loc);
 }
 void Sprite::Generate_ElementBuffer()
 {

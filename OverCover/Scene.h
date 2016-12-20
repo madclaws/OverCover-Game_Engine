@@ -3,19 +3,21 @@
 #include "ResourceManager.h"
 #include "Shaders.h"
 #include "Sprite.h"
+
 class Scene
 {
 	
 	GLboolean SKeys[1024];
 	GLint SWidth,SHeight;
-	
+	GLenum Active_Textures[32];
 public:
 	Scene(GLint,GLint);
 	~Scene(void);
+	
 	//for debugging
 
 	Shaders shad1;
-	Sprite sprite;
+	Sprite sprite,sprite1;
 	//Render Logic
 	void SRender();
 	//Update movements/physics
@@ -24,6 +26,7 @@ public:
 	void SLoad_Init();
 	GLint SGet_Width();
 	GLint SGet_Height();
+	void Set_ActiveTex_map();
 };
 enum SceneState{
 

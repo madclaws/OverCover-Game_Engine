@@ -29,7 +29,7 @@ int main()
 	//glfwWindowHint(GLFW_OPENGL_PROFILE,GLFW_OPENGL_CORE_PROFILE);
 	
 	//Creating Scene
-	Scene Scene1(ScreenWidth,ScreeHeight);
+	
 
 	//Creating Window
 	GLFWwindow* window=glfwCreateWindow(ScreenWidth,ScreeHeight,"MAIN",0,0);
@@ -46,6 +46,7 @@ int main()
 		exit(0);
 	}
 	cout<<"GLEW INITIALIZATION SUCESS.............\n";
+	Scene Scene1(ScreenWidth,ScreeHeight);
 	glfwSetFramebufferSizeCallback(window,framebufcallback);
 	glViewport(0,0,500,500);
 	//Engine Loop repeats unitl window is closed
@@ -57,7 +58,7 @@ int main()
 		glfwPollEvents();
 	clear_function();
 		//Clear the Color buffer and Depth buffer each loop
-		//Scene1.shad1.SetFloatU("col",(GLfloat)tan(glfwGetTime()*2.0f),0);
+		Scene1.shad1.SetFloatU("col",(GLfloat)sin(glfwGetTime()*1.5f),0);
 	//Scene1.shad1.SetintU("text",
 		Scene1.shad1.use();
 		

@@ -28,6 +28,7 @@ void Texture2D::Generate(const GLchar* Filename)
 }
 void Texture2D::Bind()
 {
+	
 	glBindTexture(GL_TEXTURE_2D,Texture_ID);
 }
 Texture2D::~Texture2D(void)

@@ -1,7 +1,7 @@
 #include "ResourceManager.h"
 //A static member should be declared outside class
 ResourceManager* ResourceManager::Instance;
-
+GLint ResourceManager::texture_count;
 
 ResourceManager::ResourceManager(void)
 {
@@ -16,6 +16,7 @@ ResourceManager* ResourceManager::GetInstance()
 	if(Instance==nullptr)
 	{
 		Instance=new ResourceManager();
+		texture_count=0;
 	}
 	return Instance;
 	
@@ -81,4 +82,12 @@ void ResourceManager::clear(unsigned char* image)
 ResourceManager::~ResourceManager(void)
 {
 
+}
+GLint ResourceManager::Get_Texture_Count()
+{
+	return texture_count;
+}
+void ResourceManager::Set_Texture_Count()
+{
+	++texture_count;
 }

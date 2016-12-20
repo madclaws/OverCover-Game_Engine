@@ -68,7 +68,7 @@ Shaders::~Shaders(void)
 	//ResourceManager* inst=ResourceManager::GetInstance();
 	//inst->clear(VertexID,FragmentID);
 }
-void Shaders::SetintU(const GLchar* name,GLint& value,GLboolean useshader)
+void Shaders::SetintU(const GLchar* name,GLint value,GLboolean useshader)
 {
 	if(useshader)
 		use();

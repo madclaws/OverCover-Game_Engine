@@ -13,7 +13,7 @@ class ResourceManager
 	//Constructor should be private preventing from creating instant from other classes
 	ResourceManager(void);
 	~ResourceManager(void);
-		
+	static GLint  texture_count;	
 public:
 	//The fact we declare the variable as pointer because it is not pre-declared in anywhere
 	//members variables should be static for singleton
@@ -23,5 +23,7 @@ public:
 	unsigned char* LoadTexture(const GLchar*,GLint&,GLint&,GLint&);
 	void clear(GLuint&,GLuint&);
 	void clear(unsigned char*);
+	void Set_Texture_Count();
+	GLint Get_Texture_Count();
 };
 
