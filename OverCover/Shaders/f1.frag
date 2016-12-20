@@ -9,6 +9,6 @@ void main()
 {
 	//Color=colorval;
 	t_cords=vec2(textcords.x,1.0-textcords.y);
-	Color=mix(texture(broco,t_cords),texture(container,t_cords),0.8)*colorval;
+	Color=mix(texture(broco,t_cords),texture(container,t_cords),0.8);
 	//Color=vec4(1.0f,0.5f,0.2f,1.0f);
 }
