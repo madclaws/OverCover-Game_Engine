@@ -59,8 +59,12 @@ Shaders ResourceManager::LoadShaders(const GLchar* vertfile,const GLchar* fragfi
 
 }
 unsigned char* ResourceManager::LoadTexture(const GLchar* textureloc,GLint &width,GLint &height,GLint &n)
-{
-	unsigned char* image=stbi_load("filename",&width,&height,&n,0);
+{//int T_width,T_height,T_n;
+unsigned char* image=stbi_load(textureloc,&width,&height,&n,0);
+	if(image!=NULL)
+		cout<<"Texture Loaded SUccessfully\n";
+	else
+		cout<<"Textutre Loading Failed!!!!\n";
 	return image;
 	//stbi_image_free(image);
 }

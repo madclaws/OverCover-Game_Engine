@@ -57,7 +57,8 @@ int main()
 		glfwPollEvents();
 	clear_function();
 		//Clear the Color buffer and Depth buffer each loop
-		Scene1.shad1.SetFloatU("col",(GLfloat)tan(glfwGetTime()*2.0f),0);
+		//Scene1.shad1.SetFloatU("col",(GLfloat)tan(glfwGetTime()*2.0f),0);
+	//Scene1.shad1.SetintU("text",
 		Scene1.shad1.use();
 		
 		

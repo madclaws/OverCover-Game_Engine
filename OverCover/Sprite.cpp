@@ -21,22 +21,22 @@ void Sprite::Generate_VertexData()
 {
 	vertexdata[0].position.SetPosition(0.5f, 0.5f, 0.0f);
 	//vertexdata[0].color.SetColor(1.0f,0.0f,0.0f,1.0f);
-	//vertexdata[0].uv.SetUV(0.0,0.0);
+	vertexdata[0].uv.SetUV(1.0f,1.0f);
 	vertexdata[1].position.SetPosition(0.5f, -0.5f, 0.0f);
 	//vertexdata[1].color.SetColor(0.0f,1.0f,0.0f,1.0f);
-	//vertexdata[1].uv.SetUV(1.0,1.0);
+	vertexdata[1].uv.SetUV(1.0f,0.0f);
 	vertexdata[2].position.SetPosition(-0.5f, -0.5f, 0.0f);
 	//vertexdata[2].color.SetColor(0.0f,0.0f,1.0f,1.0f);
-	//vertexdata[2].uv.SetUV(0.0,1.0);
+	vertexdata[2].uv.SetUV(0.0f,0.0f);
 	vertexdata[3].position.SetPosition(-0.5f, 0.5f, 0.0f );
 	//vertexdata[3].color.SetColor(0.0f,0.2f,0.0f,1.0f);
-	//vertexdata[3].uv.SetUV(1.0,1.0);
+	vertexdata[3].uv.SetUV(0.0f,1.0f);
 
 
 }
 void Sprite::Generate_Texture()
 {
-	texture.Generate("location");
+	texture.Generate("W:/papichulo/OverCover/OverCover/Textures/broco.jpg");
 }
 void Sprite::Generate_ElementBuffer()
 {
@@ -52,7 +52,7 @@ void Sprite::Generate_ElementBuffer()
 void Sprite::Generate_Buffer()
 {
 	Generate_VertexData();
-	//Generate_Texture();
+	Generate_Texture();
 	Generate_ElementBuffer();
 	//sizeof(VAO);
 	glGenVertexArrays(1,&VAO);
@@ -64,12 +64,12 @@ void Sprite::Generate_Buffer()
 	glGenBuffers(1,&EBO);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,EBO);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER,sizeof(Element_vertices),Element_vertices,GL_STATIC_DRAW);
-	glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,sizeof(VertexData),(GLvoid*)0);
+	glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,sizeof(VertexData2),(GLvoid*)offsetof(VertexData2,position));
 	//(void*)offsetof(VertexData,position)
 	//glVertexAttribPointer(1,4,GL_FLOAT,GL_FALSE,sizeof(vertexdata),(void*)offsetof(VertexData3,color));
-	//glVertexAttribPointer(2,2,GL_FLOAT,GL_TRUE,sizeof(vertexdata),(void*)offsetof(VertexData3,uv));
+	glVertexAttribPointer(1,2,GL_FLOAT,GL_TRUE,sizeof(VertexData2),(GLvoid*)offsetof(VertexData2,uv));
 	glEnableVertexAttribArray(0);
-	//glEnableVertexAttribArray(1);
+	glEnableVertexAttribArray(1);
 	//glEnableVertexAttribArray(2);
 	glBindVertexArray(0);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);
@@ -78,7 +78,7 @@ void Sprite::Generate_Buffer()
 void Sprite::Draw()
 {
 	//glActiveTexture(GL_TEXTURE0);
-	//texture.Bind();
+	texture.Bind();
 	glBindVertexArray(VAO);
 	
 	glDrawElements(GL_TRIANGLES,6,GL_UNSIGNED_INT,0);

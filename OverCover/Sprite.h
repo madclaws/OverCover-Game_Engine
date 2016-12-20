@@ -1,7 +1,7 @@
 #pragma once
 #include "gameobject.h"
 #include "Texture2D.h"
-#include "VertexData3.h"
+#include "VertexData2.h"
 #include<cstddef>
 class Sprite :public GameObject
 {
@@ -14,7 +14,7 @@ class Sprite :public GameObject
 	//Sprite's Texture Instance
 	Texture2D texture;
 	//Vertex Attributes
-	VertexData vertexdata[4];
+	VertexData2 vertexdata[4];
 	//Vertex Indices
 	GLuint Element_vertices[6];
 public:

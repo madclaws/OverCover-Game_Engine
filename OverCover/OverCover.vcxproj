@@ -84,6 +84,7 @@
     <ClCompile Include="Texture2D.cpp" />
     <ClCompile Include="UV.cpp" />
     <ClCompile Include="VertexData.cpp" />
+    <ClCompile Include="VertexData2.cpp" />
     <ClCompile Include="VertexData3.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -99,6 +100,7 @@
     <ClInclude Include="Texture2D.h" />
     <ClInclude Include="UV.h" />
     <ClInclude Include="VertexData.h" />
+    <ClInclude Include="VertexData2.h" />
     <ClInclude Include="VertexData3.h" />
   </ItemGroup>
   <ItemGroup>
