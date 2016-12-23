@@ -82,6 +82,7 @@
     <ClCompile Include="SpriteDraw.cpp" />
     <ClCompile Include="stb_image.cpp" />
     <ClCompile Include="Texture2D.cpp" />
+    <ClCompile Include="Transform.cpp" />
     <ClCompile Include="UV.cpp" />
     <ClCompile Include="VertexData.cpp" />
     <ClCompile Include="VertexData2.cpp" />
@@ -98,6 +99,7 @@
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteDraw.h" />
     <ClInclude Include="Texture2D.h" />
+    <ClInclude Include="Transform.h" />
     <ClInclude Include="UV.h" />
     <ClInclude Include="VertexData.h" />
     <ClInclude Include="VertexData2.h" />

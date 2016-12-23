@@ -3,7 +3,7 @@
 #include "ResourceManager.h"
 #include "Shaders.h"
 #include "Sprite.h"
-
+#include<vector>
 class Scene
 {
 	
@@ -15,7 +15,7 @@ public:
 	~Scene(void);
 	
 	//for debugging
-
+	std::vector<Sprite> Sprite_Tree;
 	Shaders shad1;
 	Sprite sprite,sprite1;
 	//Render Logic
@@ -25,6 +25,7 @@ public:
 	//Load all Shaders/textures/.. for the scene
 	void SLoad_Init();
 	GLint SGet_Width();
+	void Create_sprite();
 	GLint SGet_Height();
 	void Set_ActiveTex_map();
 };

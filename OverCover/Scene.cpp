@@ -1,7 +1,7 @@
 #include "Scene.h"
 
 
-Scene::Scene(GLint _width,GLint _height)
+Scene::Scene(GLint _width,GLint _height):sprite("broco"),sprite1("broco")
 {
 	SWidth=_width;
 	SHeight=_height;
@@ -32,9 +32,18 @@ void Scene::SLoad_Init()
 {
 	ResourceManager* resource=ResourceManager::GetInstance();
 	shad1=resource->LoadShaders("Shaders/v1.vert","Shaders/f1.frag");
+//	Sprite_Tree.push_back(sprite);
+	//Sprite_Tree.push_back(sprite1);
 	sprite.Create("W:/papichulo/OverCover/OverCover/Textures/broco.jpg");
 	sprite1.Create("W:/papichulo/OverCover/OverCover/Textures/container.jpg");
 	//sprite1.Init();
+}
+void Scene::Create_sprite()
+{
+	//Sprite sprite("broco"),sprite1("COntu");
+	//Sprite_Tree.push_back(sprite);
+//	Spr
+
 }
 GLint Scene::SGet_Height()
 {
