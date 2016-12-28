@@ -26,9 +26,7 @@ int main()
 	//Configuring Window
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR,3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR,3);
-	//glfwWindowHint(GLFW_OPENGL_PROFILE,GLFW_OPENGL_CORE_PROFILE);
-	
-	//Creating Scene
+	glfwWindowHint(GLFW_OPENGL_PROFILE,GLFW_OPENGL_CORE_PROFILE);
 	
 
 	//Creating Window
@@ -46,12 +44,15 @@ int main()
 		exit(0);
 	}
 	cout<<"GLEW INITIALIZATION SUCESS.............\n";
+	//Creating new Scene
 	Scene Scene1(ScreenWidth,ScreeHeight);
+	//Callback for resizing the window viewport
 	glfwSetFramebufferSizeCallback(window,framebufcallback);
+	//Setting Default Viewport
 	glViewport(0,0,500,500);
-	//Engine Loop repeats unitl window is closed
+	//Loading Shaders and Textures for the Scene
 	Scene1.SLoad_Init();
-	
+	//Engine Loop repeats unitl window is closed
 	while(!glfwWindowShouldClose(window))
 	{
 		//Poll input Events
@@ -60,9 +61,10 @@ int main()
 		//Clear the Color buffer and Depth buffer each loop
 		//Scene1.shad1.SetFloatU("col",(GLfloat)sin(glfwGetTime()*1.5f),0);
 	//Scene1.shad1.SetintU("text",
+		//Using the Shader for Scene
 		Scene1.shad1.use();
 		
-		
+		//Render GameObjects in Scene
 		Scene1.SRender();
 
 		//Swap the Rendering Buffer(Double Buffer)

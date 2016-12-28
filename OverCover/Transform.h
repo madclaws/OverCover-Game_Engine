@@ -14,6 +14,8 @@ public:
 	void SetPosition(GLfloat,GLfloat,GLfloat);
 	void SetRotation(GLfloat);
 	void SetScale(GLfloat,GLfloat,GLfloat);
+	void SetPosition(glm::vec3);
+	void SetScale(glm::vec3);
 	~Transform(void);
 };
 
