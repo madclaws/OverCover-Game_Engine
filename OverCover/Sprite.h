@@ -15,6 +15,7 @@ class Sprite :public GameObject
 	//Texture2D texture;
 	Texture2D* _Texture;
 	const GLchar* texture_loc;
+	//ResourceManager* resource;
 	//static GLint texture_count;
 	//Vertex Attributes
 	VertexData3 vertexdata[4];
@@ -22,7 +23,7 @@ class Sprite :public GameObject
 	GLuint Element_vertices[6];
 public:
 	//initialize Width,Height and State
-	Sprite(const GLchar*);
+	Sprite(const GLchar*,const GLchar*);
 	
 	
 	void Generate_VertexData();
@@ -34,5 +35,7 @@ public:
 	void Create(const GLchar*);
 	void Init();
 	~Sprite(void);
+	Texture2D* ret_texture();
+	const GLchar* getID();
 };
 

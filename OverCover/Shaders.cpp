@@ -116,4 +116,9 @@ void Shaders::SetVector4U(const GLchar* name,GLfloat& value,GLfloat& value1,GLfl
 		use();
 	glUniform4f(glGetUniformLocation(ProgramID,name),value,value1,value2,value3);
 }
-
+void Shaders::SetMatrix4U(const GLchar* name,glm::mat4& matx,GLboolean useshader)
+{
+	if(useshader)
+		use();
+	glUniformMatrix4fv(glGetUniformLocation(ProgramID,name),1,GL_FALSE,glm::value_ptr(matx));
+}

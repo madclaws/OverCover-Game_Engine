@@ -2,7 +2,7 @@
 //A static member should be declared outside class
 ResourceManager* ResourceManager::Instance;
 GLint ResourceManager::texture_count;
-
+GLenum ResourceManager::Active_Textures[10];
 ResourceManager::ResourceManager(void)
 {
 
@@ -17,6 +17,7 @@ ResourceManager* ResourceManager::GetInstance()
 	{
 		Instance=new ResourceManager();
 		texture_count=0;
+		Start();
 	}
 	return Instance;
 	
@@ -90,4 +91,27 @@ GLint ResourceManager::Get_Texture_Count()
 void ResourceManager::Set_Texture_Count()
 {
 	++texture_count;
+}
+
+void ResourceManager::Start()
+{
+	Set_ActiveTexture_Map();
+}
+void ResourceManager:: Set_ActiveTexture_Map()
+{
+	Active_Textures[0]=GL_TEXTURE0;
+	Active_Textures[1]=GL_TEXTURE1;
+	Active_Textures[2]=GL_TEXTURE2;
+	Active_Textures[3]=GL_TEXTURE3;
+	Active_Textures[4]=GL_TEXTURE4;
+	Active_Textures[5]=GL_TEXTURE5;
+	Active_Textures[6]=GL_TEXTURE6;
+	Active_Textures[7]=GL_TEXTURE7;
+	Active_Textures[8]=GL_TEXTURE8;
+	Active_Textures[9]=GL_TEXTURE9;
+	Active_Textures[10]=GL_TEXTURE10;
+}
+GLenum ResourceManager::Get_ActiveTexture_Map(GLint num)
+{
+	return Active_Textures[num];
 }

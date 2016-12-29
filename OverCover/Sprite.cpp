@@ -1,12 +1,12 @@
 #include "Sprite.h"
 
 
-Sprite::Sprite(const GLchar* _id):VAO(0),VBO(0),texture_loc('\0')
+Sprite::Sprite(const GLchar* _id,const GLchar* univar):VAO(0),VBO(0),texture_loc('\0')
 {
 	//SetDim_State();
 	//Generate_Buffer();
 	ID=_id;
-	_Texture=new Texture2D();
+	_Texture=new Texture2D(univar);
 
 }
 
@@ -26,17 +26,17 @@ void Sprite::Init()
 void Sprite::Generate_VertexData()
 {
 	vertexdata[0].position.SetPosition(0.5f, 0.5f, 0.0f);
-	vertexdata[0].color.SetColor(1.0f,0.0f,0.0f,0.2f);
-	vertexdata[0].uv.SetUV(1.0f,1.0f);
+	vertexdata[0].color.SetColor(0.0f,0.0f,1.0f,0.0f);
+	vertexdata[0].uv.SetUV(1.0f,0.0f);
 	vertexdata[1].position.SetPosition(0.5f, -0.5f, 0.0f);
-	vertexdata[1].color.SetColor(0.0f,0.0f,0.0f,0.5f);
-	vertexdata[1].uv.SetUV(1.0f,0.0f);
+	vertexdata[1].color.SetColor(0.0f,0.0f,0.0f,0.0f);
+	vertexdata[1].uv.SetUV(1.0f,1.0f);
 	vertexdata[2].position.SetPosition(-0.5f, -0.5f, 0.0f);
-	vertexdata[2].color.SetColor(0.0f,0.0f,0.0f,0.5f);
-	vertexdata[2].uv.SetUV(0.0f,0.0f);
+	vertexdata[2].color.SetColor(0.0f,0.0f,0.0f,0.0f);
+	vertexdata[2].uv.SetUV(0.0f,1.0f);
 	vertexdata[3].position.SetPosition(-0.5f, 0.5f, 0.0f );
-	vertexdata[3].color.SetColor(0.0f,0.2f,0.0f,0.5f);
-	vertexdata[3].uv.SetUV(0.0f,1.0f);
+	vertexdata[3].color.SetColor(0.0f,0.0f,0.0f,0.0f);
+	vertexdata[3].uv.SetUV(0.0f,0.0f);
 
 }
 void Sprite::Generate_Texture()
@@ -96,4 +96,12 @@ void Sprite::Draw()
 Sprite::~Sprite(void)
 {
 	
+}
+Texture2D* Sprite::ret_texture()
+{
+	return _Texture;
+}
+const GLchar* Sprite::getID()
+{
+	return ID;
 }

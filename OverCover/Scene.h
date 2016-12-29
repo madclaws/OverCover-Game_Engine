@@ -4,12 +4,15 @@
 #include "Shaders.h"
 #include "Sprite.h"
 #include<vector>
+#include "SpriteRenderer.h"
 class Scene
 {
 	
 	GLboolean SKeys[1024];
 	GLint SWidth,SHeight;
 	GLenum Active_Textures[32];
+	ResourceManager* resource;
+	SpriteRenderer* renderer;
 public:
 	Scene(GLint,GLint);
 	~Scene(void);
@@ -27,7 +30,7 @@ public:
 	GLint SGet_Width();
 	void Create_sprite();
 	GLint SGet_Height();
-	void Set_ActiveTex_map();
+	
 };
 enum SceneState{
 

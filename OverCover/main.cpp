@@ -52,6 +52,7 @@ int main()
 	glViewport(0,0,500,500);
 	//Loading Shaders and Textures for the Scene
 	Scene1.SLoad_Init();
+
 	//Engine Loop repeats unitl window is closed
 	while(!glfwWindowShouldClose(window))
 	{
@@ -62,6 +63,9 @@ int main()
 		//Scene1.shad1.SetFloatU("col",(GLfloat)sin(glfwGetTime()*1.5f),0);
 	//Scene1.shad1.SetintU("text",
 		//Using the Shader for Scene
+	glm::mat4 projection=glm::ortho(0.0f,800.0f,600.0f,0.0f,-1.0f,1.0f);
+	Scene1.shad1.SetMatrix4U("projection",projection,0);
+			
 		Scene1.shad1.use();
 		
 		//Render GameObjects in Scene

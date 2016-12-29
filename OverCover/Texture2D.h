@@ -11,11 +11,13 @@ class Texture2D
 	GLint Min_FIlter_Minmap;
 	GLint Internal_Format;
 	GLint Load_Format;
+	const GLchar* uniform_var_string;
 	unsigned char* image;
 public:
-	Texture2D(void);
+	Texture2D(const GLchar*);
 	void Generate(const GLchar*);
 	void Bind();
 	~Texture2D(void);
+	const GLchar* uni_var_str();
 };
 

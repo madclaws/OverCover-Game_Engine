@@ -7,9 +7,11 @@ layout (location=2) in vec2 textcoords;
 out vec4 colorval;
 out vec2 textcords;
 uniform float col;
+uniform mat4 model;
+uniform mat4 projection;
 void main()
 {
-	gl_Position=vec4(position.x,position.y,position.z,1.0f);
+	gl_Position=projection*model*vec4(position.x,position.y,position.z,1.0f);
 	//colorval=vec4(position.x*col,position.y*(1-col),position.z,1.0f);
 	colorval=colorvert;
 	textcords=textcoords;
