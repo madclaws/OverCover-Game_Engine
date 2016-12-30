@@ -5,10 +5,11 @@
 #include<GL\glew.h>
 #include<GLFW\glfw3.h>
 #include<iostream>
+#include<Windows.h>
 #include "Scene.h"
 #include<math.h>
 using namespace std;
-
+void CalculateFps(GLint&);
 void framebufcallback(GLFWwindow* _window,int _width,int _height)
 {
 	glViewport(0,0,_width,_height);
@@ -56,24 +57,38 @@ int main()
 	//Engine Loop repeats unitl window is closed
 	while(!glfwWindowShouldClose(window))
 	{
+		GLfloat starttime=glfwGetTime();
+		static GLint count_frame=0;
+		static GLfloat maxfps=60.0f;
 		//Poll input Events
+		//cout<<starttime<<endl;
+		//outer_Frame+=adder_timer;
 		glfwPollEvents();
-	clear_function();
-		//Clear the Color buffer and Depth buffer each loop
-		//Scene1.shad1.SetFloatU("col",(GLfloat)sin(glfwGetTime()*1.5f),0);
-	//Scene1.shad1.SetintU("text",
+		clear_function();
+		
+		{
+			CalculateFps(count_frame);
+			//outer_Frame+=0.05f;
+		}
 		//Using the Shader for Scene
-	glm::mat4 projection=glm::ortho(0.0f,800.0f,600.0f,0.0f,-1.0f,1.0f);
-	Scene1.shad1.SetMatrix4U("projection",projection,0);
+		glm::mat4 projection=glm::ortho(0.0f,800.0f,600.0f,0.0f,-1.0f,1.0f);
+		Scene1.shad1.SetMatrix4U("projection",projection,0);
 			
 		Scene1.shad1.use();
 		
 		//Render GameObjects in Scene
 		Scene1.SRender();
-
+		
 		//Swap the Rendering Buffer(Double Buffer)
 		glfwSwapBuffers(window);
-
+		++count_frame;
+		GLfloat endtime=glfwGetTime()-starttime;
+		endtime=endtime*1000;
+		//cout<<endtime<<endl;
+		if(((1000.0f/maxfps))>endtime)
+		{
+			Sleep((1000.0f/maxfps)-(endtime));
+		}
 	}
 	//Releasing Window Resources
 	glfwTerminate();
@@ -89,3 +104,31 @@ void clear_function()
 	
 	
 	}
+void CalculateFps(GLint& c_frame)
+{
+	static GLdouble previous_time=glfwGetTime();
+	GLdouble curr_time=glfwGetTime();
+	static const GLint SAMPLE=5;
+	static GLint sample_count=0;
+	GLint avg_count=0;
+	GLdouble frame_avg_time=0;
+	static GLdouble frame_array[SAMPLE];
+	GLdouble frametime=curr_time-previous_time;
+	frame_array[sample_count++ % SAMPLE]=frametime;
+	
+	previous_time=curr_time;
+	if(sample_count<SAMPLE)
+		avg_count=sample_count;
+	else
+		avg_count=SAMPLE;
+	for(GLint i=0;i<avg_count;i++)
+	{
+		frame_avg_time+=frame_array[i];
+	}
+	frame_avg_time/=avg_count;
+	frame_avg_time*=1000;
+	if(c_frame==10){
+	cout<<(1000/frame_avg_time)<<endl;
+	c_frame=0;
+	}
+}

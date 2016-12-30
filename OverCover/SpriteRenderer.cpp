@@ -17,9 +17,9 @@ void SpriteRenderer::DrawSprite(Sprite& _sprite,GLint num ,glm::vec3 _position,G
 	glm::mat4 model;
 	//model=glm::translate(model,glm::vec3(-0.5f,0.5f,0.0f));
 	model=glm::translate(model,_position);
-	model=glm::translate(model,glm::vec3(0.5f*_scale.x,0.5f*_scale.y,0.0f));
+	//model=glm::translate(model,glm::vec3(0.5f*_scale.x,0.5f*_scale.y,0.0f));
 	model=glm::rotate(model,_angle,glm::vec3(0.0f,0.0f,1.0f));
-	model=glm::translate(model,glm::vec3(-0.5f*_scale.x,-0.5f*_scale.y,0.0f));
+	//model=glm::translate(model,glm::vec3(-0.5f*_scale.x,-0.5f*_scale.y,0.0f));
 	model=glm::scale(model,_scale);
 	glActiveTexture(_resource->Get_ActiveTexture_Map(num));
 	//cout<<_resource->Get_Texture_Count();
@@ -31,7 +31,7 @@ void SpriteRenderer::DrawSprite(Sprite& _sprite,GLint num ,glm::vec3 _position,G
 		_sprite.Draw();
 	
 	
-	cout<<_sprite.getID()<<" Rendered\n";
+	//cout<<_sprite.getID()<<" Rendered\n";
 	//system("pause"); 
 }
 
