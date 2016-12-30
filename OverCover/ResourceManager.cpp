@@ -3,6 +3,7 @@
 ResourceManager* ResourceManager::Instance;
 GLint ResourceManager::texture_count;
 GLenum ResourceManager::Active_Textures[10];
+std::map<const GLchar*,unsigned char*> ResourceManager::TextureMap;
 ResourceManager::ResourceManager(void)
 {
 
@@ -62,13 +63,34 @@ Shaders ResourceManager::LoadShaders(const GLchar* vertfile,const GLchar* fragfi
 }
 unsigned char* ResourceManager::LoadTexture(const GLchar* textureloc,GLint &width,GLint &height,GLint &n)
 {//int T_width,T_height,T_n;
-unsigned char* image=stbi_load(textureloc,&width,&height,&n,0);
+/*unsigned char* image=stbi_load(textureloc,&width,&height,&n,0);
 	if(image!=NULL)
 		cout<<"Texture Loaded SUccessfully\n";
 	else
 		cout<<"Textutre Loading Failed!!!!\n";
-	return image;
+	return image;*/
+	return GetTextureData(textureloc,width,height,n);
 	//stbi_image_free(image);
+}
+unsigned char* ResourceManager::GetTextureData(const GLchar* location,GLint &width,GLint &height,GLint &n)
+{
+	auto mapiter=TextureMap.find(location);
+	if(mapiter==TextureMap.end())
+	{
+	unsigned char* image=stbi_load(location,&width,&height,&n,0);
+	TextureMap.insert(std::make_pair(location,image));
+	if(image!=NULL)
+		std::cout<<"Texture Loaded Successfully\n";
+	else
+		std::cout<<"Textutre Loading Failed!!!!\n";
+	return image;
+	}
+	if(mapiter->second)
+	{
+		std::cout<<"Texture CACHE Loaded Successfully\n";
+		return mapiter->second;
+	}
+
 }
 void ResourceManager::clear(GLuint& v_id,GLuint& f_id)
 {

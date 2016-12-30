@@ -21,6 +21,7 @@ public:
 	std::vector<Sprite> Sprite_Tree;
 	Shaders shad1;
 	Sprite sprite,sprite1,s2;
+	std::vector<Sprite*> Sprites;
 	//Render Logic
 	void SRender();
 	//Update movements/physics

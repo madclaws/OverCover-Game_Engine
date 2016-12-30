@@ -78,7 +78,7 @@ int main()
 		
 		//Render GameObjects in Scene
 		Scene1.SRender();
-		
+		glfwSwapInterval(0);
 		//Swap the Rendering Buffer(Double Buffer)
 		glfwSwapBuffers(window);
 		++count_frame;

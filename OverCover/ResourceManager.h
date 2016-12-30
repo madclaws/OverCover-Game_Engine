@@ -5,6 +5,7 @@
 #include<sstream>
 #include<string>
 #include "Shaders.h"
+#include<map>
 #include<stb-master\stb_image.h>
 using namespace std;
 //Resource Manager is Singleton class ie only one copy of its object will be in entire program
@@ -15,6 +16,7 @@ class ResourceManager
 	~ResourceManager(void);
 	static GLint  texture_count;
 	static GLenum Active_Textures[10];
+	static std::map<const GLchar*,unsigned char*> TextureMap;
 public:
 	//The fact we declare the variable as pointer because it is not pre-declared in anywhere
 	//members variables should be static for singleton
@@ -22,6 +24,8 @@ public:
 	static ResourceManager*	 GetInstance();
 	Shaders LoadShaders(const GLchar*,const GLchar*);
 	unsigned char* LoadTexture(const GLchar*,GLint&,GLint&,GLint&);
+	//Caching Texture
+	unsigned char* GetTextureData(const GLchar*,GLint&,GLint&,GLint&);
 	void clear(GLuint&,GLuint&);
 	void clear(unsigned char*);
 	void Set_Texture_Count();

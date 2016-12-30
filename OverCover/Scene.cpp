@@ -19,7 +19,11 @@ void Scene::SRender()
 	
 	//renderer->DrawSprite(sprite,0,glm::vec3(500,100,0),45.0f,glm::vec3(50,50,0));
 	//renderer->DrawSprite(sprite1,0,glm::vec3(200, 200,0), 0.0f, glm::vec3(300, 200,0));
-	renderer->DrawSprite(s2,0,glm::vec3(400, 300,0), 0.0f, glm::vec3(800, 600,0));
+	//renderer->DrawSprite(s2,0,glm::vec3(400, 300,0), 0.0f, glm::vec3(800, 600,0));
+	for(int i=0;i<Sprites.size();i++)
+	{
+		renderer->DrawSprite(Sprites[i],0,glm::vec3(400, 300,0), 0.0f, glm::vec3(800, 600,0));
+	}
 	//renderer->DrawSprite(sprite,0);
 	//renderer->DrawSprite(sprite1,1);
 	//renderer->DrawSprite(sprite,sprite1);
@@ -33,11 +37,13 @@ void Scene::SLoad_Init()
 	 resource=ResourceManager::GetInstance();
 	shad1=resource->LoadShaders("Shaders/v1.vert","Shaders/f1.frag");
 	renderer=new SpriteRenderer(shad1);
+	Sprites.push_back(new Sprite("con","con"));
 //	Sprite_Tree.push_back(sprite);
 	//Sprite_Tree.push_back(sprite1);
-	sprite.Create("W:/papichulo/OverCover/OverCover/Textures/broco.jpg");
-	sprite1.Create("W:/papichulo/OverCover/OverCover/Textures/container.jpg");
-	s2.Create("W:/papichulo/OverCover/OverCover/Textures/rono.jpg");
+	//sprite.Create("W:/papichulo/OverCover/OverCover/Textures/broco.jpg");
+	//sprite1.Create("W:/papichulo/OverCover/OverCover/Textures/broco.jpg");
+	//s2.Create("W:/papichulo/OverCover/OverCover/Textures/rono.jpg");
+	Sprites.back()->Create("W:/papichulo/OverCover/OverCover/Textures/rono.jpg");
 	//sprite1.Init();
 }
 void Scene::Create_sprite()

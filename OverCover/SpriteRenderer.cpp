@@ -11,7 +11,7 @@ SpriteRenderer::SpriteRenderer(Shaders _shader)
 SpriteRenderer::~SpriteRenderer(void)
 {
 }
-void SpriteRenderer::DrawSprite(Sprite& _sprite,GLint num ,glm::vec3 _position,GLfloat _angle,glm::vec3 _scale)
+void SpriteRenderer::DrawSprite(Sprite* _sprite,GLint num ,glm::vec3 _position,GLfloat _angle,glm::vec3 _scale)
 {
 	//_Shader.use();
 	glm::mat4 model;
@@ -26,9 +26,9 @@ void SpriteRenderer::DrawSprite(Sprite& _sprite,GLint num ,glm::vec3 _position,G
 	
 	//_resource->Set_Texture_Count();
 
-	_Shader.SetintU(_sprite.getID(),num,0);
+	_Shader.SetintU(_sprite->getID(),num,0);
 		_Shader.SetMatrix4U("model",model,0);
-		_sprite.Draw();
+		_sprite->Draw();
 	
 	
 	//cout<<_sprite.getID()<<" Rendered\n";
