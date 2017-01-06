@@ -10,13 +10,17 @@
 #include<math.h>
 using namespace std;
 void CalculateFps(GLint&);
+void keycallback(GLFWwindow*,int,int,int,int);
+int ScreenWidth=500,ScreeHeight=500;
+Scene Scene1(ScreenWidth,ScreeHeight);
 void framebufcallback(GLFWwindow* _window,int _width,int _height)
 {
 	glViewport(0,0,_width,_height);
 }
+
 void clear_function();
 int main()
-{int ScreenWidth=500,ScreeHeight=500;
+{
 	//Glfw Initializing for creating Window
 	if(!glfwInit())
 	{
@@ -46,9 +50,10 @@ int main()
 	}
 	cout<<"GLEW INITIALIZATION SUCESS.............\n";
 	//Creating new Scene
-	Scene Scene1(ScreenWidth,ScreeHeight);
+	
 	//Callback for resizing the window viewport
 	glfwSetFramebufferSizeCallback(window,framebufcallback);
+	glfwSetKeyCallback(window,keycallback);
 	//Setting Default Viewport
 	glViewport(0,0,500,500);
 	//Loading Shaders and Textures for the Scene
@@ -71,9 +76,13 @@ int main()
 			//outer_Frame+=0.05f;
 		}
 		//Using the Shader for Scene
-		glm::mat4 projection=glm::ortho(0.0f,800.0f,600.0f,0.0f,-1.0f,1.0f);
-		Scene1.shad1.SetMatrix4U("projection",projection,0);
-			
+		
+		//glm::mat4 projection=glm::ortho(0.0f,(GLfloat)ScreenWidth-400.0f,(GLfloat)ScreeHeight-400.0f,0.0f,-1.0f,1.0f);
+		//glm::mat4 projection=glOrtho(0.0f,(GLfloat)ScreenWidth,(GLfloat)ScreeHeight,0.0f,-1.0f,1.0f);
+		//glm::mat4 projection=glm::perspective(45.0f,(GLfloat)(ScreenWidth/ScreeHeight),1.0f,1000.0f);
+		//(300.0f,300.0f,0.0f);
+		//Scene1.shad1.SetMatrix4U("projection",projection,0);
+		Scene1.SUpdate();	
 		Scene1.shad1.use();
 		
 		//Render GameObjects in Scene
@@ -94,6 +103,7 @@ int main()
 	glfwTerminate();
 
 	return 0;
+	
 	
 }
 void clear_function()
@@ -132,3 +142,16 @@ void CalculateFps(GLint& c_frame)
 	c_frame=0;
 	}
 }
+void keycallback(GLFWwindow* _window,int key,int scan,int action,int mode)
+	{
+		if(key==GLFW_KEY_W)
+			Scene1.MyCamera.MoveUp();
+		if(key==GLFW_KEY_S)
+			Scene1.MyCamera.MoveDown();
+		if(key==GLFW_KEY_A)
+			Scene1.MyCamera.MoveLeft();
+		if(key==GLFW_KEY_D)
+			Scene1.MyCamera.MoveRight();
+		if(key==GLFW_KEY_Z)
+			Scene1.MyCamera.Zoom();
+	}

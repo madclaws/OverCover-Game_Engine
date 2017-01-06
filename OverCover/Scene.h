@@ -5,6 +5,9 @@
 #include "Sprite.h"
 #include<vector>
 #include "SpriteRenderer.h"
+#include "Camera2D.h"
+#include<glm\glm.hpp>
+#include<glm\gtc\matrix_transform.hpp>
 class Scene
 {
 	
@@ -16,7 +19,7 @@ class Scene
 public:
 	Scene(GLint,GLint);
 	~Scene(void);
-	
+	Camera2D MyCamera;
 	//for debugging
 	std::vector<Sprite> Sprite_Tree;
 	Shaders shad1;

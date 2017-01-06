@@ -70,6 +70,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Camera2D.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Draw_Interface.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -90,6 +91,7 @@
     <ClCompile Include="VertexData3.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Camera2D.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Draw_Interface.h" />
     <ClInclude Include="GameObject.h" />

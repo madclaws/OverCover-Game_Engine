@@ -24,7 +24,7 @@ void SpriteRenderer::DrawSprite(Sprite* _sprite,GLint num ,glm::vec3 _position,G
 	glActiveTexture(_resource->Get_ActiveTexture_Map(num));
 	//cout<<_resource->Get_Texture_Count();
 	
-	//_resource->Set_Texture_Count();
+	//_resource->Set_Texture_Count(); 
 
 	_Shader.SetintU(_sprite->getID(),num,0);
 		_Shader.SetMatrix4U("model",model,0);
