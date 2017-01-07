@@ -5,6 +5,7 @@ Scene::Scene(GLint _width,GLint _height):sprite("broco","broco"),sprite1("contai
 {
 	SWidth=_width;
 	SHeight=_height;
+	MyCamera=new Camera2D();
 
 }
 
@@ -24,6 +25,8 @@ void Scene::SRender()
 	//{
 		renderer->DrawSprite(Sprites[0],0,glm::vec3(10.0f,10.0f,0.0f), 0.0f, glm::vec3(100.0f,100.0f,0.0f));
 		renderer->DrawSprite(Sprites[1],0,glm::vec3(200.0f,10.0f,0.0f), 0.0f, glm::vec3(100.0f,100.0f,0.0f));
+		//for(int i=0;i<1000;i++)
+		//renderer->DrawSprite(Sprites[1],0,glm::vec3(i*10.0f,i*10,0.0f), 0.0f, glm::vec3(50.0f,50.0f,0.0f));
 		//}
 	//renderer->DrawSprite(sprite,0);
 	//renderer->DrawSprite(sprite1,1);
@@ -32,7 +35,7 @@ void Scene::SRender()
 void Scene::SUpdate()
 {
 	//MyCamera.View=glm::scale(MyCamera.View,glm::vec3(200.0f,200.0f,0.0f));
-	glm::mat4 projection=glm::ortho(0.0f,(GLfloat)SWidth-MyCamera.GetZoomFactor()*100.0f,(GLfloat)SHeight-MyCamera.GetZoomFactor()*100.0f,0.0f,-1.0f,1.0f);
+	glm::mat4 projection=glm::ortho(0.0f+MyCamera->GetZoomFactor()*10.0f,(GLfloat)SWidth-MyCamera->GetZoomFactor()*10.0f,(GLfloat)SHeight-MyCamera->GetZoomFactor()*10.0f,0.0f+MyCamera->GetZoomFactor()*10.0f,-1.0f,1.0f);
 		//glm::mat4 projection=glOrtho(0.0f,(GLfloat)ScreenWidth,(GLfloat)ScreeHeight,0.0f,-1.0f,1.0f);
 		//glm::mat4 projection=glm::perspective(45.0f,(GLfloat)(ScreenWidth/ScreeHeight),1.0f,1000.0f);
 		//(300.0f,300.0f,0.0f);
@@ -40,9 +43,9 @@ void Scene::SUpdate()
 	//glm::mat4 v1;
 	//v1=glm::scale(v1,glm::vec3(10.0f,10.0f,0.0f));
 	
-	MyCamera.View=MyCamera.LookAt();
+	MyCamera->View=MyCamera->LookAt();
 	//glScalef(200.0f,200.0f,0.0f);
-	shad1.SetMatrix4U("view",MyCamera.View,0);
+	shad1.SetMatrix4U("view",MyCamera->View,0);
 	//shad1.SetMatrix4U("view",v1,0);
 	
 }
@@ -51,6 +54,7 @@ void Scene::SLoad_Init()
 	 resource=ResourceManager::GetInstance();
 	shad1=resource->LoadShaders("Shaders/v1.vert","Shaders/f1.frag");
 	renderer=new SpriteRenderer(shad1);
+	iomanage=InputManager::GetInstance();
 	Sprites.push_back(new Sprite("con","con"));
 	Sprites.push_back(new Sprite("new","new"));
 //	Sprite_Tree.push_back(sprite);
@@ -76,4 +80,8 @@ GLint Scene::SGet_Height()
 GLint Scene::SGet_Width()
 {
 	return SWidth;
+}
+GLfloat Scene::GetZoomFactor()
+{
+	return iomanage->GetYscroll();
 }

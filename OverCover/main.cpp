@@ -8,9 +8,15 @@
 #include<Windows.h>
 #include "Scene.h"
 #include<math.h>
+#include "InputManager.h"
+#include "FPSManager.h"
 using namespace std;
 void CalculateFps(GLint&);
-void keycallback(GLFWwindow*,int,int,int,int);
+void keycallback(GLFWwindow*,GLint,GLint,GLint,GLint);
+void scrollcallback(GLFWwindow*,GLdouble,GLdouble);
+void EventHandler();
+InputManager* inputmanager;
+FPSManager fpsmanage;
 int ScreenWidth=500,ScreeHeight=500;
 Scene Scene1(ScreenWidth,ScreeHeight);
 void framebufcallback(GLFWwindow* _window,int _width,int _height)
@@ -21,6 +27,7 @@ void framebufcallback(GLFWwindow* _window,int _width,int _height)
 void clear_function();
 int main()
 {
+
 	//Glfw Initializing for creating Window
 	if(!glfwInit())
 	{
@@ -54,6 +61,8 @@ int main()
 	//Callback for resizing the window viewport
 	glfwSetFramebufferSizeCallback(window,framebufcallback);
 	glfwSetKeyCallback(window,keycallback);
+	glfwSetScrollCallback(window,scrollcallback);
+	inputmanager=InputManager::GetInstance();
 	//Setting Default Viewport
 	glViewport(0,0,500,500);
 	//Loading Shaders and Textures for the Scene
@@ -62,42 +71,33 @@ int main()
 	//Engine Loop repeats unitl window is closed
 	while(!glfwWindowShouldClose(window))
 	{
-		GLfloat starttime=glfwGetTime();
-		static GLint count_frame=0;
-		static GLfloat maxfps=60.0f;
-		//Poll input Events
-		//cout<<starttime<<endl;
-		//outer_Frame+=adder_timer;
+		//GLfloat starttime=glfwGetTime();
+		//static GLint count_frame=0;
+		//static GLfloat maxfps=60.0f;
+		fpsmanage.Begin();
 		glfwPollEvents();
 		clear_function();
+		EventHandler();
 		
-		{
-			CalculateFps(count_frame);
-			//outer_Frame+=0.05f;
-		}
-		//Using the Shader for Scene
-		
-		//glm::mat4 projection=glm::ortho(0.0f,(GLfloat)ScreenWidth-400.0f,(GLfloat)ScreeHeight-400.0f,0.0f,-1.0f,1.0f);
-		//glm::mat4 projection=glOrtho(0.0f,(GLfloat)ScreenWidth,(GLfloat)ScreeHeight,0.0f,-1.0f,1.0f);
-		//glm::mat4 projection=glm::perspective(45.0f,(GLfloat)(ScreenWidth/ScreeHeight),1.0f,1000.0f);
-		//(300.0f,300.0f,0.0f);
-		//Scene1.shad1.SetMatrix4U("projection",projection,0);
+			//CalculateFps(count_frame);
+		fpsmanage.CalculateFPS();
 		Scene1.SUpdate();	
 		Scene1.shad1.use();
 		
-		//Render GameObjects in Scene
+		
 		Scene1.SRender();
 		glfwSwapInterval(0);
 		//Swap the Rendering Buffer(Double Buffer)
 		glfwSwapBuffers(window);
-		++count_frame;
+		fpsmanage.LimitFps();
+		/*++count_frame;
 		GLfloat endtime=glfwGetTime()-starttime;
 		endtime=endtime*1000;
-		//cout<<endtime<<endl;
+		
 		if(((1000.0f/maxfps))>endtime)
 		{
 			Sleep((1000.0f/maxfps)-(endtime));
-		}
+		}*/
 	}
 	//Releasing Window Resources
 	glfwTerminate();
@@ -142,16 +142,37 @@ void CalculateFps(GLint& c_frame)
 	c_frame=0;
 	}
 }
-void keycallback(GLFWwindow* _window,int key,int scan,int action,int mode)
+void keycallback(GLFWwindow* _window,GLint key,GLint scan,GLint action,GLint mode)
 	{
-		if(key==GLFW_KEY_W)
-			Scene1.MyCamera.MoveUp();
-		if(key==GLFW_KEY_S)
-			Scene1.MyCamera.MoveDown();
-		if(key==GLFW_KEY_A)
-			Scene1.MyCamera.MoveLeft();
-		if(key==GLFW_KEY_D)
-			Scene1.MyCamera.MoveRight();
-		if(key==GLFW_KEY_Z)
-			Scene1.MyCamera.Zoom();
+		if(action==GLFW_PRESS)
+		{
+			inputmanager->KeyPress(key);
+		}
+		else if(action==GLFW_RELEASE)
+		{
+			inputmanager->KeyRelease(key);
+		}
+		
 	}
+
+void scrollcallback(GLFWwindow* window,GLdouble xscroll,GLdouble yscroll)
+{
+	
+//	cout<<yscroll<<endl<<endl;
+	
+	inputmanager->SetYscroll(yscroll);
+	//cout<<"\n"<<inputmanager->GetYscroll()<<endl;
+}
+
+void EventHandler()
+{
+	if(inputmanager->IsKeyPressed(GLFW_KEY_W))
+		Scene1.MyCamera->MoveUp();
+	if(inputmanager->IsKeyPressed(GLFW_KEY_S))
+			Scene1.MyCamera->MoveDown();
+	if(inputmanager->IsKeyPressed(GLFW_KEY_A))
+			Scene1.MyCamera->MoveLeft();
+	if(inputmanager->IsKeyPressed(GLFW_KEY_D))
+			Scene1.MyCamera->MoveRight();
+	
+}

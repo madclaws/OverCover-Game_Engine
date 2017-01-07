@@ -4,7 +4,7 @@
 Camera2D::Camera2D(void):CameraPos(0.0f,0.0f,0.0f),CameraFront(0.0f,0.0f,-1.0f),WorldUp(0.0f,1.0f,0.0f),Xaxis(0.0f,0.0f,0.0f),
 	Yaxis(0.0f,0.0f,0.0f),Zaxis(0.0f,0.0f,0.0f),CameraSpeed(1.0f),ZoomFactor(0)
 {
-
+	iomanage=InputManager::GetInstance();
 }
 
 
@@ -57,15 +57,12 @@ void Camera2D::MoveDown()
 {
 	CameraPos-=CameraSpeed*WorldUp;
 }
-void Camera2D::Zoom()
-{
-	//0CameraPos-=CameraSpeed*CameraFront;
-	++ZoomFactor;
 
-}
-GLint Camera2D::GetZoomFactor()
+GLfloat Camera2D::GetZoomFactor()
 {
+	ZoomFactor=iomanage->GetYscroll();
 	return ZoomFactor;
+
 }
 glm::mat4 Camera2D::GetView()
 {

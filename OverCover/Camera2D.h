@@ -3,6 +3,7 @@
 #include<glm\glm.hpp>
 #include<glm\gtc\matrix_transform.hpp>
 #include<glm\gtc\type_ptr.hpp>
+#include"InputManager.h"
 class Camera2D
 {
 	glm::vec3 CameraPos;
@@ -11,8 +12,10 @@ class Camera2D
 	glm::vec3 Xaxis;
 	glm::vec3 Yaxis;
 	glm::vec3 Zaxis;
-	GLint ZoomFactor;
+	GLfloat ZoomFactor;
 	GLfloat CameraSpeed;
+	InputManager* iomanage;
+
 public:
 	glm::mat4 View;
 	Camera2D(void);
@@ -21,8 +24,7 @@ public:
 	void MoveRight();
 	void MoveUp();
 	void MoveDown();
-	GLint GetZoomFactor();
-	void Zoom();
+	GLfloat GetZoomFactor();
 	glm::mat4 GetView();
 	~Camera2D(void);
 };

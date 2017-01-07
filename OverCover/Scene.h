@@ -8,18 +8,21 @@
 #include "Camera2D.h"
 #include<glm\glm.hpp>
 #include<glm\gtc\matrix_transform.hpp>
+#include"InputManager.h"
 class Scene
 {
 	
-	GLboolean SKeys[1024];
+	
 	GLint SWidth,SHeight;
 	GLenum Active_Textures[32];
 	ResourceManager* resource;
 	SpriteRenderer* renderer;
+	InputManager* iomanage;
 public:
+	
 	Scene(GLint,GLint);
 	~Scene(void);
-	Camera2D MyCamera;
+	Camera2D* MyCamera;
 	//for debugging
 	std::vector<Sprite> Sprite_Tree;
 	Shaders shad1;
@@ -34,6 +37,7 @@ public:
 	GLint SGet_Width();
 	void Create_sprite();
 	GLint SGet_Height();
+	GLfloat GetZoomFactor();
 	
 };
 enum SceneState{
