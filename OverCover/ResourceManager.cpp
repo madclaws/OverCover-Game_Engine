@@ -3,7 +3,7 @@
 ResourceManager* ResourceManager::Instance;
 GLint ResourceManager::texture_count;
 GLenum ResourceManager::Active_Textures[10];
-std::map<const GLchar*,unsigned char*> ResourceManager::TextureMap;
+std::map<const GLchar*,ImageData> ResourceManager::TextureMap;
 ResourceManager::ResourceManager(void)
 {
 
@@ -72,23 +72,28 @@ unsigned char* ResourceManager::LoadTexture(const GLchar* textureloc,GLint &widt
 	return GetTextureData(textureloc,width,height,n);
 	//stbi_image_free(image);
 }
-unsigned char* ResourceManager::GetTextureData(const GLchar* location,GLint &width,GLint &height,GLint &n)
+unsigned char* ResourceManager::GetTextureData(const GLchar* location,GLint &_width,GLint &_height,GLint &n)
 {
+	
 	auto mapiter=TextureMap.find(location);
+
 	if(mapiter==TextureMap.end())
-	{
-	unsigned char* image=stbi_load(location,&width,&height,&n,0);
-	TextureMap.insert(std::make_pair(location,image));
+	{ImageData data;
+	unsigned char* image=stbi_load(location,&_width,&_height,&n,0);
+	data.FillData(image,_width,_height);
+	TextureMap.insert(std::make_pair(location,data));
 	if(image!=NULL)
 		std::cout<<"Texture Loaded Successfully\n";
 	else
 		std::cout<<"Textutre Loading Failed!!!!\n";
 	return image;
 	}
-	if(mapiter->second)
+	if(mapiter->second.FILELOC)
 	{
 		std::cout<<"Texture CACHE Loaded Successfully\n";
-		return mapiter->second;
+		_width=mapiter->second.WIDTH;
+		_height=mapiter->second.HEIGHT;
+		return mapiter->second.FILELOC;
 	}
 
 }

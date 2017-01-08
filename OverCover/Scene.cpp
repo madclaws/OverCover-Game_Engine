@@ -63,7 +63,7 @@ void Scene::SLoad_Init()
 	//sprite1.Create("W:/papichulo/OverCover/OverCover/Textures/broco.jpg");
 	//s2.Create("W:/papichulo/OverCover/OverCover/Textures/rono.jpg");
 	Sprites.back()->Create("W:/papichulo/OverCover/OverCover/Textures/rono.jpg");
-	Sprites.front()->Create("W:/papichulo/OverCover/OverCover/Textures/broco.jpg");
+	Sprites.front()->Create("W:/papichulo/OverCover/OverCover/Textures/rono.jpg");
 	//sprite1.Init();
 }
 void Scene::Create_sprite()

@@ -71,12 +71,11 @@ int main()
 	//Engine Loop repeats unitl window is closed
 	while(!glfwWindowShouldClose(window))
 	{
-		//GLfloat starttime=glfwGetTime();
-		//static GLint count_frame=0;
-		//static GLfloat maxfps=60.0f;
+		
 		fpsmanage.Begin();
 		glfwPollEvents();
 		clear_function();
+		
 		EventHandler();
 		
 			//CalculateFps(count_frame);
@@ -88,16 +87,10 @@ int main()
 		Scene1.SRender();
 		glfwSwapInterval(0);
 		//Swap the Rendering Buffer(Double Buffer)
+		
 		glfwSwapBuffers(window);
 		fpsmanage.LimitFps();
-		/*++count_frame;
-		GLfloat endtime=glfwGetTime()-starttime;
-		endtime=endtime*1000;
 		
-		if(((1000.0f/maxfps))>endtime)
-		{
-			Sleep((1000.0f/maxfps)-(endtime));
-		}*/
 	}
 	//Releasing Window Resources
 	glfwTerminate();
@@ -111,37 +104,11 @@ void clear_function()
 		//To clear the window each loop by clearing color buffer and depth buffer
 		glClearColor(0.2f,0.3f,0.3f,1.0f);
 		glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
-	
+	glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
 	
 	}
-void CalculateFps(GLint& c_frame)
-{
-	static GLdouble previous_time=glfwGetTime();
-	GLdouble curr_time=glfwGetTime();
-	static const GLint SAMPLE=5;
-	static GLint sample_count=0;
-	GLint avg_count=0;
-	GLdouble frame_avg_time=0;
-	static GLdouble frame_array[SAMPLE];
-	GLdouble frametime=curr_time-previous_time;
-	frame_array[sample_count++ % SAMPLE]=frametime;
-	
-	previous_time=curr_time;
-	if(sample_count<SAMPLE)
-		avg_count=sample_count;
-	else
-		avg_count=SAMPLE;
-	for(GLint i=0;i<avg_count;i++)
-	{
-		frame_avg_time+=frame_array[i];
-	}
-	frame_avg_time/=avg_count;
-	frame_avg_time*=1000;
-	if(c_frame==10){
-	cout<<(1000/frame_avg_time)<<endl;
-	c_frame=0;
-	}
-}
+
 void keycallback(GLFWwindow* _window,GLint key,GLint scan,GLint action,GLint mode)
 	{
 		if(action==GLFW_PRESS)

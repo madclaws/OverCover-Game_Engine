@@ -75,6 +75,7 @@
     <ClCompile Include="Draw_Interface.cpp" />
     <ClCompile Include="FPSManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="ImageData.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Position.cpp" />
@@ -98,6 +99,7 @@
     <ClInclude Include="Draw_Interface.h" />
     <ClInclude Include="FPSManager.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="ImageData.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Position.h" />
     <ClInclude Include="ResourceManager.h" />

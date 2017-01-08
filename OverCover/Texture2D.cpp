@@ -2,7 +2,7 @@
 
 
 Texture2D::Texture2D(const GLchar* univar):Texture_ID(0),Width(0),Height(0),Wrapper_S(GL_REPEAT),Wrapper_T(GL_REPEAT),
-	Min_Filter(GL_NEAREST),Mag_Filter(GL_NEAREST),Min_FIlter_Minmap(GL_NEAREST_MIPMAP_NEAREST),
+	Min_Filter(GL_LINEAR),Mag_Filter(GL_LINEAR),Min_FIlter_Minmap(GL_NEAREST_MIPMAP_NEAREST),
 	Internal_Format(GL_RGB),Load_Format(GL_RGB),uniform_var_string(univar)
 {
 	ResourceManager::GetInstance()->Set_Texture_Count();
