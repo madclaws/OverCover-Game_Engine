@@ -1,4 +1,8 @@
 #pragma once
+//Stores Texture Location,Width,Height for Texture Caching.
+//We need this because when trying to load the previously stored image data we forget to chaange ,
+//textures width and height
+
 #include<GL\glew.h>
 struct ImageData
 {

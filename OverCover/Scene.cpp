@@ -10,10 +10,6 @@ Scene::Scene(GLint _width,GLint _height):sprite("broco","broco"),sprite1("contai
 }
 
 
-Scene::~Scene(void)
-{
-
-}
 void Scene::SRender()
 {
 	//Create A Ortho-Projection Matrix
@@ -23,11 +19,20 @@ void Scene::SRender()
 	//renderer->DrawSprite(s2,0,glm::vec3(400, 300,0), 0.0f, glm::vec3(800, 600,0));
 //	for(int i=0;i<Sprites.size();i++)
 	//{
-		renderer->DrawSprite(Sprites[0],0,glm::vec3(10.0f,10.0f,0.0f), 0.0f, glm::vec3(100.0f,100.0f,0.0f));
-		renderer->DrawSprite(Sprites[1],0,glm::vec3(200.0f,10.0f,0.0f), 0.0f, glm::vec3(100.0f,100.0f,0.0f));
-		//for(int i=0;i<1000;i++)
-		//renderer->DrawSprite(Sprites[1],0,glm::vec3(i*10.0f,i*10,0.0f), 0.0f, glm::vec3(50.0f,50.0f,0.0f));
-		//}
+	///renderer->DrawSprite(Sprites[0],0,glm::vec3(10.0f,10.0f,0.0f), 0.0f, glm::vec3(100.0f,100.0f,0.0f));
+	///renderer->DrawSprite(Sprites[1],0,glm::vec3(200.0f,10.0f,0.0f), 0.0f, glm::vec3(100.0f,100.0f,0.0f));
+		//for(int i=0;i<30;i++)
+	///	renderer->DrawSprite(Sprites[1],0,glm::vec3(20*10.0f,300*10,0.0f), 0.0f, glm::vec3(50.0f,50.0f,0.0f));
+	glActiveTexture(resource->Get_ActiveTexture_Map(0));
+	//cout<<_resource->Get_Texture_Count();
+	
+	//_resource->Set_Texture_Count(); 
+
+	shad1.SetintU(Sprites.back()->getID(),0,0);
+		//_Shader.SetMatrix4U("model",model,0);
+		//_sprite->Draw();
+	
+	Sprites.back()->Draw();
 	//renderer->DrawSprite(sprite,0);
 	//renderer->DrawSprite(sprite1,1);
 	//renderer->DrawSprite(sprite,sprite1);
@@ -63,7 +68,7 @@ void Scene::SLoad_Init()
 	//sprite1.Create("W:/papichulo/OverCover/OverCover/Textures/broco.jpg");
 	//s2.Create("W:/papichulo/OverCover/OverCover/Textures/rono.jpg");
 	Sprites.back()->Create("W:/papichulo/OverCover/OverCover/Textures/rono.jpg");
-	Sprites.front()->Create("W:/papichulo/OverCover/OverCover/Textures/rono.jpg");
+	Sprites.front()->Create("W:/papichulo/OverCover/OverCover/Textures/container.jpg");
 	//sprite1.Init();
 }
 void Scene::Create_sprite()
@@ -84,4 +89,12 @@ GLint Scene::SGet_Width()
 GLfloat Scene::GetZoomFactor()
 {
 	return iomanage->GetYscroll();
+}
+void Scene::Clean()
+{
+	
+}
+Scene::~Scene(void)
+{
+	
 }

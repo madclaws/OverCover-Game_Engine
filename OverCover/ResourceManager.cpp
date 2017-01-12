@@ -3,7 +3,8 @@
 ResourceManager* ResourceManager::Instance;
 GLint ResourceManager::texture_count;
 GLenum ResourceManager::Active_Textures[10];
-std::map<const GLchar*,ImageData> ResourceManager::TextureMap;
+ //std::map<const GLchar*,ImageData> ResourceManager::TextureMap;
+std::map<const GLchar*,Texture2D*> ResourceManager::TextObjMap;
 ResourceManager::ResourceManager(void)
 {
 
@@ -23,6 +24,7 @@ ResourceManager* ResourceManager::GetInstance()
 	return Instance;
 	
 }
+
 Shaders ResourceManager::LoadShaders(const GLchar* vertfile,const GLchar* fragfile)
 {
 	ifstream vertstream,fragstream;
@@ -63,19 +65,23 @@ Shaders ResourceManager::LoadShaders(const GLchar* vertfile,const GLchar* fragfi
 }
 unsigned char* ResourceManager::LoadTexture(const GLchar* textureloc,GLint &width,GLint &height,GLint &n)
 {//int T_width,T_height,T_n;
-/*unsigned char* image=stbi_load(textureloc,&width,&height,&n,0);
+unsigned char* image=stbi_load(textureloc,&width,&height,&n,0);
 	if(image!=NULL)
 		cout<<"Texture Loaded SUccessfully\n";
 	else
 		cout<<"Textutre Loading Failed!!!!\n";
-	return image;*/
-	return GetTextureData(textureloc,width,height,n);
+	return image;
+	//return GetTextureData(textureloc,width,height,n);
 	//stbi_image_free(image);
 }
 unsigned char* ResourceManager::GetTextureData(const GLchar* location,GLint &_width,GLint &_height,GLint &n)
 {
-	
-	auto mapiter=TextureMap.find(location);
+/*	auto Objiter=TextObjMap.find(location);
+	if(Objiter==TextObjMap.end())
+	{
+
+	}*/
+	/*auto mapiter=TextureMap.find(location);
 
 	if(mapiter==TextureMap.end())
 	{ImageData data;
@@ -94,8 +100,29 @@ unsigned char* ResourceManager::GetTextureData(const GLchar* location,GLint &_wi
 		_width=mapiter->second.WIDTH;
 		_height=mapiter->second.HEIGHT;
 		return mapiter->second.FILELOC;
-	}
+	}*/
+	unsigned char* image=stbi_load(location,&_width,&_height,&n,0);
+	if(image!=NULL)
+		cout<<"Texture Loaded SUccessfully\n";
+	else
+		cout<<"Textutre Loading Failed!!!!\n";
+	return image;
 
+}
+Texture2D* ResourceManager::GetTexture(const GLchar* curloc)
+{
+	auto objiter=TextObjMap.find(curloc);
+	if(objiter==TextObjMap.end())
+		return nullptr;
+	else
+	{
+		return objiter->second;
+	}
+}
+void ResourceManager::SetTextureMap(Texture2D* temp_text,const GLchar* temp_loc)
+{
+	TextObjMap.insert(std::make_pair(temp_loc,temp_text));
+	
 }
 void ResourceManager::clear(GLuint& v_id,GLuint& f_id)
 {
@@ -107,10 +134,7 @@ void ResourceManager::clear(unsigned char* image)
 {
 	stbi_image_free(image);
 }
-ResourceManager::~ResourceManager(void)
-{
 
-}
 GLint ResourceManager::Get_Texture_Count()
 {
 	return texture_count;
@@ -141,4 +165,9 @@ void ResourceManager:: Set_ActiveTexture_Map()
 GLenum ResourceManager::Get_ActiveTexture_Map(GLint num)
 {
 	return Active_Textures[num];
+}
+ResourceManager::~ResourceManager(void)
+{
+	delete Instance;
+
 }

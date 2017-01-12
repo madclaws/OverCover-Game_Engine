@@ -85,7 +85,7 @@ int main()
 		
 		
 		Scene1.SRender();
-		glfwSwapInterval(0);
+		//glfwSwapInterval(0);
 		//Swap the Rendering Buffer(Double Buffer)
 		
 		glfwSwapBuffers(window);

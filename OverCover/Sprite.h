@@ -1,4 +1,6 @@
 #pragma once
+#ifndef SPRITE_H
+#define SPRITE_H
 #include "gameobject.h"
 #include "Texture2D.h"
 #include "VertexData3.h"
@@ -31,11 +33,15 @@ public:
 	void Generate_ElementBuffer();
 	void Generate_Buffer();
 	//Render Code
+	GLboolean DoWantNewTexture;
 	void Draw();
 	void Create(const GLchar*);
 	void Init();
 	~Sprite(void);
 	Texture2D* ret_texture();
+	GLuint GetTextureID();
+	VertexData3* GetVertexData();
 	const GLchar* getID();
 };
 
+#endif

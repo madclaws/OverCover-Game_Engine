@@ -1,4 +1,6 @@
 #pragma once
+#ifndef SCENE_H
+#define SCENE_H
 #include<GL\glew.h>
 #include "ResourceManager.h"
 #include "Shaders.h"
@@ -38,6 +40,7 @@ public:
 	void Create_sprite();
 	GLint SGet_Height();
 	GLfloat GetZoomFactor();
+	void Clean();
 	
 };
 enum SceneState{
@@ -47,3 +50,4 @@ enum SceneState{
 
 };
 
+#endif

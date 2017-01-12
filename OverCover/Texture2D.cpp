@@ -1,11 +1,12 @@
 #include "Texture2D.h"
 
 
-Texture2D::Texture2D(const GLchar* univar):Texture_ID(0),Width(0),Height(0),Wrapper_S(GL_REPEAT),Wrapper_T(GL_REPEAT),
+Texture2D::Texture2D():Texture_ID(0),Width(0),Height(0),Wrapper_S(GL_REPEAT),Wrapper_T(GL_REPEAT),
 	Min_Filter(GL_LINEAR),Mag_Filter(GL_LINEAR),Min_FIlter_Minmap(GL_NEAREST_MIPMAP_NEAREST),
-	Internal_Format(GL_RGB),Load_Format(GL_RGB),uniform_var_string(univar)
+	Internal_Format(GL_RGB),Load_Format(GL_RGB)
 {
 	ResourceManager::GetInstance()->Set_Texture_Count();
+	
 }
 
 void Texture2D::Generate(const GLchar* Filename)
@@ -24,6 +25,7 @@ void Texture2D::Generate(const GLchar* Filename)
 	glGenerateMipmap(GL_TEXTURE_2D);
 	
 	glBindTexture(GL_TEXTURE_2D,0);
+	inst->SetTextureMap(this,Filename);
 	
 }
 void Texture2D::Bind()
@@ -31,11 +33,16 @@ void Texture2D::Bind()
 	
 	glBindTexture(GL_TEXTURE_2D,Texture_ID);
 }
-const GLchar* Texture2D::uni_var_str()
+/*const GLchar* Texture2D::uni_var_str()
 {
 	return uniform_var_string;
+}*/
+
+GLuint Texture2D::GetTextureId()
+{
+	return Texture_ID;
 }
 Texture2D::~Texture2D(void)
 {
-
+	delete image;
 }

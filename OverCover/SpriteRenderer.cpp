@@ -14,7 +14,7 @@ SpriteRenderer::~SpriteRenderer(void)
 void SpriteRenderer::DrawSprite(Sprite* _sprite,GLint num ,glm::vec3 _position,GLfloat _angle,glm::vec3 _scale)
 {
 	//_Shader.use();
-	glm::mat4 model;
+	/*glm::mat4 model;
 	//model=glm::translate(model,glm::vec3(-0.5f,0.5f,0.0f));
 	model=glm::translate(model,_position);
 	//model=glm::translate(model,glm::vec3(0.5f*_scale.x,0.5f*_scale.y,0.0f));
@@ -32,6 +32,6 @@ void SpriteRenderer::DrawSprite(Sprite* _sprite,GLint num ,glm::vec3 _position,G
 	
 	
 	//cout<<_sprite.getID()<<" Rendered\n";
-	//system("pause"); 
+	//system("pause"); */
 }
 

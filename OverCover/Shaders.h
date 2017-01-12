@@ -1,4 +1,6 @@
 #pragma once
+#ifndef SHADERS_H
+#define SHADERS_H
 #include<GL\glew.h>
 #include<iostream>
 #include<glm\glm.hpp>
@@ -43,3 +45,4 @@ public:
 	~Shaders(void);
 };
 
+#endif
