@@ -49,7 +49,7 @@ int main()
 	//Calls When glclear calls
 	//glClearColor(0.0f,0.0f,0.0f,1.0f);
 	//Glew initialization for USING OPENGL FUNCTIONS
-	glewExperimental=true;
+	glewExperimental=GL_TRUE;
 	if(glewInit()!=GLEW_OK)
 	{
 		cout<<"GLEW INITIALIZATION FAILED................\n";

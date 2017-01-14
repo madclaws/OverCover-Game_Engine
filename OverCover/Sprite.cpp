@@ -20,7 +20,7 @@ if(texture_temp==nullptr)
 else
 _Texture=texture_temp;
 Init();
-delete texture_temp;
+//delete texture_temp;
 }
 void Sprite::Init()
 {
@@ -66,9 +66,9 @@ void Sprite::Generate_Buffer()
 {
 	Generate_VertexData();
 	Generate_Texture();
-	Generate_ElementBuffer();
+	//Generate_ElementBuffer();
 	//sizeof(VAO);
-	glGenVertexArrays(1,&VAO);
+	/*glGenVertexArrays(1,&VAO);
 	glGenBuffers(1,&VBO);
 	glBindVertexArray(VAO);
 	
@@ -92,7 +92,7 @@ void Sprite::Generate_Buffer()
 	glDisableVertexAttribArray(1);
 	glDisableVertexAttribArray(2);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);
-	glBindBuffer(GL_ARRAY_BUFFER,0);
+	glBindBuffer(GL_ARRAY_BUFFER,0);*/
 }
 VertexData3* Sprite::GetVertexData()
 {
@@ -101,13 +101,13 @@ VertexData3* Sprite::GetVertexData()
 // This is The Draw Call
 void Sprite::Draw()
 {
-	//glActiveTexture(GL_TEXTURE0);
+	glActiveTexture(GL_TEXTURE0);
 	_Texture->Bind();
-	//glBindVertexArray(VAO);
+	glBindVertexArray(VAO);
 	
-	//glDrawElements(GL_TRIANGLES,6,GL_UNSIGNED_INT,0);
+	glDrawElements(GL_TRIANGLES,6,GL_UNSIGNED_INT,0);
 
-	//glBindVertexArray(0);
+	glBindVertexArray(0);
 	
 }
 
