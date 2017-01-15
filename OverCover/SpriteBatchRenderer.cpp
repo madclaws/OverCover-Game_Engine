@@ -53,7 +53,7 @@ void SpriteBatchRenderer::SortSprites()
 }
 void SpriteBatchRenderer::GenerateBatches()
 {
-	if(GenerateMemory)
+	if(GenerateMemory){
 	if(SpriteArray.size()==0)
 		return;
 	
@@ -61,7 +61,7 @@ void SpriteBatchRenderer::GenerateBatches()
 	GLint count_sprite=0;
 	GLint count_elements=0;
 	GLint offset=0;
-	GLint index_0=0,index_1=1,index_2=3,index_3=1,index_4=2,index_5=3;
+	
 	VertexData3* vertex_ptr=SpriteArray[count_sprite]->GetVertexData();
 	vertices.resize(SpriteArray.size()*4);
 	//vertices.size();
@@ -103,6 +103,8 @@ void SpriteBatchRenderer::GenerateBatches()
 	ElementIndices[count_elements++]=index_5+offset;
 	offset=count_elements;
 	}
+	GenerateMemory=GL_FALSE;
+	}
 //	cout<<sizeof(ElementIndices)<<endl;
 //	cout<<ElementIndices.size()*sizeof(GLint);
 	glBindVertexArray(VAO);
@@ -130,8 +132,8 @@ void SpriteBatchRenderer::GenerateBatches()
 	glVertexAttribPointer(2,2,GL_FLOAT,GL_TRUE,sizeof(VertexData3),(GLvoid*)offsetof(VertexData3,uv));
 	*/
 	glBindVertexArray(0);
-	glBindBuffer(GL_ARRAY_BUFFER,0);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);
+	//glBindBuffer(GL_ARRAY_BUFFER,0);
+	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);
 }
 void SpriteBatchRenderer::End()
 {
@@ -153,7 +155,7 @@ void SpriteBatchRenderer::Renderer()
 		
 		glDrawElements(GL_TRIANGLES,Batches[i].numofvert,GL_UNSIGNED_INT,(void*)Batches[i].offset);
 		
-		glBindTexture(GL_TEXTURE_2D,0);
+		//glBindTexture(GL_TEXTURE_2D,0);
 	}
 	glBindVertexArray(0);
 }
