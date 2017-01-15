@@ -70,13 +70,28 @@ void Scene::SLoad_Init()
 	iomanage=InputManager::GetInstance();
 	Sprites.push_back(new Sprite("con","con"));
 	Sprites.push_back(new Sprite("new","new"));
+	Sprites.push_back(new Sprite("new","new"));
+	Sprites.push_back(new Sprite("new","new"));
+	Sprites.push_back(new Sprite("new","new"));
 //	Sprite_Tree.push_back(sprite);
 	//Sprite_Tree.push_back(sprite1);
 	//sprite.Create("W:/papichulo/OverCover/OverCover/Textures/broco.jpg");
 	//sprite1.Create("W:/papichulo/OverCover/OverCover/Textures/broco.jpg");
 	//s2.Create("W:/papichulo/OverCover/OverCover/Textures/rono.jpg");
-	Sprites[1]->Create("W:/papichulo/OverCover/OverCover/Textures/container.jpg");
+	
 	Sprites[0]->Create("W:/papichulo/OverCover/OverCover/Textures/rono.jpg");
+	Sprites[1]->Create("W:/papichulo/OverCover/OverCover/Textures/rono.jpg");
+	Sprites[4]->Create("W:/papichulo/OverCover/OverCover/Textures/container.jpg");
+Sprites[3]->Create("W:/papichulo/OverCover/OverCover/Textures/container.jpg");
+Sprites[2]->Create("W:/papichulo/OverCover/OverCover/Textures/broco.jpeg");
+for(int j=5;j<3000;j++)
+{	Sprites.push_back(new Sprite("new","new"));
+	Sprites[j]->Create("W:/papichulo/OverCover/OverCover/Textures/rono.jpg");
+}
+for(int j=2999;j<2000;j++)
+{	Sprites.push_back(new Sprite("new","new"));
+	Sprites[j]->Create("W:/papichulo/OverCover/OverCover/Textures/container.jpg");
+}
 for(int i=0;i<Sprites.size();i++)
 	{
 		Renderer.CreateSpriteArray(Sprites[i]);
