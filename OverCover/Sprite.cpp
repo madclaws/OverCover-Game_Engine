@@ -1,15 +1,16 @@
 #include "Sprite.h"
 
 
-Sprite::Sprite(const GLchar* _id,const GLchar* univar):VAO(0),VBO(0),texture_loc('\0')
+Sprite::Sprite(const GLchar* _id,const GLchar* univar):texture_loc('\0')
 {
 	
 	ID=_id;
 	_Texture=new Texture2D();
 	DoWantNewTexture=false;
+	transform=new Transform();
 }
 
-void Sprite::Create(const GLchar* loc)
+void Sprite::Create(const GLchar* loc,GLfloat _x,GLfloat _y)
 {
 	ResourceManager* R=ResourceManager::GetInstance();
 texture_loc=loc;
@@ -18,8 +19,10 @@ if(texture_temp==nullptr)
 	DoWantNewTexture=true;
 else
 _Texture=texture_temp;
+transform->SetPosition(_x,_y,0.0f);
 Init();
 //delete texture_temp;
+
 }
 void Sprite::Init()
 {
@@ -28,22 +31,25 @@ void Sprite::Init()
 }
 void Sprite::Generate_VertexData()
 {
+	VertexData* curpos=transform->GetVertexPointer();
+	
 	//vertexdata[0].position.SetPosition(0.5f, 0.5f, 0.0f);
-	vertexdata[0].position.SetPosition(300.0f, 300.0f, 0.0f);
+	//vertexdata[0].position.SetPosition(100.0f, 100.0f, 0.0f);
+	vertexdata[0].position.SetPosition(curpos[0].position.x,curpos[0].position.y, 0.0f);
 	vertexdata[0].color.SetColor(0.0f,0.0f,1.0f,0.0f);
-	vertexdata[0].uv.SetUV(1.0f,0.0f);
-	//vertexdata[1].position.SetPosition(0.5f, -0.5f, 0.0f);
-	vertexdata[1].position.SetPosition(300.0f, 500.0f, 0.0f);
+	vertexdata[0].uv.SetUV(0.0f,1.0f);
+	vertexdata[1].position.SetPosition(curpos[1].position.x,curpos[1].position.y, 0.0f);
+	//vertexdata[1].position.SetPosition(100.0f, 300.0f, 0.0f);
 	vertexdata[1].color.SetColor(0.0f,0.0f,0.0f,0.0f);
-	vertexdata[1].uv.SetUV(1.0f,1.0f);
-	//vertexdata[2].position.SetPosition(-0.5f, -0.5f, 0.0f);
-	vertexdata[2].position.SetPosition(100.0f,500.0f, 0.0f);
+	vertexdata[1].uv.SetUV(0.0f,0.0f);
+	vertexdata[2].position.SetPosition(curpos[2].position.x,curpos[2].position.y, 0.0f);
+	//vertexdata[2].position.SetPosition(300.0f,300.0f, 0.0f);
 	vertexdata[2].color.SetColor(0.0f,0.0f,0.0f,0.0f);
-	vertexdata[2].uv.SetUV(0.0f,1.0f);
-	//vertexdata[3].position.SetPosition(-0.5f, 0.5f, 0.0f );
-	vertexdata[3].position.SetPosition(100.0f, 300.0f, 0.0f);
+	vertexdata[2].uv.SetUV(1.0f,0.0f);
+	vertexdata[3].position.SetPosition(curpos[3].position.x,curpos[3].position.y, 0.0f );
+	//vertexdata[3].position.SetPosition(300.0f, 100.0f, 0.0f);
 	vertexdata[3].color.SetColor(0.0f,0.0f,0.0f,0.0f);
-	vertexdata[3].uv.SetUV(0.0f,0.0f);
+	vertexdata[3].uv.SetUV(1.0f,1.0f);
 
 }
 void Sprite::Generate_Texture()
@@ -73,13 +79,13 @@ VertexData3* Sprite::GetVertexData()
 // This is The Draw Call
 void Sprite::Draw()
 {
-	glActiveTexture(GL_TEXTURE0);
+	/*glActiveTexture(GL_TEXTURE0);
 	_Texture->Bind();
 	glBindVertexArray(VAO);
 	
 	glDrawElements(GL_TRIANGLES,6,GL_UNSIGNED_INT,0);
 
-	glBindVertexArray(0);
+	glBindVertexArray(0);*/
 	
 }
 

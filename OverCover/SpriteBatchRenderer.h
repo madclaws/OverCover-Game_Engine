@@ -6,6 +6,7 @@
 #include<vector>
 #include<algorithm>
 #include"Sprite.h"
+#include<Windows.h>
 #include"VertexData3.h"
 //enum class SortType;
 enum class  SortType{
@@ -20,7 +21,7 @@ class SpriteBatchRenderer
 	std::vector<Sprite*> SpriteArray;
 	SortType Sort_Type;
 	std::vector<RenderBatch> Batches;
-	std::vector<GLint> ElementIndices;
+	std::vector<GLuint> ElementIndices;
 	std::vector<VertexData3> vertices;
 	void CreateVertexArrayObj();
 	void SortSprites();
@@ -28,6 +29,7 @@ class SpriteBatchRenderer
 public:
 		GLint index_0,index_1,index_2,index_3,index_4,index_5;
 		static GLboolean SortMemory,GenerateMemory;
+		
 	void Init();
 	void Begin(SortType _sortype=SortType::TEXTURES);
 	void CreateSpriteArray(Sprite*);

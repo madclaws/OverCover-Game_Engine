@@ -72,6 +72,7 @@
   <ItemGroup>
     <ClCompile Include="Camera2D.cpp" />
     <ClCompile Include="Color.cpp" />
+    <ClCompile Include="Component.cpp" />
     <ClCompile Include="Draw_Interface.cpp" />
     <ClCompile Include="FPSManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -97,6 +98,7 @@
   <ItemGroup>
     <ClInclude Include="Camera2D.h" />
     <ClInclude Include="Color.h" />
+    <ClInclude Include="Component.h" />
     <ClInclude Include="Draw_Interface.h" />
     <ClInclude Include="FPSManager.h" />
     <ClInclude Include="GameObject.h" />

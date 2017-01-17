@@ -8,15 +8,12 @@
 class Sprite :public GameObject
 {
 	// Vertex Buffer ID
-	GLuint VBO;
-	//Vertex Array ID
-	GLuint VAO;
-	//Element Buffer ID
-	GLuint EBO;
+	
 	//Sprite's Texture Instance
 	//Texture2D texture;
 	Texture2D* _Texture;
 	const GLchar* texture_loc;
+	
 	//ResourceManager* resource;
 	//static GLint texture_count;
 	//Vertex Attributes
@@ -27,7 +24,7 @@ public:
 	//initialize Width,Height and State
 	Sprite(const GLchar*,const GLchar*);
 	
-	
+	Transform* transform;
 	void Generate_VertexData();
 	void Generate_Texture();
 	void Generate_ElementBuffer();
@@ -35,7 +32,7 @@ public:
 	//Render Code
 	GLboolean DoWantNewTexture;
 	void Draw();
-	void Create(const GLchar*);
+	void Create(const GLchar*,GLfloat,GLfloat);
 	void Init();
 	~Sprite(void);
 	Texture2D* ret_texture();
