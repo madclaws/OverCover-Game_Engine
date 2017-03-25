@@ -29,13 +29,13 @@ void Scene::SRender()
 /*Renderer.Begin();
 
 	Renderer.End();*/
-	Renderer.Begin();
+/*	Renderer.Begin();
 	
 	Renderer.End();
 	
-	Renderer.Renderer();
-
-	//cout<<_resource->Get_Texture_Count();
+	Renderer.Renderer();*/
+	Renderer.RenderScene();
+	//cout<<_resource->Gest_Texture_Count();
 	
 	//_resource->Set_Texture_Count(); 
 
@@ -73,11 +73,15 @@ void Scene::SLoad_Init()
 	renderer=new SpriteRenderer(shad1);
 	iomanage=InputManager::GetInstance();
 	Sprites.push_back(new Sprite("con","con"));
-	Sprites.push_back(new Sprite("new","new"));
-	Sprites.push_back(new Sprite("ne","n"));
-	Sprites.push_back(new Sprite("new","new"));
-	Sprites.push_back(new Sprite("new","new"));
-		Sprites.push_back(new Sprite("new","new"));
+	//Sprites.push_back(new Sprite("con","con"));
+	Sprites[0]->Create("W:/papichulo/OverCover/OverCover/Textures/rono.jpg");
+	//Sprites[1]->Create("W:/papichulo/OverCover/OverCover/Textures/container.jpg",300.0f,200.0f);
+	//Sprites.push_back(new Sprite("new","new"));
+	//Sprites.push_back(new Sprite("ne","n"));
+	//Sprites.push_back(new Sprite("new","new"));
+	//Sprites.push_back(new Sprite("new","new"));
+		//Sprites.push_back(new Sprite("new","new"));
+/*
 //	Sprite_Tree.push_back(sprite);
 	//Sprite_Tree.push_back(sprite1);
 	//sprite.Create("W:/papichulo/OverCover/OverCover/Textures/broco.jpg");
@@ -87,16 +91,21 @@ void Scene::SLoad_Init()
 	Sprites[0]->Create("W:/papichulo/OverCover/OverCover/Textures/rono.jpg",300.0f,200.0f);
 	//Sprites[0]->transform->SetPosition(200.0f,200.0f,0.0f);
 	Sprites[1]->Create("W:/papichulo/OverCover/OverCover/Textures/rono.jpg",200.0f,400.0f);
-
-
+	//Sprites[1]->AddChild(Sprites[0]);
+	
 Sprites[2]->Create("W:/papichulo/OverCover/OverCover/Textures/container.jpg",50.0f,200.0f);
 Sprites[3]->Create("W:/papichulo/OverCover/OverCover/Textures/container.jpg",100.0f,300.0f);
 Sprites[4]->Create("W:/papichulo/OverCover/OverCover/Textures/container.jpg",50.0f,500.0f);
 Sprites[5]->Create("W:/papichulo/OverCover/OverCover/Textures/rono.jpg",80.0f,10.0f);
-for(int j=6;j<10;j++)
+for(int j=6;j<3000;j++)
 {	Sprites.push_back(new Sprite("new","new"));
-	Sprites[j]->Create("W:/papichulo/OverCover/OverCover/Textures/rono.jpg",20*j,100);
+	Sprites[j]->Create("W:/papichulo/OverCover/OverCover/Textures/rono.jpg",20*j,100*(j/10));
 }
+for(int j=3000;j<9000;j++)
+{	Sprites.push_back(new Sprite("new","new"));
+	Sprites[j]->Create("W:/papichulo/OverCover/OverCover/Textures/broco.jpeg",20*(j/1000),600);
+}*/
+//AddGameObject(new Sprite("new","new"));
 /*for(int j=2000;j<4000;j++)
 {	Sprites.push_back(new Sprite("new","new"));
 	Sprites[j]->Create("W:/papichulo/OverCover/OverCover/Textures/container.jpg",200,(j/10));
@@ -142,6 +151,19 @@ void Scene::Clean()
 {
 	
 }
+/*void Scene::AddGameObject(GameObject* _child)
+{
+	ROOT->AddChild(_child);
+	
+}*/
+/*void Scene::SetObjCount(GLint _count)
+{
+	ObjectCount+=_count;
+}*/
+/*GLint Scene::GetObjCount()
+{
+	return ObjectCount;
+}*/
 Scene::~Scene(void)
 {
 	

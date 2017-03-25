@@ -8,6 +8,7 @@
 #include"Sprite.h"
 #include<Windows.h>
 #include"VertexData3.h"
+
 //enum class SortType;
 enum class  SortType{
 	TEXTURES,
@@ -26,6 +27,9 @@ class SpriteBatchRenderer
 	void CreateVertexArrayObj();
 	void SortSprites();
 	void GenerateBatches();
+	//void TraverseSceneGraph(GameObject*);
+	void CalculateVertex();
+	std::vector<GameObject*> ObjArray;
 public:
 		GLint index_0,index_1,index_2,index_3,index_4,index_5;
 		static GLboolean SortMemory,GenerateMemory;
@@ -36,6 +40,7 @@ public:
 	void End();
 	static GLboolean sortfunc(Sprite*,Sprite*);
 	void Renderer();
+	void RenderScene();
 	SpriteBatchRenderer(void);
 	~SpriteBatchRenderer(void);
 };

@@ -9,6 +9,7 @@
 #include "SpriteRenderer.h"
 #include "SpriteBatchRenderer.h"
 #include "Camera2D.h"
+#include "GameObject.h"
 #include<glm\glm.hpp>
 #include<glm\gtc\matrix_transform.hpp>
 #include"InputManager.h"
@@ -21,6 +22,8 @@ class Scene
 	ResourceManager* resource;
 	SpriteRenderer* renderer;
 	InputManager* iomanage;
+	GameObject* ROOT;
+	//static GLint ObjectCount;
 public:
 	
 	Scene(GLint,GLint);
@@ -43,7 +46,9 @@ public:
 	GLint SGet_Height();
 	GLfloat GetZoomFactor();
 	void Clean();
-	
+	void AddGameObject(GameObject*);
+	//void SetObjCount(GLint);
+	//GLint GetObjCount();
 };
 enum SceneState{
 

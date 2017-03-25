@@ -15,19 +15,19 @@ class Transform
 	VertexData VecPostition[4];
 public:
 	Transform(void);
-	Transform(glm::vec3,GLfloat,glm::vec3);
-	void SetPosition(GLfloat,GLfloat,GLfloat);
+	//Transform(glm::vec3,GLfloat,glm::vec3);
+	/*void SetPosition(GLfloat,GLfloat,GLfloat);
 	void SetRotation(GLfloat);
 	void SetScale(GLfloat,GLfloat,GLfloat);
 	void SetPosition(glm::vec3);
 	void SetScale(glm::vec3);
 	void SetWidth(GLfloat);
 	void SetHeight(GLfloat);
-	void UpdatePositionVector();
+	void UpdateLocalTransform(glm::vec3 position=glm::vec3(0.0f,0.0f,0.0f),GLfloat angle=0,glm::vec3 scale=glm::vec3(1.0f,1.0f,0.0f));
 	glm::mat4 GetLocalTransform();
 	glm::mat4 GetWorldTransform();
 	VertexData* GetVertexPointer();
-	void Update();
+	void Update();*/
 	~Transform(void);
 };
 

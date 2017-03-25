@@ -21,17 +21,15 @@ protected:
 	const GLchar* ID;
 	GameObject_State State;
 	Render_State RenderState;
-	std::vector<GameObject*> Children;
-	GameObject* Parent;
-	glm::mat4 LocalTransform;
-	glm::mat4 WorldTransform;
+
+	//GameObject* Parent;
 	
 	
-	Transform _Transform;
 	Texture2D* _Texture;
 public:
 	GameObject(void);
 	~GameObject();
+	//Transform _Transform;
 		//Draw_Interface* D_interface;
 		//Respective GameObjects Define Dimension and State
 		//virtual void SetDim_State(GLint=0,GLint=0,GameObject_State=GameObject_State::ACTIVE);
@@ -39,10 +37,11 @@ public:
 		//Respective GameObjects Define Their own Position System
 		//virtual void SetPosition()=0;
 		//Respective GameObjects Define Their Own Init System(Initializing ,generating VBO etc...
-	virtual void AddChild(GameObject*);
-	virtual void RemoveChild(GameObject*);
-	virtual glm::mat4 GetWorldTransform();
-	virtual void Update();
+	//	std::vector<GameObject*> Children;
+	//virtual void AddChild(GameObject*);
+	//virtual void RemoveChild(GameObject*);
+//	virtual glm::mat4 GetWorldTransform();
+//	virtual void Update();
 	virtual void Init()=0;
 		//Function for Rendering Code;
 		virtual void Draw()=0;

@@ -1,7 +1,7 @@
 #pragma once
 #ifndef SPRITE_H
 #define SPRITE_H
-#include "gameobject.h"
+#include "Gameobject.h"
 #include "Texture2D.h"
 #include "VertexData3.h"
 #include<cstddef>
@@ -32,7 +32,7 @@ public:
 	//Render Code
 	GLboolean DoWantNewTexture;
 	void Draw();
-	void Create(const GLchar*,GLfloat,GLfloat);
+	void Create(const GLchar*);
 	void Init();
 	~Sprite(void);
 	Texture2D* ret_texture();

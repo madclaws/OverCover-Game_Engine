@@ -2,7 +2,7 @@
 
 
 Camera2D::Camera2D(void):CameraPos(0.0f,0.0f,0.0f),CameraFront(0.0f,0.0f,-1.0f),WorldUp(0.0f,1.0f,0.0f),Xaxis(0.0f,0.0f,0.0f),
-	Yaxis(0.0f,0.0f,0.0f),Zaxis(0.0f,0.0f,0.0f),CameraSpeed(1.0f),ZoomFactor(0)
+	Yaxis(0.0f,0.0f,0.0f),Zaxis(0.0f,0.0f,0.0f),CameraSpeed(8.0f),ZoomFactor(0)
 {
 	iomanage=InputManager::GetInstance();
 }

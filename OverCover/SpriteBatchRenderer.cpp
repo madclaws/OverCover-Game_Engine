@@ -57,6 +57,13 @@ GLboolean SpriteBatchRenderer:: sortfunc(Sprite*a,Sprite*b)
 void SpriteBatchRenderer::SortSprites()
 {
 	std::stable_sort(SpriteArray.begin(),SpriteArray.end(),sortfunc);
+	//std::stable_sort(ObjArray.begin(),ObjArray.end(),sortfunc);
+}
+void SpriteBatchRenderer::CalculateVertex()
+{
+	glm::vec4 vert;
+	VertexData3* Vertex_ptr=SpriteArray[0]->GetVertexData();
+	
 }
 void SpriteBatchRenderer::GenerateBatches()
 {
@@ -80,7 +87,7 @@ void SpriteBatchRenderer::GenerateBatches()
 	//cout<<vertex_ptr[0].position.x<<vertex_ptr[0].position.y<<endl;
 	vertices[count_vert++]=vertex_ptr[1];
 	//cout<<vertex_ptr[1].position.x<<vertex_ptr[1].position.y<<endl;
-	
+		
 	//cout<<vertex_ptr[2].position.x<<vertex_ptr[2].position.y<<endl;
 	vertices[count_vert++]=vertex_ptr[3];
 	vertices[count_vert++]=vertex_ptr[1];
@@ -213,6 +220,22 @@ void SpriteBatchRenderer::Renderer()
 	draw_call=0;
 	glBindVertexArray(0);
 }
+void SpriteBatchRenderer::RenderScene()
+{
+	Begin();
+	End();
+	Renderer();
+}
+/*void SpriteBatchRenderer::TraverseSceneGraph(GameObject* _root)
+{
+	for(int i=0;i<_root->Children.size();i++)
+	{
+		_root->Children[i]->Update();
+		ObjArray.push_back(_root->Children[i]);
+	}
+
+
+}*/
 SpriteBatchRenderer::~SpriteBatchRenderer(void)
 {
 }
