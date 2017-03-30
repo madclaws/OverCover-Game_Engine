@@ -39,8 +39,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>W:\papichulo\OverCover\dependencies\GLEW\include;W:\papichulo\OverCover\dependencies\GLFW\include;W:\papichulo\OverCover\dependencies\GLM\include\glm;W:\papichulo\learngl\dependencies\SOIL\include;$(IncludePath)</IncludePath>
-    <LibraryPath>W:\papichulo\OverCover\dependencies\GLEW\libs;W:\papichulo\OverCover\dependencies\GLFW\libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>W:\papichulo\OverCover\dependencies\GLEW\include;W:\papichulo\OverCover\dependencies\GLFW\include;W:\papichulo\OverCover\dependencies\GLM\include\glm;W:\papichulo\learngl\dependencies\SOIL\include;W:\papichulo\OverCover\dependencies\Box2D\include;$(IncludePath)</IncludePath>
+    <LibraryPath>W:\papichulo\OverCover\dependencies\GLEW\libs;W:\papichulo\OverCover\dependencies\GLFW\libs;W:\papichulo\OverCover\dependencies\Box2D\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -50,7 +50,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opengl32.lib;glew32s.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glew32s.lib;glfw3.lib;Box2D.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <EntryPointSymbol>
       </EntryPointSymbol>
     </Link>
@@ -70,6 +70,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Box.cpp" />
     <ClCompile Include="Camera2D.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Component.cpp" />
@@ -96,6 +97,7 @@
     <ClCompile Include="VertexData3.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Box.h" />
     <ClInclude Include="Camera2D.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Component.h" />

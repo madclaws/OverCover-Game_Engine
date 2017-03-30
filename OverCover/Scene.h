@@ -13,6 +13,9 @@
 #include<glm\glm.hpp>
 #include<glm\gtc\matrix_transform.hpp>
 #include"InputManager.h"
+#include<Box2D\Box2D.h>
+#include<cstdlib>
+#include"Box.h"			
 class Scene
 {
 	
@@ -23,6 +26,8 @@ class Scene
 	SpriteRenderer* renderer;
 	InputManager* iomanage;
 	GameObject* ROOT;
+	std::shared_ptr<b2World> phy_world;
+	std::vector<Box> Boxes;
 	//static GLint ObjectCount;
 public:
 	
@@ -47,6 +52,7 @@ public:
 	GLfloat GetZoomFactor();
 	void Clean();
 	void AddGameObject(GameObject*);
+	void PhysixInit();
 	//void SetObjCount(GLint);
 	//GLint GetObjCount();
 };

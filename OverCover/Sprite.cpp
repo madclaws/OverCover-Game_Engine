@@ -10,7 +10,7 @@ Sprite::Sprite(const GLchar* _id,const GLchar* univar):texture_loc('\0')
 	//transform=new Transform();
 }
 
-void Sprite::Create(const GLchar* loc)
+void Sprite::Create(const GLchar* loc,GLfloat x_pos,GLfloat y_pos,GLfloat _height,GLfloat _width)
 {
 	ResourceManager* R=ResourceManager::GetInstance();
 texture_loc=loc;
@@ -20,9 +20,17 @@ if(texture_temp==nullptr)
 else
 _Texture=texture_temp;
 //transform->SetPosition(_x,_y,0.0f);
+setPosition(x_pos,y_pos,_height,_width);
 Init();
 //delete texture_temp;
 
+}
+void Sprite::setPosition(GLfloat _x,GLfloat _y,GLfloat _h,GLfloat _w)
+{   spritePos[0].position.SetPosition(_x,_y,0.0f);
+	spritePos[1].position.SetPosition(_x,_y+_h,0.0f);
+	spritePos[2].position.SetPosition(_x+_w,_y+_h,0.0f);
+	spritePos[3].position.SetPosition(_x+_w,_y,0.0f);
+	
 }
 void Sprite::Init()
 {
@@ -34,23 +42,23 @@ void Sprite::Generate_VertexData()
 	//VertexData* curpos=transform->GetVertexPointer();
 	
 	//vertexdata[0].position.SetPosition(0.5f, 0.5f, 0.0f);
-	vertexdata[0].position.SetPosition(300.0f, 300.0f, 0.0f);
-	//vertexdata[0].position.SetPosition(curpos[0].position.x,curpos[0].position.y, 0.0f);
+	vertexdata[0].position.SetPosition(spritePos[0].position.x, spritePos[0].position.y, 0.0f);
+	//vertexdata[0].position.SetPosition(curpos[0]._x,curpos[0]._y, 0.0f);
 	vertexdata[0].color.SetColor(0.0f,0.0f,1.0f,0.0f);
 	vertexdata[0].uv.SetUV(1.0f,0.0f);
-	//vertexdata[1].position.SetPosition(curpos[1].position.x,curpos[1].position.y, 0.0f);
-	vertexdata[1].position.SetPosition(300.0f, 500.0f, 0.0f);
+	//vertexdata[1].position.SetPosition(curpos[1]._x,curpos[1]._y, 0.0f);
+	vertexdata[1].position.SetPosition(spritePos[1].position.x, spritePos[1].position.y, 0.0f);
 	//vertexdata[1].position.SetPosition(0.5f, 0.0f, 0.0f);
 	vertexdata[1].color.SetColor(0.0f,0.0f,0.0f,0.0f);
 	vertexdata[1].uv.SetUV(1.0f,1.0f);
-	//vertexdata[2].position.SetPosition(curpos[2].position.x,curpos[2].position.y, 0.0f);
+	//vertexdata[2].position.SetPosition(curpos[2]._x,curpos[2]._y, 0.0f);
 	//vertexdata[2].position.SetPosition(1.0f,0.0f, 0.0f);
-	vertexdata[2].position.SetPosition(100.0f, 500.0f, 0.0f);
+	vertexdata[2].position.SetPosition(spritePos[2].position.x, spritePos[2].position.y, 0.0f);
 	vertexdata[2].color.SetColor(0.0f,0.0f,0.0f,0.0f);
 	vertexdata[2].uv.SetUV(0.0f,1.0f);
-	//vertexdata[3].position.SetPosition(curpos[3].position.x,curpos[3].position.y, 0.0f );
+	//vertexdata[3].position.SetPosition(curpos[3]._x,curpos[3]._y, 0.0f );
 	//vertexdata[3].position.SetPosition(1.0f, 0.5f, 0.0f);
-	vertexdata[3].position.SetPosition(100.0f,300.0f, 0.0f);
+	vertexdata[3].position.SetPosition(spritePos[3].position.x, spritePos[3].position.y, 0.0f);
 	vertexdata[3].color.SetColor(0.0f,0.0f,0.0f,0.0f);
 	vertexdata[3].uv.SetUV(0.0f,0.0f);
 

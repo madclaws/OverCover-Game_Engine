@@ -18,6 +18,7 @@ class Sprite :public GameObject
 	//static GLint texture_count;
 	//Vertex Attributes
 	VertexData3 vertexdata[4];
+	VertexData spritePos[4];
 	//Vertex Indices
 	GLuint Element_vertices[6];
 public:
@@ -32,13 +33,14 @@ public:
 	//Render Code
 	GLboolean DoWantNewTexture;
 	void Draw();
-	void Create(const GLchar*);
+	void Create(const GLchar*,GLfloat,GLfloat,GLfloat,GLfloat);
 	void Init();
 	~Sprite(void);
 	Texture2D* ret_texture();
 	GLuint GetTextureID();
 	VertexData3* GetVertexData();
 	const GLchar* getID();
+	void setPosition(GLfloat,GLfloat,GLfloat,GLfloat);
 };
 
 #endif
