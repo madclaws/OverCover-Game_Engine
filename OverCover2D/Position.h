@@ -1,9 +1,11 @@
 #pragma once
 #include<GL\glew.h>
-struct Position
-{
-	GLfloat x,y,z;
-	void SetPosition(GLfloat,GLfloat,GLfloat);
-	
-};
+namespace OverCover2D {
+	struct Position
+	{
+		GLfloat x, y, z;
+		void SetPosition(GLfloat, GLfloat, GLfloat);
+
+	};
+}
 

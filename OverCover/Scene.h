@@ -22,24 +22,24 @@ class Scene
 	
 	GLint SWidth,SHeight;
 	GLenum Active_Textures[32];
-	ResourceManager* resource;
-	SpriteRenderer* renderer;
-	InputManager* iomanage;
-	GameObject* ROOT;
+	OverCover2D::ResourceManager* resource;
+	OverCover2D::SpriteRenderer* renderer;
+	OverCover2D::InputManager* iomanage;
+	OverCover2D::GameObject* ROOT;
 	std::shared_ptr<b2World> phy_world;
-	std::vector<Box> Boxes;
+	std::vector<OverCover2D::Box> Boxes;
 	//static GLint ObjectCount;
 public:
 	
 	Scene(GLint,GLint);
 	~Scene(void);
-	Camera2D* MyCamera;
-	SpriteBatchRenderer Renderer;
+	OverCover2D::Camera2D* MyCamera;
+	OverCover2D::SpriteBatchRenderer Renderer;
 	//for debugging
-	std::vector<Sprite> Sprite_Tree;
-	Shaders shad1;
-	Sprite sprite,sprite1,s2;
-	std::vector<Sprite*> Sprites;
+	std::vector<OverCover2D::Sprite> Sprite_Tree;
+	OverCover2D::Shaders shad1;
+	OverCover2D::Sprite sprite,sprite1,s2;
+	std::vector<OverCover2D::Sprite*> Sprites;
 	//Render Logic
 	void SRender();
 	//Update movements/physics

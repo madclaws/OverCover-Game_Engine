@@ -4,12 +4,13 @@
 //textures width and height
 
 #include<GL\glew.h>
-struct ImageData
-{
-	unsigned char* FILELOC;
-	GLint WIDTH;
-	GLint HEIGHT;
-	void FillData(unsigned char*,GLint,GLint);
-	
-};
+namespace OverCover2D {
+	struct ImageData
+	{
+		unsigned char* FILELOC;
+		GLint WIDTH;
+		GLint HEIGHT;
+		void FillData(unsigned char*, GLint, GLint);
 
+	};
+}

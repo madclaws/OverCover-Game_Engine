@@ -1,8 +1,10 @@
 #pragma once
 #include "Position.h"
-struct VertexData
-{
-	Position position;
-	
-};
+namespace OverCover2D {
+	struct VertexData
+	{
+		Position position;
+
+	};
+}
 

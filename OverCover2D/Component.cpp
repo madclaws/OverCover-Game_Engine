@@ -1,6 +1,7 @@
 #include "Component.h"
 
-
-Component::~Component(void)
-{
+namespace OverCover2D {
+	Component::~Component(void)
+	{
+	}
 }

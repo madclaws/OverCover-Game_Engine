@@ -14,8 +14,8 @@
 #include<OverCover2D\Window.h>
 using namespace std;
 //void CalculateFps(GLint&);
-Window curWindow;
-FPSManager fpsmanage;
+OverCover2D::Window curWindow;
+OverCover2D::FPSManager fpsmanage;
 
 Scene* Scene1;
 void EventHandler();

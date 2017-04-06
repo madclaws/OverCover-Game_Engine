@@ -1,9 +1,10 @@
 #pragma once
-class Draw_Interface
-{
+namespace OverCover2D {
+	class Draw_Interface
+	{
 
-public:
+	public:
 
-		virtual void Draw()=0;
-};
-
+		virtual void Draw() = 0;
+	};
+}
