@@ -1,5 +1,7 @@
-// Main Program Contains All GLFW Window Creating and Managing Commands.
-//It is Abstracted Because Any One Uses Engine Source Can Write Their On Window(Main)
+// Main is the heart of your game 
+//customize MAIN as you wish.
+
+//It is Abstracted Because Any One Uses Engine Source Can Write Their On Window(OverCover)
 // Program With Suitable Opengl Toolkit(GLUT,SDL)
 #define GLEW_STATIC
 #include<GL\glew.h>
@@ -13,7 +15,6 @@
 using namespace std;
 //void CalculateFps(GLint&);
 Window curWindow;
-
 FPSManager fpsmanage;
 
 Scene* Scene1;
@@ -30,31 +31,23 @@ int main()
 	{
 		
 		fpsmanage.Begin();
-		//glfwPollEvents();
 		curWindow.pollEvents();
 		clear_function();
 		
 		EventHandler();
 		
-			//CalculateFps(count_frame);
 		fpsmanage.CalculateFPS();
 		Scene1->SUpdate();	
 		Scene1->shad1.use();
 		
 		
 		Scene1->SRender();
-		//glfwSwapInterval(1);
 		curWindow.swapInterval();
-		//Swap the Rendering Buffer(Double Buffer)
-		
-		//glfwSwapBuffers(window);
 		curWindow.swapBuffer();
 		fpsmanage.LimitFps();
 		
 	}
-	//Releasing Window Resources
 	curWindow.Terminate();
-	//glfwTerminate();
 
 	return 0;
 	
@@ -65,9 +58,8 @@ void clear_function()
 		//To clear the window each loop by clearing color buffer and depth buffer
 		glClearColor(0.2f,0.3f,0.3f,1.0f);
 		glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
-	//glEnable(GL_BLEND);
 		glDisable(GLU_CULLING);
-		//glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+	
 	
 	}
 
