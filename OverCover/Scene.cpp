@@ -42,15 +42,16 @@ void Scene::SLoad_Init()
 	iomanage=InputManager::GetInstance();
 	PhysixInit();
 	
-	
-	Box b=Boxes[0];
+	Sprites.push_back(new Sprite("con", "con"));
+	Sprites[0]->Create("textures/box1.jpg", 300, 200, 100, 100);
+	/*Box b=Boxes[0];
 	glm::vec4 dim;
 	dim.x=b.getBody()->GetPosition().x;
 	dim.y=b.getBody()->GetPosition().y;
 	dim.z=b.getDimension().x;
 	dim.w=b.getDimension().y;
 	Sprites.push_back(new Sprite("con","con"));
-	Sprites[0]->Create("W:/papichulo/OverCover/OverCover/Textures/container.jpg",dim.x,dim.y,dim.z,dim.w);
+	Sprites[0]->Create("W:/papichulo/OverCover/OverCover/Textures/container.jpg",dim.x,dim.y,dim.z,dim.w);*/
 for(int i=0;i<Sprites.size();i++)
 	{
 		Renderer.CreateSpriteArray(Sprites[i]);

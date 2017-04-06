@@ -2,20 +2,20 @@
 #ifndef SCENE_H
 #define SCENE_H
 #include<GL\glew.h>
-#include "ResourceManager.h"
-#include "Shaders.h"
-#include "Sprite.h"
+#include <OverCover2D\ResourceManager.h>
+#include <OverCover2D\Shaders.h>
+#include <OverCover2D\Sprite.h>
 #include<vector>
-#include "SpriteRenderer.h"
-#include "SpriteBatchRenderer.h"
-#include "Camera2D.h"
-#include "GameObject.h"
+#include <OverCover2D\SpriteRenderer.h>
+#include <OverCover2D\SpriteBatchRenderer.h>
+#include <OverCover2D\Camera2D.h>
+#include <OverCover2D\GameObject.h>
 #include<glm\glm.hpp>
 #include<glm\gtc\matrix_transform.hpp>
-#include"InputManager.h"
+#include<OverCover2D\InputManager.h>
 #include<Box2D\Box2D.h>
 #include<cstdlib>
-#include"Box.h"			
+#include<OverCover2D\Box.h>			
 class Scene
 {
 	
@@ -51,7 +51,7 @@ public:
 	GLint SGet_Height();
 	GLfloat GetZoomFactor();
 	void Clean();
-	void AddGameObject(GameObject*);
+	//void AddGameObject(GameObject*);
 	void PhysixInit();
 	//void SetObjCount(GLint);
 	//GLint GetObjCount();
