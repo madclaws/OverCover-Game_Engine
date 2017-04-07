@@ -1,15 +1,33 @@
 #include "Camera2D.h"
 
 namespace OverCover2D {
-	Camera2D::Camera2D(void) :CameraPos(0.0f, 0.0f, 0.0f), CameraFront(0.0f, 0.0f, -1.0f), WorldUp(0.0f, 1.0f, 0.0f), Xaxis(0.0f, 0.0f, 0.0f),
-		Yaxis(0.0f, 0.0f, 0.0f), Zaxis(0.0f, 0.0f, 0.0f), CameraSpeed(8.0f), ZoomFactor(0)
+	Camera2D::Camera2D(GLfloat _screenWidth,GLfloat _screenHeight) :CameraPos(0.0f, 0.0f, 0.0f), CameraFront(0.0f, 0.0f, -1.0f), WorldUp(0.0f, 1.0f, 0.0f), Xaxis(0.0f, 0.0f, 0.0f),
+		Yaxis(0.0f, 0.0f, 0.0f), Zaxis(0.0f, 0.0f, 0.0f), CameraSpeed(8.0f), ZoomFactor(0),
+		screenWidth(_screenWidth), screenHeight(_screenHeight)
 	{
+		
 		iomanage = InputManager::GetInstance();
 	}
 
-
+	glm::vec2 Camera2D::ScreenToWorld(glm::vec2 screenCoords)
+	{
+		screenCoords.x -= screenWidth / 2;
+		screenCoords.y -= screenHeight / 2;
+		if (ZoomFactor != 0)
+		{
+			screenCoords /= ZoomFactor;
+		}
+		else
+		{
+			screenCoords /= 1;
+		}
+		screenCoords.x += CameraPos.x;
+		screenCoords.y += CameraPos.y;
+		return screenCoords;
+	}
 	Camera2D::~Camera2D(void)
 	{
+
 	}
 	glm::mat4 Camera2D::LookAt()
 	{

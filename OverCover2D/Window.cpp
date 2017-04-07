@@ -145,9 +145,16 @@ namespace OverCover2D {
 			return GL_TRUE;
 		return GL_FALSE;
 	}
-	glm::vec2 Window::returnCoords()
+	glm::vec2 Window::returnScreenCoords()
 	{
 		return inputmanager->getMouseCoords();
+	}
+	glm::vec2 Window::returnWorldCoords()
+	{
+		glm::vec2 temp_coords= inputmanager->getMouseCoords();
+		temp_coords.x -= (GLfloat)screenWidth / 2;
+		temp_coords.y -= (GLfloat)screenHeight / 2;
+		return temp_coords;
 	}
 	/*void Window::eventHandler()
 	{

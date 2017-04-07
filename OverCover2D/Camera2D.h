@@ -16,15 +16,16 @@ namespace OverCover2D {
 		GLfloat ZoomFactor;
 		GLfloat CameraSpeed;
 		InputManager* iomanage;
-
+		GLfloat screenWidth, screenHeight;
 	public:
 		glm::mat4 View;
-		Camera2D(void);
+		Camera2D(GLfloat,GLfloat);
 		glm::mat4 LookAt();
 		void MoveLeft();
 		void MoveRight();
 		void MoveUp();
 		void MoveDown();
+		glm::vec2 ScreenToWorld(glm::vec2);
 		GLfloat GetZoomFactor();
 		glm::mat4 GetView();
 		~Camera2D(void);

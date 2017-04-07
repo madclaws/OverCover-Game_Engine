@@ -5,7 +5,7 @@ Scene::Scene(GLint _width,GLint _height):sprite("broco","broco"),sprite1("contai
 {
 	SWidth=_width;
 	SHeight=_height;
-	MyCamera=new OverCover2D::Camera2D();
+	MyCamera=new OverCover2D::Camera2D(SWidth,SHeight);
 	
 }
 

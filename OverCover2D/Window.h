@@ -28,7 +28,8 @@ namespace OverCover2D {
 		bool winState();
 		//void eventHandler();
 		GLboolean winKeyPressed(GLint);
-		glm::vec2 returnCoords();
+		glm::vec2 returnScreenCoords();
+		glm::vec2 returnWorldCoords();
 		//friend void windowClosecallback(GLFWwindow*,);
 		~Window();
 	};

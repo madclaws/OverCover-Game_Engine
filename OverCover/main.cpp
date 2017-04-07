@@ -78,7 +78,8 @@ void EventHandler()
 			Scene1->MyCamera->MoveRight();
 	if (curWindow.winKeyPressed(0))
 	{
-		coords = curWindow.returnCoords();
+		coords = curWindow.returnScreenCoords();
+		coords = Scene1->MyCamera->ScreenToWorld(coords);
 		cout << "\n" << coords.x << "\t" << coords.y << "\n";
 	}
 	
