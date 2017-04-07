@@ -45,5 +45,10 @@ namespace OverCover2D {
 	{
 		return Yscroll;
 	}
+	void InputManager::setMouseCoords(GLdouble _x, GLdouble _y)
+	{
+		mouseCoords.x = (GLfloat)_x;
+		mouseCoords.y = (GLfloat)_y;
+	}
 }
 

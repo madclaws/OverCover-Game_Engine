@@ -10,6 +10,7 @@
 #include<Windows.h>
 #include "Scene.h"
 #include<math.h>
+#include<glm\glm.hpp>
 #include <OverCover2D\FPSManager.h>
 #include<OverCover2D\Window.h>
 using namespace std;
@@ -18,6 +19,7 @@ OverCover2D::Window curWindow;
 OverCover2D::FPSManager fpsmanage;
 
 Scene* Scene1;
+glm::vec2 coords;
 void EventHandler();
 void clear_function();
 int main()
@@ -74,5 +76,10 @@ void EventHandler()
 			Scene1->MyCamera->MoveLeft();
 	if(curWindow.winKeyPressed(68))
 			Scene1->MyCamera->MoveRight();
+	if (curWindow.winKeyPressed(0))
+	{
+		coords = curWindow.returnCoords();
+		cout << "\n" << coords.x << "\t" << coords.y << "\n";
+	}
 	
 }

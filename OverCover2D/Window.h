@@ -3,6 +3,7 @@
 #include<GL\glew.h>
 #include<GLFW\glfw3.h>
 #include<iostream>
+#include<glm\glm.hpp>
 #include"InputManager.h"
 #include"Camera2D.h"
 namespace OverCover2D {
@@ -27,6 +28,7 @@ namespace OverCover2D {
 		bool winState();
 		//void eventHandler();
 		GLboolean winKeyPressed(GLint);
+		glm::vec2 returnCoords();
 		//friend void windowClosecallback(GLFWwindow*,);
 		~Window();
 	};

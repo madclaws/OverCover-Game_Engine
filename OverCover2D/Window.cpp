@@ -1,9 +1,12 @@
 #include "Window.h"
 
 namespace OverCover2D {
+	Window* winusrs;
 	void keycallback(GLFWwindow*, GLint, GLint, GLint, GLint);
 	void scrollcallback(GLFWwindow*, GLdouble, GLdouble);
 	void windowClosecallback(GLFWwindow*);
+	void cursorposcallback(GLFWwindow*, GLdouble, GLdouble);
+	void mousebuttoncallback(GLFWwindow*, int, int, int);
 	void framebufcallback(GLFWwindow* _window, int _width, int _height)
 	{
 		glViewport(0, 0, _width, _height);
@@ -59,6 +62,8 @@ namespace OverCover2D {
 		glfwSetKeyCallback(glfwWindow, keycallback);
 		glfwSetScrollCallback(glfwWindow, scrollcallback);
 		glfwSetWindowCloseCallback(glfwWindow, windowClosecallback);
+		glfwSetCursorPosCallback(glfwWindow, cursorposcallback);
+		glfwSetMouseButtonCallback(glfwWindow, mousebuttoncallback);
 		//Setting Default Viewport
 		glViewport(0, 0, _screenwidth, _screenheight);
 		inputmanager = InputManager::GetInstance();
@@ -107,6 +112,21 @@ namespace OverCover2D {
 		Window* winusrptr = (Window*)glfwGetWindowUserPointer(window);
 		winusrptr->inputmanager->SetYscroll(yscroll);
 	}
+	void cursorposcallback(GLFWwindow* _window, GLdouble _x, GLdouble _y)
+	{
+		winusrs= (Window*)glfwGetWindowUserPointer(_window);
+		winusrs->inputmanager->setMouseCoords(_x, _y);
+		//std::cout << "\n" << _x << "\t" << _y;
+
+	}
+	void mousebuttoncallback(GLFWwindow* _window, int button, int action, int mods)
+	{
+		winusrs = (Window*)glfwGetWindowUserPointer(_window);
+		if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
+			winusrs->inputmanager->KeyPress(button);
+		else if(button==GLFW_MOUSE_BUTTON_LEFT && action ==GLFW_RELEASE)
+			winusrs->inputmanager->KeyRelease(button);
+	}
 	int Window::getScreenHeight()
 	{
 		return screenHeight;
@@ -124,6 +144,10 @@ namespace OverCover2D {
 		if (inputmanager->IsKeyPressed(key))
 			return GL_TRUE;
 		return GL_FALSE;
+	}
+	glm::vec2 Window::returnCoords()
+	{
+		return inputmanager->getMouseCoords();
 	}
 	/*void Window::eventHandler()
 	{
