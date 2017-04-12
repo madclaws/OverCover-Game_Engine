@@ -1,10 +1,10 @@
 #include "Sprite.h"
 
 namespace OverCover2D {
-	Sprite::Sprite(const GLchar* _id, const GLchar* univar) :texture_loc('\0')
+	Sprite::Sprite() :texture_loc('\0')
 	{
 
-		ID = _id;
+		//ID = _id;
 		_Texture = new Texture2D();
 		DoWantNewTexture = false;
 		//transform=new Transform();
@@ -109,10 +109,16 @@ namespace OverCover2D {
 	{
 		return _Texture->GetTextureId();
 	}
+	glm::vec2 Sprite::returnCurrentPos()
+	{
+		glm::vec2 temp_pos;
+		temp_pos.x = spritePos[0].position.x;
+		temp_pos.y = spritePos[0].position.y;
+		return temp_pos;
+	}
 	Sprite::~Sprite(void)
 	{
 		delete _Texture;
 		delete texture_loc;
-
 	}
 }

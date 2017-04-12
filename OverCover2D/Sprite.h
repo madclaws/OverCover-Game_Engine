@@ -5,6 +5,7 @@
 #include "Texture2D.h"
 #include "VertexData3.h"
 #include<cstddef>
+
 namespace OverCover2D {
 	class Sprite :public GameObject
 	{
@@ -12,19 +13,21 @@ namespace OverCover2D {
 
 		//Sprite's Texture Instance
 		//Texture2D texture;
+	protected:
 		Texture2D* _Texture;
 		const GLchar* texture_loc;
 
 		//ResourceManager* resource;
 		//static GLint texture_count;
 		//Vertex Attributes
+	
 		VertexData3 vertexdata[4];
 		VertexData spritePos[4];
 		//Vertex Indices
 		GLuint Element_vertices[6];
 	public:
 		//initialize Width,Height and State
-		Sprite(const GLchar*, const GLchar*);
+		Sprite();
 
 		Transform* transform;
 		void Generate_VertexData();
@@ -42,6 +45,7 @@ namespace OverCover2D {
 		VertexData3* GetVertexData();
 		const GLchar* getID();
 		void setPosition(GLfloat, GLfloat, GLfloat, GLfloat);
+		glm::vec2 returnCurrentPos();
 	};
 }
 #endif

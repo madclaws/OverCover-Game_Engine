@@ -1,7 +1,7 @@
 #include "Scene.h"
 
 
-Scene::Scene(GLint _width,GLint _height):sprite("broco","broco"),sprite1("container","container"),s2("cont","container"),resource(nullptr),renderer(nullptr)
+Scene::Scene(GLint _width,GLint _height):sprite(),sprite1(),s2(),resource(nullptr),renderer(nullptr)
 {
 	SWidth=_width;
 	SHeight=_height;
@@ -20,6 +20,7 @@ void Scene::SUpdate()
 {
 	//MyCamera.View=glm::scale(MyCamera.View,glm::vec3(200.0f,200.0f,0.0f));
 	phy_world->Step(1.0f/60.0f,6,2);
+	bulletbox->update();
 	glm::mat4 projection=glm::ortho(0.0f+MyCamera->GetZoomFactor()*10.0f,(GLfloat)SWidth-MyCamera->GetZoomFactor()*10.0f,(GLfloat)SHeight-MyCamera->GetZoomFactor()*10.0f,0.0f+MyCamera->GetZoomFactor()*10.0f,-1.0f,1.0f);
 
 		shad1.SetMatrix4U("projection",projection,0);
@@ -39,9 +40,10 @@ void Scene::SLoad_Init()
 	renderer=new OverCover2D::SpriteRenderer(shad1);
 	iomanage= OverCover2D::InputManager::GetInstance();
 	PhysixInit();
-	
-	Sprites.push_back(new OverCover2D::Sprite("con", "con"));
-	Sprites[0]->Create("textures/box1.jpg", 300, 200, 100, 100);
+	bulletbox = new BulletBox(glm::vec2(300, 300), 1, 10,Renderer);
+	//bulletbox->drawBullet(Renderer);
+	//Sprites.push_back(new OverCover2D::Sprite());
+	//Sprites[0]->Create("textures/box1.jpg", 300, 200, 100, 100);
 	/*Box b=Boxes[0];
 	glm::vec4 dim;
 	dim.x=b.getBody()->GetPosition().x;
@@ -50,10 +52,10 @@ void Scene::SLoad_Init()
 	dim.w=b.getDimension().y;
 	Sprites.push_back(new Sprite("con","con"));
 	Sprites[0]->Create("W:/papichulo/OverCover/OverCover/Textures/container.jpg",dim.x,dim.y,dim.z,dim.w);*/
-for(int i=0;i<Sprites.size();i++)
+/*for(int i=0;i<Sprites.size();i++)
 	{
 		Renderer.CreateSpriteArray(Sprites[i]);
-	}
+	}*/
 	//sprite1.Init();
 Renderer.Init();
 /*Renderer.Begin();
@@ -98,6 +100,7 @@ void Scene::PhysixInit()
 	new_box.init(phy_world.get(),glm::vec2(50.0f,14.0f),glm::vec2(15.0f,15.0f));
 	Boxes.push_back(new_box);
 }
+
 void Scene::Clean()
 {
 	

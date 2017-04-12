@@ -30,6 +30,7 @@ namespace OverCover2D {
 		//void TraverseSceneGraph(GameObject*);
 		void CalculateVertex();
 		std::vector<GameObject*> ObjArray;
+
 	public:
 		GLint index_0, index_1, index_2, index_3, index_4, index_5;
 		static GLboolean SortMemory, GenerateMemory;

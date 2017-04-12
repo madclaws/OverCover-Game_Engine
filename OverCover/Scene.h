@@ -15,7 +15,8 @@
 #include<OverCover2D\InputManager.h>
 #include<Box2D\Box2D.h>
 #include<cstdlib>
-#include<OverCover2D\Box.h>			
+#include<OverCover2D\Box.h>		
+#include "BulletBox.h"
 class Scene
 {
 	
@@ -33,6 +34,8 @@ public:
 	
 	Scene(GLint,GLint);
 	~Scene(void);
+	//std::vector<BulletBox> bulletbox;
+	BulletBox* bulletbox;
 	OverCover2D::Camera2D* MyCamera;
 	OverCover2D::SpriteBatchRenderer Renderer;
 	//for debugging
@@ -53,6 +56,7 @@ public:
 	void Clean();
 	//void AddGameObject(GameObject*);
 	void PhysixInit();
+
 	//void SetObjCount(GLint);
 	//GLint GetObjCount();
 };
