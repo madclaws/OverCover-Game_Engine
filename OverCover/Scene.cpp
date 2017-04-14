@@ -20,7 +20,9 @@ void Scene::SUpdate()
 {
 	//MyCamera.View=glm::scale(MyCamera.View,glm::vec3(200.0f,200.0f,0.0f));
 	phy_world->Step(1.0f/60.0f,6,2);
+	//bulletbox->update();
 	bulletbox->update();
+	
 	glm::mat4 projection=glm::ortho(0.0f+MyCamera->GetZoomFactor()*10.0f,(GLfloat)SWidth-MyCamera->GetZoomFactor()*10.0f,(GLfloat)SHeight-MyCamera->GetZoomFactor()*10.0f,0.0f+MyCamera->GetZoomFactor()*10.0f,-1.0f,1.0f);
 
 		shad1.SetMatrix4U("projection",projection,0);
@@ -61,6 +63,8 @@ Renderer.Init();
 /*Renderer.Begin();
 
 	Renderer.End();*/
+//temp UI
+CEGUI::OpenGL3Renderer& My_Renderer = CEGUI::OpenGL3Renderer::bootstrapSystem();
 }
 void Scene::Create_sprite()
 {

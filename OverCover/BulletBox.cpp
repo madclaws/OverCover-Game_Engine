@@ -17,11 +17,13 @@ void BulletBox::drawBullet(OverCover2D::SpriteBatchRenderer& _Renderer)
 }
 void BulletBox::update()
 {
-	position = returnCurrentPos();
-	direction = glm::normalize(direction);
-	position += direction*speed;
-	setPosition(position.x, position.y,100,100);
-	Generate_VertexData();
+	
+		position = returnCurrentPos();
+		direction = glm::normalize(direction);
+		position += direction*speed;
+		setPosition(position.x, position.y, 100, 100);
+		Generate_VertexData();
+
 }
 BulletBox::~BulletBox()
 {
