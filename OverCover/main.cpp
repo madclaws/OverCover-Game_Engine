@@ -24,7 +24,7 @@ void EventHandler();
 void clear_function();
 int main()
 {
-	curWindow.create("Game",500,500,true);
+	curWindow.create("Game",1366,768,true);
 	Scene1 = new Scene(curWindow.getScreenWidth(),curWindow.getScreenHeight());
 	Scene1->SLoad_Init();
 

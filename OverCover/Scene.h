@@ -17,8 +17,9 @@
 #include<cstdlib>
 #include<OverCover2D\Box.h>		
 #include "BulletBox.h"
-#include<CEGUI\CEGUI.h>
-#include<CEGUI\RendererModules\OpenGL\GL3Renderer.h>
+#include<OverCover2D\GUI.h>
+//#include<CEGUI\CEGUI.h>
+//#include<CEGUI\RendererModules\OpenGL\GL3Renderer.h>
 class Scene
 {
 	
@@ -31,6 +32,7 @@ class Scene
 	OverCover2D::GameObject* ROOT;
 	std::shared_ptr<b2World> phy_world;
 	std::vector<OverCover2D::Box> Boxes;
+	OverCover2D::GUI gui;
 	//static GLint ObjectCount;
 public:
 	

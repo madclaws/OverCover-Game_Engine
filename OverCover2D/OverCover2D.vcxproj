@@ -86,7 +86,7 @@
       <SubSystem>Windows</SubSystem>
     </Link>
     <Lib>
-      <AdditionalDependencies>opengl32.lib;glew32s.lib;glfw3.lib;Box2D.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glew32s.lib;glfw3.lib;Box2D.lib;CEGUIBase-0_d.lib;CEGUIOpenGLRenderer-0_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -147,6 +147,7 @@
     <ClCompile Include="Draw_Interface.cpp" />
     <ClCompile Include="FPSManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GUI.cpp" />
     <ClCompile Include="ImageData.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Position.cpp" />
@@ -173,6 +174,7 @@
     <ClInclude Include="Draw_Interface.h" />
     <ClInclude Include="FPSManager.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GUI.h" />
     <ClInclude Include="ImageData.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Position.h" />

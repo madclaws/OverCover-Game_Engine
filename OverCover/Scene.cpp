@@ -13,11 +13,13 @@ Scene::Scene(GLint _width,GLint _height):sprite(),sprite1(),s2(),resource(nullpt
 void Scene::SRender()
 {
 	
+
 	Renderer.RenderScene();
 
 }
 void Scene::SUpdate()
 {
+	
 	//MyCamera.View=glm::scale(MyCamera.View,glm::vec3(200.0f,200.0f,0.0f));
 	phy_world->Step(1.0f/60.0f,6,2);
 	//bulletbox->update();
@@ -33,10 +35,11 @@ void Scene::SUpdate()
 	//glScalef(200.0f,200.0f,0.0f);
 	shad1.SetMatrix4U("view",MyCamera->View,0);
 	//shad1.SetMatrix4U("view",v1,0);
-	
+	gui.draw();
 }
 void Scene::SLoad_Init()
 {
+	
 	 resource= OverCover2D::ResourceManager::GetInstance();
 	shad1=resource->LoadShaders("Shaders/v1.vert","Shaders/f1.frag");
 	renderer=new OverCover2D::SpriteRenderer(shad1);
@@ -64,7 +67,22 @@ Renderer.Init();
 
 	Renderer.End();*/
 //temp UI
-CEGUI::OpenGL3Renderer& My_Renderer = CEGUI::OpenGL3Renderer::bootstrapSystem();
+//CEGUI::OpenGL3Renderer& My_Renderer = CEGUI::OpenGL3Renderer::bootstrapSystem();
+try {
+	gui.init("GUI");
+	gui.loadScheme("TaharezLook.scheme");
+	gui.setFont("DejaVuSans-10");
+	CEGUI::PushButton* testbtn=static_cast<CEGUI::PushButton*>(gui.createWidget("TaharezLook/Button", "testButton", glm::vec4(0.5f, 0.5f, 0.1f, 0.1f), glm::vec4(0.0f)));
+	testbtn->setText("Hello world");
+	gui.setMouseCursor("TaharezLook/MouseArrow");
+	gui.showCursor();
+}
+catch (exception e)
+{
+	std::cout << "not worked";
+}
+
+//gui.createWidget("TaharezLook/Button","testButton", glm::vec4(0.5f, 0.5f, 0.1f, 0.1f), glm::vec4(0.0f));
 }
 void Scene::Create_sprite()
 {
