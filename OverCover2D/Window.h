@@ -29,6 +29,7 @@ namespace OverCover2D {
 		void GUIinit();
 		void GUIdraw();
 		bool winState();
+		bool windowExit(const CEGUI::EventArgs&);
 		//void eventHandler();
 		GLboolean winKeyPressed(GLint);
 		glm::vec2 returnScreenCoords();

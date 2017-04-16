@@ -104,9 +104,14 @@ namespace OverCover2D {
 			//pointer to the gui variable
 			//can't use friend function as callback
 			gui_amp = &gui;
+
 			CEGUI::PushButton* testbtn = static_cast<CEGUI::PushButton*>(gui.createWidget("TaharezLook/Button", "testButton", glm::vec4(0.5f, 0.5f, 0.1f, 0.05f), glm::vec4(0.0f)));
-			testbtn->setText("Hello world");
+
+			testbtn->setText("Exit world");
+			testbtn->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&Window::windowExit, this));
+			
 			CEGUI::Combobox* combobtn = static_cast<CEGUI::Combobox*>(gui.createWidget("TaharezLook/Combobox", "combobtn", glm::vec4(0.2f, 0.2f, 0.1f, 0.05f), glm::vec4(0.0f)));
+			
 			gui.setMouseCursor("TaharezLook/MouseArrow");
 			gui.showCursor();
 		}
@@ -199,6 +204,11 @@ namespace OverCover2D {
 		temp_coords.x -= (GLfloat)screenWidth / 2;
 		temp_coords.y -= (GLfloat)screenHeight / 2;
 		return temp_coords;
+	}
+	bool Window::windowExit(const CEGUI::EventArgs& e)
+	{
+		WIN_STATE = false;
+		return true;
 	}
 	/*void Window::eventHandler()
 	{
