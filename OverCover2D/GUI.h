@@ -1,9 +1,20 @@
 #pragma once
+
 #include<CEGUI\CEGUI.h>
 #include<CEGUI\RendererModules\OpenGL\GL3Renderer.h>
 #include<glm\glm.hpp>
+#include<GLFW\glfw3.h>
+#include<iostream>
 namespace OverCover2D {
 
+	 enum GlfwEvents {
+		MOUSE_MOTION,
+		KEYDOWN,
+		KEYUP,
+		MOUSEBUTTONDWN,
+		MOUSEBUTTONUP,
+		TEXTINPUT
+	};
 	class GUI
 	{
 		static CEGUI::OpenGL3Renderer* renderer;
@@ -18,6 +29,9 @@ namespace OverCover2D {
 		void setMouseCursor(const std::string&);
 		void showCursor();
 		void hideCursor();
+		void onGlfwEvents(GLdouble, GLdouble);
+		void onGlfwEvents(GlfwEvents, GLint);
+		//void onGlfwEvents(GlfwEvents, GLint);
 		static void setWidgetRect(CEGUI::Window*, glm::vec4, glm::vec4);
 		CEGUI::Window* createWidget(const std::string&, const std::string&,glm::vec4,glm::vec4);
 		void init(const std::string&);

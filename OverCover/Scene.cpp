@@ -35,7 +35,7 @@ void Scene::SUpdate()
 	//glScalef(200.0f,200.0f,0.0f);
 	shad1.SetMatrix4U("view",MyCamera->View,0);
 	//shad1.SetMatrix4U("view",v1,0);
-	gui.draw();
+	
 }
 void Scene::SLoad_Init()
 {
@@ -68,7 +68,7 @@ Renderer.Init();
 	Renderer.End();*/
 //temp UI
 //CEGUI::OpenGL3Renderer& My_Renderer = CEGUI::OpenGL3Renderer::bootstrapSystem();
-try {
+/*try {
 	gui.init("GUI");
 	gui.loadScheme("TaharezLook.scheme");
 	gui.setFont("DejaVuSans-10");
@@ -80,7 +80,7 @@ try {
 catch (exception e)
 {
 	std::cout << "not worked";
-}
+}*/
 
 //gui.createWidget("TaharezLook/Button","testButton", glm::vec4(0.5f, 0.5f, 0.1f, 0.1f), glm::vec4(0.0f));
 }

@@ -32,7 +32,7 @@ class Scene
 	OverCover2D::GameObject* ROOT;
 	std::shared_ptr<b2World> phy_world;
 	std::vector<OverCover2D::Box> Boxes;
-	OverCover2D::GUI gui;
+	//OverCover2D::GUI gui;
 	//static GLint ObjectCount;
 public:
 	

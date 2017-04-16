@@ -39,11 +39,13 @@ int main()
 		EventHandler();
 		
 		fpsmanage.CalculateFPS();
-		Scene1->SUpdate();	
+		
 		Scene1->shad1.use();
 		
 		
 		Scene1->SRender();
+		Scene1->SUpdate();
+		curWindow.GUIdraw();
 		curWindow.swapInterval();
 		curWindow.swapBuffer();
 		fpsmanage.LimitFps();

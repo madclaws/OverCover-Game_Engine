@@ -2,18 +2,20 @@
 
 namespace OverCover2D {
 	Window* winusrs;
+	GUI* gui_amp;
 	void keycallback(GLFWwindow*, GLint, GLint, GLint, GLint);
 	void scrollcallback(GLFWwindow*, GLdouble, GLdouble);
 	void windowClosecallback(GLFWwindow*);
 	void cursorposcallback(GLFWwindow*, GLdouble, GLdouble);
 	void mousebuttoncallback(GLFWwindow*, int, int, int);
+	void charcallback(GLFWwindow*, unsigned int);
 	void framebufcallback(GLFWwindow* _window, int _width, int _height)
 	{
 		glViewport(0, 0, _width, _height);
 	}
 	Window::Window()
 	{
-
+		
 	}
 
 	void Window::create(GLchar* windowName, int _screenwidth, int _screenheight, bool _state)
@@ -64,14 +66,22 @@ namespace OverCover2D {
 		glfwSetWindowCloseCallback(glfwWindow, windowClosecallback);
 		glfwSetCursorPosCallback(glfwWindow, cursorposcallback);
 		glfwSetMouseButtonCallback(glfwWindow, mousebuttoncallback);
+		glfwSetCharCallback(glfwWindow, charcallback);
+		glfwSetInputMode(glfwWindow, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
 		//Setting Default Viewport
 		glViewport(0, 0, _screenwidth, _screenheight);
 		inputmanager = InputManager::GetInstance();
+		//Initializing GUI
+		GUIinit();
 	}
 	void Window::pollEvents()
 	{
 		glfwPollEvents();
 
+	}
+	void Window::GUIdraw()
+	{
+		gui.draw();
 	}
 	void Window::swapBuffer()
 	{
@@ -84,6 +94,26 @@ namespace OverCover2D {
 	void Window::Terminate()
 	{
 		glfwTerminate();
+	}
+	void Window::GUIinit()
+	{
+		try {
+			gui.init("GUI");
+			gui.loadScheme("TaharezLook.scheme");
+			gui.setFont("DejaVuSans-10");
+			//pointer to the gui variable
+			//can't use friend function as callback
+			gui_amp = &gui;
+			CEGUI::PushButton* testbtn = static_cast<CEGUI::PushButton*>(gui.createWidget("TaharezLook/Button", "testButton", glm::vec4(0.5f, 0.5f, 0.1f, 0.05f), glm::vec4(0.0f)));
+			testbtn->setText("Hello world");
+			CEGUI::Combobox* combobtn = static_cast<CEGUI::Combobox*>(gui.createWidget("TaharezLook/Combobox", "combobtn", glm::vec4(0.2f, 0.2f, 0.1f, 0.05f), glm::vec4(0.0f)));
+			gui.setMouseCursor("TaharezLook/MouseArrow");
+			gui.showCursor();
+		}
+		catch(std::exception e)
+		{
+			std::cout << "not worked";
+		}
 	}
 	Window::~Window()
 	{
@@ -100,10 +130,12 @@ namespace OverCover2D {
 		if (action == GLFW_PRESS)
 		{
 			winusrptr->inputmanager->KeyPress(key);
+			gui_amp->onGlfwEvents(GlfwEvents::KEYDOWN, key);
 		}
 		else if (action == GLFW_RELEASE)
 		{
 			winusrptr->inputmanager->KeyRelease(key);
+			gui_amp->onGlfwEvents(GlfwEvents::KEYUP, key);
 		}
 
 	}
@@ -117,15 +149,27 @@ namespace OverCover2D {
 		winusrs= (Window*)glfwGetWindowUserPointer(_window);
 		winusrs->inputmanager->setMouseCoords(_x, _y);
 		//std::cout << "\n" << _x << "\t" << _y;
+		gui_amp->onGlfwEvents(_x, _y);
+		
 
 	}
 	void mousebuttoncallback(GLFWwindow* _window, int button, int action, int mods)
 	{
 		winusrs = (Window*)glfwGetWindowUserPointer(_window);
 		if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
+		{
 			winusrs->inputmanager->KeyPress(button);
-		else if(button==GLFW_MOUSE_BUTTON_LEFT && action ==GLFW_RELEASE)
+			gui_amp->onGlfwEvents(GlfwEvents::MOUSEBUTTONDWN, button);
+		}
+		else if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_RELEASE)
+		{
 			winusrs->inputmanager->KeyRelease(button);
+			gui_amp->onGlfwEvents(GlfwEvents::MOUSEBUTTONUP, button);
+		}
+	}
+	void charcallback(GLFWwindow* _window, unsigned int codepoint)
+	{
+		gui_amp->onGlfwEvents(GlfwEvents::TEXTINPUT, codepoint);
 	}
 	int Window::getScreenHeight()
 	{

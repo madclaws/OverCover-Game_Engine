@@ -6,13 +6,14 @@
 #include<glm\glm.hpp>
 #include"InputManager.h"
 #include"Camera2D.h"
+#include "GUI.h"
 namespace OverCover2D {
 
 	class Window
 	{
 		GLFWwindow* glfwWindow;
 		int screenHeight, screenWidth;
-
+		GUI gui;
 
 	public:
 		Window();
@@ -25,11 +26,14 @@ namespace OverCover2D {
 		void Terminate();
 		int getScreenWidth();
 		int getScreenHeight();
+		void GUIinit();
+		void GUIdraw();
 		bool winState();
 		//void eventHandler();
 		GLboolean winKeyPressed(GLint);
 		glm::vec2 returnScreenCoords();
 		glm::vec2 returnWorldCoords();
+		
 		//friend void windowClosecallback(GLFWwindow*,);
 		~Window();
 	};
