@@ -112,6 +112,7 @@ namespace OverCover2D {
 			
 			CEGUI::Combobox* combobtn = static_cast<CEGUI::Combobox*>(gui.createWidget("TaharezLook/Combobox", "combobtn", glm::vec4(0.2f, 0.2f, 0.1f, 0.05f), glm::vec4(0.0f)));
 			
+			CEGUI::Slider* slider = static_cast<CEGUI::Slider*>(gui.createWidget("TaharezLook/Slider", "slider", glm::vec4(0.05f, 0.05f, 0.01f, 0.05f), glm::vec4(0.0f)));
 			gui.setMouseCursor("TaharezLook/MouseArrow");
 			gui.showCursor();
 		}
