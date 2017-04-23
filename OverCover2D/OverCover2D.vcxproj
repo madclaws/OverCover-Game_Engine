@@ -72,6 +72,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>$(SolutionDir)dependencies\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)dependencies\libs;$(LibraryPath)</LibraryPath>
+    <IntDir>$(Configuration)\OverCover2D</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -149,9 +150,11 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GUI.cpp" />
     <ClCompile Include="ImageData.cpp" />
+    <ClCompile Include="IMainGame.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Position.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="SceneList.cpp" />
     <ClCompile Include="Shaders.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteBatchRenderer.cpp" />
@@ -175,10 +178,13 @@
     <ClInclude Include="FPSManager.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GUI.h" />
+    <ClInclude Include="IGameScene.h" />
     <ClInclude Include="ImageData.h" />
+    <ClInclude Include="IMainGame.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Position.h" />
     <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="SceneList.h" />
     <ClInclude Include="Shaders.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteBatchRenderer.h" />

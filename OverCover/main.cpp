@@ -3,7 +3,7 @@
 
 //It is Abstracted Because Any One Uses Engine Source Can Write Their On Window(OverCover)
 // Program With Suitable Opengl Toolkit(GLUT,SDL)
-#define GLEW_STATIC
+/*#define GLEW_STATIC
 #include<GL\glew.h>
 
 #include<iostream>
@@ -85,4 +85,13 @@ void EventHandler()
 		cout << "\n" << coords.x << "\t" << coords.y << "\n";
 	}
 	
+}*/
+
+#include"App.h"
+
+int main()
+{
+	App app;
+	app.run();
+	return 0;
 }

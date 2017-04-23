@@ -72,7 +72,7 @@ namespace OverCover2D {
 		glViewport(0, 0, _screenwidth, _screenheight);
 		inputmanager = InputManager::GetInstance();
 		//Initializing GUI
-		GUIinit();
+		//GUIinit();
 	}
 	void Window::pollEvents()
 	{
