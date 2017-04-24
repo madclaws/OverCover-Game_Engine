@@ -15,8 +15,9 @@ namespace OverCover2D {
 			window->pollEvents();
 
 			fpsmgr.CalculateFPS();
-			update();
+			
 			render();
+			update();
 			window->swapInterval();
 			window->swapBuffer();
 			fpsmgr.LimitFps();
@@ -94,10 +95,10 @@ namespace OverCover2D {
 	void IMainGame::initSystems()
 	{
 		window = new Window();
-		window->create("Scene1", 1366, 768, true);
+		window->create("Scene1",1366,768, true);
 	}
 
-	IMainGame::~IMainGame()
+	IMainGame::~IMainGame() 
 	{
 	}
 }

@@ -13,7 +13,7 @@ Scene::Scene(GLint _width,GLint _height):sprite(),sprite1(),s2(),resource(nullpt
 void Scene::SRender()
 {
 	
-
+	
 	Renderer.RenderScene();
 
 }

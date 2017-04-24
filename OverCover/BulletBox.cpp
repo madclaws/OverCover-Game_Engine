@@ -7,7 +7,7 @@ BulletBox::BulletBox(glm::vec2 _direction,GLfloat _speed,GLint _lifeTime, OverCo
 	direction = _direction;
 	speed = _speed;
 	lifeTime = _lifeTime;
-	Create("textures/box1.jpg", 300, 200, 100, 100);
+	Create("textures/Mario2.png", 300, 200, 100, 100);
 	drawBullet(_Renderer);
 }
 void BulletBox::drawBullet(OverCover2D::SpriteBatchRenderer& _Renderer)

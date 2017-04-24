@@ -45,7 +45,7 @@ int main()
 		
 		Scene1->SRender();
 		Scene1->SUpdate();
-		curWindow.GUIdraw();
+		//curWindow.GUIdraw();
 		curWindow.swapInterval();
 		curWindow.swapBuffer();
 		fpsmanage.LimitFps();
@@ -85,8 +85,8 @@ void EventHandler()
 		cout << "\n" << coords.x << "\t" << coords.y << "\n";
 	}
 	
-}*/
-
+}
+*/
 #include"App.h"
 
 int main()

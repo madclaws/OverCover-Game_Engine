@@ -11,9 +11,10 @@ namespace OverCover2D {
 		std::unique_ptr<SceneList> m_sceneList=nullptr;
 		IGameScene* currentScene=nullptr;
 		bool isrunning=false;
-		Window* window=nullptr;
+		
 		FPSManager fpsmgr;
 	public:
+		Window* window = nullptr;
 		IMainGame();
 		void run();
 		void exitgame();
@@ -25,6 +26,6 @@ namespace OverCover2D {
 		virtual void customExit() = 0;
 		void initSystems();
 		virtual ~IMainGame();
-	};
+	}; 
 }
 

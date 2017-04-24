@@ -67,7 +67,10 @@ namespace OverCover2D {
 		glfwSetCursorPosCallback(glfwWindow, cursorposcallback);
 		glfwSetMouseButtonCallback(glfwWindow, mousebuttoncallback);
 		glfwSetCharCallback(glfwWindow, charcallback);
-		glfwSetInputMode(glfwWindow, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+		//For Aplha Blending
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		//glfwSetInputMode(glfwWindow, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
 		//Setting Default Viewport
 		glViewport(0, 0, _screenwidth, _screenheight);
 		inputmanager = InputManager::GetInstance();
@@ -136,12 +139,12 @@ namespace OverCover2D {
 		if (action == GLFW_PRESS)
 		{
 			winusrptr->inputmanager->KeyPress(key);
-			gui_amp->onGlfwEvents(GlfwEvents::KEYDOWN, key);
+			//gui_amp->onGlfwEvents(GlfwEvents::KEYDOWN, key);
 		}
 		else if (action == GLFW_RELEASE)
 		{
 			winusrptr->inputmanager->KeyRelease(key);
-			gui_amp->onGlfwEvents(GlfwEvents::KEYUP, key);
+			//gui_amp->onGlfwEvents(GlfwEvents::KEYUP, key);
 		}
 
 	}
@@ -155,7 +158,7 @@ namespace OverCover2D {
 		winusrs= (Window*)glfwGetWindowUserPointer(_window);
 		winusrs->inputmanager->setMouseCoords(_x, _y);
 		//std::cout << "\n" << _x << "\t" << _y;
-		gui_amp->onGlfwEvents(_x, _y);
+		//gui_amp->onGlfwEvents(_x, _y);
 		
 
 	}
@@ -165,17 +168,17 @@ namespace OverCover2D {
 		if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
 		{
 			winusrs->inputmanager->KeyPress(button);
-			gui_amp->onGlfwEvents(GlfwEvents::MOUSEBUTTONDWN, button);
+			//gui_amp->onGlfwEvents(GlfwEvents::MOUSEBUTTONDWN, button);
 		}
 		else if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_RELEASE)
 		{
 			winusrs->inputmanager->KeyRelease(button);
-			gui_amp->onGlfwEvents(GlfwEvents::MOUSEBUTTONUP, button);
+			//gui_amp->onGlfwEvents(GlfwEvents::MOUSEBUTTONUP, button);
 		}
 	}
 	void charcallback(GLFWwindow* _window, unsigned int codepoint)
 	{
-		gui_amp->onGlfwEvents(GlfwEvents::TEXTINPUT, codepoint);
+		//gui_amp->onGlfwEvents(GlfwEvents::TEXTINPUT, codepoint);
 	}
 	int Window::getScreenHeight()
 	{

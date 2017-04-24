@@ -66,7 +66,7 @@ namespace OverCover2D {
 	}
 	unsigned char* ResourceManager::LoadTexture(const GLchar* textureloc, GLint &width, GLint &height, GLint &n)
 	{//int T_width,T_height,T_n;
-		unsigned char* image = stbi_load(textureloc, &width, &height, &n, 0);
+		unsigned char* image = stbi_load(textureloc, &width, &height, &n, STBI_rgb_alpha);
 		if (image != NULL)
 			cout << "Texture Loaded SUccessfully\n";
 		else

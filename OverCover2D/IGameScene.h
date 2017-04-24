@@ -18,9 +18,10 @@ class IGameScene
 
 protected:
 	int sceneIndexNo=-1;
-	IMainGame* parent=nullptr;
+	
 	sceneState currentState = sceneState::NONE;
 public:
+	IMainGame* parent = nullptr;
 	friend class SceneList;
 	IGameScene()
 	{
