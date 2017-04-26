@@ -13,6 +13,6 @@ protected:
 public:
 	BulletBox(glm::vec2,GLfloat,GLint,OverCover2D::SpriteBatchRenderer&);
 	void drawBullet(OverCover2D::SpriteBatchRenderer&);
-	void update();
+	void update(GLfloat,GLfloat);
 	~BulletBox(); 
 };

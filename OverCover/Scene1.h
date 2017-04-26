@@ -11,7 +11,10 @@
 #include<OverCover2D\InputManager.h>
 #include<glm\glm.hpp>
 #include<OverCover2D\IMainGame.h>
+#include<Box2D\Box2D.h>
+#include<OverCover2D\Box.h>
 #include<iostream>
+#include<memory>
 class Scene1:public OverCover2D::IGameScene
 {
 
@@ -26,6 +29,8 @@ public:
 	OverCover2D::SpriteBatchRenderer rendererMgr;
 	OverCover2D::Sprite* sprite;
 	OverCover2D::Shaders shaderMgr ;
+	std::unique_ptr<b2World> phy_world;
+	OverCover2D::Box newbox;
 	Scene1();
 	virtual int getNextSceneIndex() override;
 	virtual int getPrevSceneIndex() override;
@@ -38,6 +43,7 @@ public:
 
 	virtual void render() override;
 	virtual void update() override;
+	void phyInit();
 	void EventHandler();
 	~Scene1();
 };

@@ -26,6 +26,7 @@ void Scene1::build()
 	resourceMgr = OverCover2D::ResourceManager::GetInstance();
 	shaderMgr = resourceMgr->LoadShaders("Shaders/v1.vert", "Shaders/f1.frag");
 	inputMgr = OverCover2D::InputManager::GetInstance();
+	phyInit();
 	bulletbox = new BulletBox(glm::vec2(300, 0), 1, 10, rendererMgr);
 	//sprite = new OverCover2D::Sprite();
 	//sprite->Create("textures/box1.jpg", 300, 200, 100, 100);
@@ -63,7 +64,8 @@ void Scene1::update()
 	
 //	std::cout << "Updating.............\n";
 	EventHandler();
-	bulletbox->update();
+	phy_world->Step(1.0f / 60.0f, 6, 2);
+	bulletbox->update(newbox.getBody()->GetPosition().x,newbox.getBody()->GetPosition().y);
 	glm::mat4 projection = glm::ortho(0.0f + cameraMgr->GetZoomFactor()*10.0f, (GLfloat)SWidth - cameraMgr->GetZoomFactor()*10.0f, (GLfloat)SHeight - cameraMgr->GetZoomFactor()*10.0f, 0.0f + cameraMgr->GetZoomFactor()*10.0f, -1.0f, 1.0f);
 
 	shaderMgr.SetMatrix4U("projection", projection, 0);
@@ -91,7 +93,23 @@ void Scene1::EventHandler()
 		cout << "\n" << coords.x << "\t" << coords.y << "\n";
 	}
 }
+void Scene1::phyInit()
+{
+	b2Vec2 gravity(0.0f, 9.81f);
+	phy_world = std::make_unique<b2World>(gravity);
+	//ground
+	b2BodyDef groundDef;
+	groundDef.position.Set(300.0f, 700.0f);
+	b2Body* ground;
+	ground = phy_world->CreateBody(&groundDef);
 
+	b2PolygonShape groundshape;
+	groundshape.SetAsBox(500.0f, 50.0f);
+
+	ground->CreateFixture(&groundshape, 0.0f);
+	newbox.init(phy_world.get(), glm::vec2(300.0f, 200.0f), glm::vec2(100.0f, 100.0f));
+	
+}
 
 	
 Scene1::~Scene1()

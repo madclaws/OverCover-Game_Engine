@@ -15,13 +15,14 @@ void BulletBox::drawBullet(OverCover2D::SpriteBatchRenderer& _Renderer)
 	_Renderer.CreateSpriteArray(this);
 	//Generate_VertexData();
 }
-void BulletBox::update()
+void BulletBox::update(GLfloat _w,GLfloat _h)
 {
-	
-		position = returnCurrentPos();
-		direction = glm::normalize(direction);
-		position += direction*speed;
-		setPosition(position.x, position.y, 100, 100);
+	GLfloat w, h;
+		//position = returnCurrentPos();
+		//direction = glm::normalize(direction);
+		//position += direction*speed;
+		//setPosition(position.x, position.y, 100, 100);
+	setPosition(_w,_h, 100, 100);
 		Generate_VertexData();
 
 }
