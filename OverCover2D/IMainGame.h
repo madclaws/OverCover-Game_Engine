@@ -11,7 +11,7 @@ namespace OverCover2D {
 		std::unique_ptr<SceneList> m_sceneList=nullptr;
 		IGameScene* currentScene=nullptr;
 		bool isrunning=false;
-		
+		bool isDebug = false;
 		FPSManager fpsmgr;
 	public:
 		Window* window = nullptr;
@@ -24,6 +24,7 @@ namespace OverCover2D {
 		void render();
 		virtual void addScenes()=0;
 		virtual void customExit() = 0;
+		void setDebug(bool);
 		void initSystems();
 		virtual ~IMainGame();
 	}; 

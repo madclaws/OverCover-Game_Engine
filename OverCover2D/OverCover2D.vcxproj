@@ -141,7 +141,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Box.cpp" />
+    <ClCompile Include="RigidBody2D.cpp" />
     <ClCompile Include="Camera2D.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Component.cpp" />
@@ -170,7 +170,7 @@
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Box.h" />
+    <ClInclude Include="RigidBody2D.h" />
     <ClInclude Include="Camera2D.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Component.h" />

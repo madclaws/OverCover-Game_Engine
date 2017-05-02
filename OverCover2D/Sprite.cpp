@@ -10,7 +10,7 @@ namespace OverCover2D {
 		//transform=new Transform();
 	}
 
-	void Sprite::Create(const GLchar* loc, GLfloat x_pos, GLfloat y_pos, GLfloat _height, GLfloat _width)
+	void Sprite::Create(const GLchar* loc, GLfloat x_pos, GLfloat y_pos, GLfloat _height, GLfloat _width, glm::vec4 uv_Data)
 	{
 		ResourceManager* R = ResourceManager::GetInstance();
 		texture_loc = loc;
@@ -21,6 +21,7 @@ namespace OverCover2D {
 			_Texture = texture_temp;
 		//transform->SetPosition(_x,_y,0.0f);
 		setPosition(x_pos, y_pos, _height, _width);
+		setUV(uv_Data);
 		Init();
 		//delete texture_temp;
 
@@ -33,6 +34,15 @@ namespace OverCover2D {
 		spritePos[3].position.SetPosition(_x + _w, _y, 0.0f);
 
 	}
+
+	void Sprite::setUV(glm::vec4 uv_data)
+	{
+		uv_x = uv_data.x;
+		uv_y = uv_data.y;
+		uv_w = uv_data.w;
+		uv_h = uv_data.z;
+	}
+
 	void Sprite::Init()
 	{
 
@@ -45,23 +55,22 @@ namespace OverCover2D {
 		//vertexdata[0].position.SetPosition(0.5f, 0.5f, 0.0f);
 		vertexdata[0].position.SetPosition(spritePos[0].position.x, spritePos[0].position.y, 0.0f);
 		//vertexdata[0].position.SetPosition(curpos[0]._x,curpos[0]._y, 0.0f);
-		vertexdata[0].color.SetColor(0.0f, 0.0f, 1.0f, 0.0f);
-		vertexdata[0].uv.SetUV(1.0f, 0.0f);
+		vertexdata[0].color.SetColor(0.0f, 0.0f, 0.0f, 1.0f);
+		vertexdata[0].uv.SetUV(uv_x+uv_w, uv_y);
 		//vertexdata[1].position.SetPosition(curpos[1]._x,curpos[1]._y, 0.0f);
 		vertexdata[1].position.SetPosition(spritePos[1].position.x, spritePos[1].position.y, 0.0f);
 		//vertexdata[1].position.SetPosition(0.5f, 0.0f, 0.0f);
-		vertexdata[1].color.SetColor(1.0f, 0.0f, 0.0f, 0.0f);
-		vertexdata[1].uv.SetUV(1.0f, 1.0f);
-		//vertexdata[2].position.SetPosition(curpos[2]._x,curpos[2]._y, 0.0f);
-		//vertexdata[2].position.SetPosition(1.0f,0.0f, 0.0f);
+		vertexdata[1].color.SetColor(0.0f, 0.0f, 0.0f, 1.0f);
+		vertexdata[1].uv.SetUV(uv_x + uv_w, uv_y+uv_h);
+		
 		vertexdata[2].position.SetPosition(spritePos[2].position.x, spritePos[2].position.y, 0.0f);
-		vertexdata[2].color.SetColor(0.0f, 1.0f, 0.0f, 0.0f);
-		vertexdata[2].uv.SetUV(0.0f, 1.0f);
+		vertexdata[2].color.SetColor(0.0f, 0.0f, 0.0f, 1.0f);
+		vertexdata[2].uv.SetUV(uv_x, uv_y + uv_h);
 		//vertexdata[3].position.SetPosition(curpos[3]._x,curpos[3]._y, 0.0f );
 		//vertexdata[3].position.SetPosition(1.0f, 0.5f, 0.0f);
 		vertexdata[3].position.SetPosition(spritePos[3].position.x, spritePos[3].position.y, 0.0f);
-		vertexdata[3].color.SetColor(0.0f, 0.0f, 0.0f, 0.0f);
-		vertexdata[3].uv.SetUV(0.0f, 0.0f);
+		vertexdata[3].color.SetColor(0.0f, 0.0f, 0.0f, 1.0f);
+		vertexdata[3].uv.SetUV(uv_x,uv_y);
 
 	}
 	void Sprite::Generate_Texture()

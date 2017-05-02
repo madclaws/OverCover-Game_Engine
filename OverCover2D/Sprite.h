@@ -25,6 +25,8 @@ namespace OverCover2D {
 		VertexData spritePos[4];
 		//Vertex Indices
 		GLuint Element_vertices[6];
+		GLfloat uv_x, uv_y, uv_w, uv_h;
+		glm::vec4 colorData;
 	public:
 		//initialize Width,Height and State
 		Sprite();
@@ -37,7 +39,7 @@ namespace OverCover2D {
 		//Render Code
 		GLboolean DoWantNewTexture;
 		void Draw();
-		void Create(const GLchar*, GLfloat, GLfloat, GLfloat, GLfloat);
+		void Create(const GLchar*, GLfloat, GLfloat, GLfloat, GLfloat, glm::vec4 uv_Data = glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
 		void Init();
 		~Sprite(void);
 		Texture2D* ret_texture();
@@ -45,6 +47,9 @@ namespace OverCover2D {
 		VertexData3* GetVertexData();
 		const GLchar* getID();
 		void setPosition(GLfloat, GLfloat, GLfloat, GLfloat);
+		void setUV(glm::vec4);
+	//	void setColor(glm::vec4);
+		//void setColor(glm::vec4 _rgbVal = glm::vec4(0.0f, 0.0f.0.0f, 0.0f);
 		glm::vec2 returnCurrentPos();
 	};
 }

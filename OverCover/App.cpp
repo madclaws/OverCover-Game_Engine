@@ -15,7 +15,7 @@ void App::addScenes()
 }
 void App::customInit()
 {
-
+	//setDebug(true);
 }
 void App::customExit()
 {

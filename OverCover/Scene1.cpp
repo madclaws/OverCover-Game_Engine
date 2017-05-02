@@ -27,10 +27,15 @@ void Scene1::build()
 	shaderMgr = resourceMgr->LoadShaders("Shaders/v1.vert", "Shaders/f1.frag");
 	inputMgr = OverCover2D::InputManager::GetInstance();
 	phyInit();
-	bulletbox = new BulletBox(glm::vec2(300, 0), 1, 10, rendererMgr);
-	//sprite = new OverCover2D::Sprite();
-	//sprite->Create("textures/box1.jpg", 300, 200, 100, 100);
-	//rendererMgr.CreateSpriteArray(sprite);
+	sprite = new OverCover2D::Sprite();
+	
+	for (int i = 0; i < 80; i=i+3)
+	{
+		bodies.push_back(new OverCover2D::RigidBody2D("textures/box2.jpg", phy_world.get(), glm::vec2(i, i), glm::vec2(50, 50), rendererMgr,false));
+	}
+	m_player.init("textures/Mario2.png", phy_world.get(), glm::vec2(200, 10), glm::vec2(50, 50), rendererMgr, false);
+	sprite->Create("textures/f.png", 0.0f, 0.0f, 768, 1366);
+	rendererMgr.CreateSpriteArray(sprite);
 	rendererMgr.Init();
 	std::cout << "Scene Build Successfully..........................................";
 	
@@ -65,7 +70,12 @@ void Scene1::update()
 //	std::cout << "Updating.............\n";
 	EventHandler();
 	phy_world->Step(1.0f / 60.0f, 6, 2);
-	bulletbox->update(newbox.getBody()->GetPosition().x,newbox.getBody()->GetPosition().y);
+	//newbox->Update();
+	for (int i = 0; i < bodies.size(); i++)
+	{
+		bodies[i]->Update();
+	}
+	m_player.update(parent->window);
 	glm::mat4 projection = glm::ortho(0.0f + cameraMgr->GetZoomFactor()*10.0f, (GLfloat)SWidth - cameraMgr->GetZoomFactor()*10.0f, (GLfloat)SHeight - cameraMgr->GetZoomFactor()*10.0f, 0.0f + cameraMgr->GetZoomFactor()*10.0f, -1.0f, 1.0f);
 
 	shaderMgr.SetMatrix4U("projection", projection, 0);
@@ -95,7 +105,7 @@ void Scene1::EventHandler()
 }
 void Scene1::phyInit()
 {
-	b2Vec2 gravity(0.0f, 9.81f);
+	b2Vec2 gravity(0.0f, 1000.81f);
 	phy_world = std::make_unique<b2World>(gravity);
 	//ground
 	b2BodyDef groundDef;
@@ -107,7 +117,7 @@ void Scene1::phyInit()
 	groundshape.SetAsBox(500.0f, 50.0f);
 
 	ground->CreateFixture(&groundshape, 0.0f);
-	newbox.init(phy_world.get(), glm::vec2(300.0f, 200.0f), glm::vec2(100.0f, 100.0f));
+	//newbox.init(phy_world.get(), glm::vec2(300.0f, 200.0f), glm::vec2(100.0f, 100.0f));
 	
 }
 

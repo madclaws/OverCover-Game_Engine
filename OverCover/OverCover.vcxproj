@@ -73,15 +73,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
-    <ClCompile Include="BulletBox.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="player.cpp" />
     <ClCompile Include="Scene1.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h" />
-    <ClInclude Include="BulletBox.h" />
-    <ClInclude Include="Scene.h" />
+    <ClInclude Include="player.h" />
     <ClInclude Include="Scene1.h" />
   </ItemGroup>
   <ItemGroup>

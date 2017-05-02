@@ -11,15 +11,18 @@ namespace OverCover2D {
 		Init();
 		while (window->winState())
 		{
+			if(isDebug)
 			fpsmgr.Begin();
 			window->pollEvents();
 
+			if(isDebug)
 			fpsmgr.CalculateFPS();
 			
 			render();
 			update();
 			window->swapInterval();
 			window->swapBuffer();
+			if(isDebug)
 			fpsmgr.LimitFps();
 
 		}
@@ -84,6 +87,7 @@ namespace OverCover2D {
 	void IMainGame::Init()
 	{
 		initSystems();
+		customInit();
 		addScenes();
 		currentScene = m_sceneList->getCurrentScene();
 		currentScene->enter();
@@ -91,6 +95,11 @@ namespace OverCover2D {
 	}
 
 	
+
+	void IMainGame::setDebug(bool _isdebug)
+	{
+		isDebug = _isdebug;
+	}
 
 	void IMainGame::initSystems()
 	{
