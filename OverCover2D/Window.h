@@ -13,12 +13,14 @@ namespace OverCover2D {
 	{
 		GLFWwindow* glfwWindow;
 		int screenHeight, screenWidth;
-		GUI gui;
-
+		
+	
 	public:
 		Window();
 		InputManager* inputmanager;
+		GUI gui;
 		bool WIN_STATE;
+		bool LEVELEDITOR = false;
 		void create(GLchar*, int, int, bool);
 		void pollEvents();
 		void swapBuffer();

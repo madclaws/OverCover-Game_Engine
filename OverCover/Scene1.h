@@ -15,6 +15,7 @@
 #include"player.h"
 #include<iostream>
 #include<memory>
+#include"Avatars.h"
 class Scene1:public OverCover2D::IGameScene
 {
 
@@ -32,7 +33,13 @@ public:
 	std::unique_ptr<b2World> phy_world;
 	OverCover2D::RigidBody2D* newbox;
 	player m_player;
+	std::vector<int> leftground;
+	std::vector<int> rightground;
+//	std::vector<player> m_playerList;
 	std::vector<OverCover2D::RigidBody2D*> bodies;
+	std::vector<Avatars*> m_avatars;
+	bool isinboat = false;
+	int temp_ID;
 	Scene1();
 	virtual int getNextSceneIndex() override;
 	virtual int getPrevSceneIndex() override;
@@ -45,6 +52,9 @@ public:
 
 	virtual void render() override;
 	virtual void update() override;
+	void checkGame();
+	bool checkBoatRight();
+	bool checkBoatLeft();
 	void phyInit();
 	void EventHandler();
 	~Scene1();

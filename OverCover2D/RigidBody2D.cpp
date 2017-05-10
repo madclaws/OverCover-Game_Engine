@@ -1,11 +1,11 @@
 #include "RigidBody2D.h"
 
 namespace OverCover2D {
-	RigidBody2D::RigidBody2D(const GLchar* filename, b2World* phyworld, glm::vec2& position, glm::vec2& dimension, SpriteBatchRenderer& renderer,bool fixedrotation,glm::vec4 uvData)
+	RigidBody2D::RigidBody2D(const GLchar* filename, b2World* phyworld, glm::vec2& position, glm::vec2& dimension, SpriteBatchRenderer& renderer,bool fixedrotation,bool isdynamic,glm::vec4 uvData)
 	{
 		m_dim = dimension;
 		m_position = position;
-		init(phyworld, position, dimension,fixedrotation);
+		init(phyworld, position, dimension,fixedrotation,isdynamic);
 		drawBody(renderer,filename,uvData);
 	}
 
@@ -15,11 +15,14 @@ namespace OverCover2D {
 		_Renderer.CreateSpriteArray(this);
 	}
 
-	void RigidBody2D::init(b2World* _phyWorld, glm::vec2& _position, glm::vec2& _dimension,bool _fixedRot)
+	void RigidBody2D::init(b2World* _phyWorld, glm::vec2& _position, glm::vec2& _dimension,bool _fixedRot,bool isdynamic)
 	{
 		//create definiton for box
 		m_dim = _dimension;
-		boxesDef.type = b2_dynamicBody;
+		if (isdynamic)
+			boxesDef.type = b2_dynamicBody;
+		else
+			boxesDef.type = b2_staticBody;
 		boxesDef.position.Set(_position.x, _position.y);
 		boxesDef.fixedRotation = _fixedRot;
 		//creating rigidbody

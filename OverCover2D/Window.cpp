@@ -108,16 +108,18 @@ namespace OverCover2D {
 			//can't use friend function as callback
 			gui_amp = &gui;
 
-			CEGUI::PushButton* testbtn = static_cast<CEGUI::PushButton*>(gui.createWidget("TaharezLook/Button", "testButton", glm::vec4(0.5f, 0.5f, 0.1f, 0.05f), glm::vec4(0.0f)));
+			/*CEGUI::PushButton* testbtn = static_cast<CEGUI::PushButton*>(gui.createWidget("TaharezLook/Button", "testButton", glm::vec4(0.5f, 0.5f, 0.1f, 0.05f), glm::vec4(0.0f)));
 
 			testbtn->setText("Exit world");
 			testbtn->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&Window::windowExit, this));
 			
 			CEGUI::Combobox* combobtn = static_cast<CEGUI::Combobox*>(gui.createWidget("TaharezLook/Combobox", "combobtn", glm::vec4(0.2f, 0.2f, 0.1f, 0.05f), glm::vec4(0.0f)));
 			
-			CEGUI::Slider* slider = static_cast<CEGUI::Slider*>(gui.createWidget("TaharezLook/Slider", "slider", glm::vec4(0.05f, 0.05f, 0.01f, 0.05f), glm::vec4(0.0f)));
+			CEGUI::Slider* slider = static_cast<CEGUI::Slider*>(gui.createWidget("TaharezLook/Slider", "slider", glm::vec4(0.05f, 0.05f, 0.01f, 0.05f), glm::vec4(0.0f)));*/
 			gui.setMouseCursor("TaharezLook/MouseArrow");
 			gui.showCursor();
+			LEVELEDITOR = true;
+			glfwSetInputMode(glfwWindow, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
 		}
 		catch(std::exception e)
 		{
@@ -139,12 +141,14 @@ namespace OverCover2D {
 		if (action == GLFW_PRESS)
 		{
 			winusrptr->inputmanager->KeyPress(key);
-			//gui_amp->onGlfwEvents(GlfwEvents::KEYDOWN, key);
+			if(winusrptr->LEVELEDITOR)
+			gui_amp->onGlfwEvents(GlfwEvents::KEYDOWN, key);
 		}
 		else if (action == GLFW_RELEASE)
 		{
 			winusrptr->inputmanager->KeyRelease(key);
-			//gui_amp->onGlfwEvents(GlfwEvents::KEYUP, key);
+			if (winusrptr->LEVELEDITOR)
+			gui_amp->onGlfwEvents(GlfwEvents::KEYUP, key);
 		}
 
 	}
@@ -158,7 +162,8 @@ namespace OverCover2D {
 		winusrs= (Window*)glfwGetWindowUserPointer(_window);
 		winusrs->inputmanager->setMouseCoords(_x, _y);
 		//std::cout << "\n" << _x << "\t" << _y;
-		//gui_amp->onGlfwEvents(_x, _y);
+		if (winusrs->LEVELEDITOR)
+		gui_amp->onGlfwEvents(_x, _y);
 		
 
 	}
@@ -168,17 +173,20 @@ namespace OverCover2D {
 		if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
 		{
 			winusrs->inputmanager->KeyPress(button);
-			//gui_amp->onGlfwEvents(GlfwEvents::MOUSEBUTTONDWN, button);
+			if (winusrs->LEVELEDITOR)
+			gui_amp->onGlfwEvents(GlfwEvents::MOUSEBUTTONDWN, button);
 		}
 		else if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_RELEASE)
 		{
 			winusrs->inputmanager->KeyRelease(button);
-			//gui_amp->onGlfwEvents(GlfwEvents::MOUSEBUTTONUP, button);
+			if (winusrs->LEVELEDITOR)
+			gui_amp->onGlfwEvents(GlfwEvents::MOUSEBUTTONUP, button);
 		}
 	}
 	void charcallback(GLFWwindow* _window, unsigned int codepoint)
 	{
-		//gui_amp->onGlfwEvents(GlfwEvents::TEXTINPUT, codepoint);
+		if (winusrs->LEVELEDITOR)
+		gui_amp->onGlfwEvents(GlfwEvents::TEXTINPUT, codepoint);
 	}
 	int Window::getScreenHeight()
 	{

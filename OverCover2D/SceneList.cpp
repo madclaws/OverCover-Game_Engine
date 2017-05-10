@@ -40,8 +40,9 @@ namespace OverCover2D {
 		sceneList.push_back(newScene);
 		
 	
-		newScene->build();
+		
 		newScene->setParent(Parent);
+		newScene->build();
 	}
 
 	void SceneList::destroy()
