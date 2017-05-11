@@ -22,7 +22,7 @@ void player::update(OverCover2D::Window* _window)
 	{
 	
 		//getBody()->ApplyForceToCenter(b2Vec2(100.0, 0.0), true);
-		Body->getBody()->ApplyForceToCenter(b2Vec2(100*Vright, 0.0f), true);
+		Body->getBody()->ApplyForceToCenter(b2Vec2(100*MAG, 0.0f), true);
 	//	Body->setUV(glm::vec4(0.0f, 0.0f, 0.25f, 0.5f));
 		//Body->Generate_VertexData();
 		
@@ -31,7 +31,7 @@ void player::update(OverCover2D::Window* _window)
 	{
 		
 		//getBody()->ApplyForceToCenter(b2Vec2(-100.0, 0.0), true);
-		Body->getBody()->ApplyForceToCenter(b2Vec2(100*-Vleft, 0.0f), true);
+		Body->getBody()->ApplyForceToCenter(b2Vec2(100*-MAG, 0.0f), true);
 		//Body->setUV(glm::vec4(0.5f, 0.0f, 0.25f, 0.5f));
 		//Body->Generate_VertexData();
 		

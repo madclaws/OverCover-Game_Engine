@@ -12,6 +12,7 @@ protected:
 
 public:
 	player();
+	float MAG = 10000000.0f;
 	void init(const GLchar*, b2World*, glm::vec2&, glm::vec2&, OverCover2D::SpriteBatchRenderer&,bool,bool isdynamic=true,glm::vec4 uvdata=glm::vec4(0.0f,0.0f,1.0f,1.0f));
 	void draw();
 	void update(OverCover2D::Window*);

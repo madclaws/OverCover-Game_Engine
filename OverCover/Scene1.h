@@ -29,12 +29,17 @@ public:
 	//BulletBox* bulletbox;
 	OverCover2D::SpriteBatchRenderer rendererMgr;
 	OverCover2D::Sprite* sprite;
+	OverCover2D::Sprite* winImg;
+	OverCover2D::Sprite* loseImg;
 	OverCover2D::Shaders shaderMgr ;
 	std::unique_ptr<b2World> phy_world;
 	OverCover2D::RigidBody2D* newbox;
 	player m_player;
 	std::vector<int> leftground;
 	std::vector<int> rightground;
+	int gameState = 0;
+	void onWin();
+	void onLose();
 //	std::vector<player> m_playerList;
 	std::vector<OverCover2D::RigidBody2D*> bodies;
 	std::vector<Avatars*> m_avatars;
@@ -55,6 +60,8 @@ public:
 	void checkGame();
 	bool checkBoatRight();
 	bool checkBoatLeft();
+	void gameMechanics();
+	void drawLevel();
 	void phyInit();
 	void EventHandler();
 	~Scene1();

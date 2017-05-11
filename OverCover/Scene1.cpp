@@ -29,60 +29,12 @@ void Scene1::build()
 	inputMgr = OverCover2D::InputManager::GetInstance();
 	phyInit();
 	sprite = new OverCover2D::Sprite();
+	 winImg = new OverCover2D::Sprite();
+	loseImg = new OverCover2D::Sprite();
 	leftground.push_back(1);
 	leftground.push_back(2);
 	leftground.push_back(3);
-
-	/*for (int i = 0; i < 80; i = i + 3)
-	{
-		bodies.push_back(new OverCover2D::RigidBody2D("textures/box2.jpg", phy_world.get(), glm::vec2(i, i), glm::vec2(50, 50), rendererMgr, false));
-	}*/
-	//m_player.init("textures/Mario2.png", phy_world.get(), glm::vec2(200, 10), glm::vec2(50, 50), rendererMgr, false);
-
-	//Drawing Left ground***************************************************************************************
-	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(0, 700), glm::vec2(100, 100), rendererMgr, false,false));
-	
-	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(100, 700), glm::vec2(100, 100), rendererMgr, false, false));
-	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(200, 700), glm::vec2(100, 100), rendererMgr, false, false));
-	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(0, 600), glm::vec2(100, 100), rendererMgr, false, false));
-	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(100, 600), glm::vec2(100, 100), rendererMgr, false, false));
-	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(200, 600), glm::vec2(100, 100), rendererMgr, false, false));
-	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(300, 700), glm::vec2(100, 100), rendererMgr, false, false));
-	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(300, 600), glm::vec2(100, 100), rendererMgr, false, false));
-	
-	//Drawing Right ground
-	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(900, 700), glm::vec2(100, 100), rendererMgr, false, false));
-	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(1000, 700), glm::vec2(100, 100), rendererMgr, false, false));
-	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(1100, 700), glm::vec2(100, 100), rendererMgr, false, false));
-	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(1200, 700), glm::vec2(100, 100), rendererMgr, false, false));
-	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(1300, 700), glm::vec2(100, 100), rendererMgr, false, false));
-	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(900, 600), glm::vec2(100, 100), rendererMgr, false, false));
-	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(1000, 600), glm::vec2(100, 100), rendererMgr, false, false));
-	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(1100, 600), glm::vec2(100, 100), rendererMgr, false, false));
-	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(1200, 600), glm::vec2(100, 100), rendererMgr, false, false));
-	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(1300, 600), glm::vec2(100, 100), rendererMgr, false, false));
-	//////////////// River Drawing/////////////////////////////////////////////////////////////////////////////////
-	bodies.push_back(new OverCover2D::RigidBody2D("textures/water.png", phy_world.get(), glm::vec2(400, 700), glm::vec2(100, 100), rendererMgr, false, false));
-	bodies.push_back(new OverCover2D::RigidBody2D("textures/water.png", phy_world.get(), glm::vec2(500, 700), glm::vec2(100, 100), rendererMgr, false, false));
-	bodies.push_back(new OverCover2D::RigidBody2D("textures/water.png", phy_world.get(), glm::vec2(600, 700), glm::vec2(100, 100), rendererMgr, false, false));
-	bodies.push_back(new OverCover2D::RigidBody2D("textures/water.png", phy_world.get(), glm::vec2(700, 700), glm::vec2(100, 100), rendererMgr, false, false));
-	bodies.push_back(new OverCover2D::RigidBody2D("textures/water.png", phy_world.get(), glm::vec2(800, 700), glm::vec2(100, 100), rendererMgr, false, false));
-	//***********************GOAT**********************************
-	bodies.push_back(new OverCover2D::RigidBody2D("textures/goat.png", phy_world.get(), glm::vec2(200, 500), glm::vec2(100, 100), rendererMgr, false,true));
-	m_avatars.push_back(new Avatars(bodies[23], 1));
-	bodies.push_back(new OverCover2D::RigidBody2D("textures/cabbage1.png", phy_world.get(), glm::vec2(300, 500), glm::vec2(100, 100), rendererMgr, false,true));
-	m_avatars.push_back(new Avatars(bodies[24], 2));
-	bodies.push_back(new OverCover2D::RigidBody2D("textures/wolfy1.png", phy_world.get(), glm::vec2(100, 500), glm::vec2(100, 100), rendererMgr, false,true));
-	m_avatars.push_back(new Avatars(bodies[25], 3));
-	m_player.init("textures/boat1.png", phy_world.get(), glm::vec2(400, 600), glm::vec2(100, 100), rendererMgr, false);
-	//bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(1000, 600), glm::vec2(100, 100), rendererMgr, false, false));
-	//bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(1100, 600), glm::vec2(100, 100), rendererMgr, false, false));
-//	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(1200, 600), glm::vec2(100, 100), rendererMgr, false, false));
-//	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(1300, 600), glm::vec2(100, 100), rendererMgr, false, false));
-	
-
-	sprite->Create("textures/f.png", 0.0f, 0.0f, 768, 1366);
-	rendererMgr.CreateSpriteArray(sprite);
+	drawLevel();
 	rendererMgr.Init();
 	std::cout << "Scene Build Successfully..........................................";
 
@@ -142,36 +94,66 @@ void Scene1::checkGame()
 	auto it_right_2 = std::find(rightground.begin(), rightground.end(), 2);
 	auto it_right_3 = std::find(rightground.begin(), rightground.end(), 3);
 
-		if (it_left_1 != leftground.end() && it_left_2 != leftground.end() && leftground.size() < 3)
-			std::cout << "YOU LOSE";
-		else if (it_left_1 != leftground.end() && it_left_3 != leftground.end() && leftground.size() < 3)
-			std::cout << "YOU LOSE";
-		else if (it_right_1 != rightground.end() && it_right_2 != rightground.end() && rightground.size() < 3)
-			std::cout << "YOU LOSE";
-		else if (it_right_1 != rightground.end() && it_right_3 != rightground.end() && rightground.size() < 3)
-			std::cout << "YOU LOSE";
-		else if (leftground.size() == 0 && rightground.size() == 3)
-			std::cout << "You WIN";
-	/*	if (std::find(leftground.begin(), leftground.end(), 1) != leftground.end() && leftground.size()<3)
-			if (std::find(leftground.begin(), leftground.end(), 2) != leftground.end())
-				std::cout << "you lose";
+	if (it_left_1 != leftground.end() && it_left_2 != leftground.end() && leftground.size() < 3)
+		onLose();
+	else if (it_left_1 != leftground.end() && it_left_3 != leftground.end() && leftground.size() < 3)
+		onLose();
+	else if (it_right_1 != rightground.end() && it_right_2 != rightground.end() && rightground.size() < 3)
+		onLose();
+	else if (it_right_1 != rightground.end() && it_right_3 != rightground.end() && rightground.size() < 3)
+		onLose();
+	else if (leftground.size() == 0 && rightground.size() == 3)
+		onWin();
 
-		else if (std::find(leftground.begin(), leftground.end(), 1) != leftground.end() && leftground.size()<3 && )
-			if (std::find(leftground.begin(), leftground.end(), 3) != leftground.end())
-				std::cout << "you lose";
-	
-	
-		else if (std::find(rightground.begin(), rightground.end(), 1) != rightground.end())
-			if (std::find(rightground.begin(), rightground.end(), 2) != rightground.end())
-				std::cout << "you lose";
-
-		else if (std::find(rightground.begin(), rightground.end(), 1) != rightground.end() && rightground.size() != 3)
-			if (std::find(rightground.begin(), rightground.end(), 3) != rightground.end() && rightground.size() != 3)
-				std::cout << "you lose";
-	*/
 
 }
+void Scene1::drawLevel()
+{
 
+	//Drawing Left ground***************************************************************************************
+	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(0, 700), glm::vec2(100, 100), rendererMgr, false, false));
+
+	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(100, 700), glm::vec2(100, 100), rendererMgr, false, false));
+	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(200, 700), glm::vec2(100, 100), rendererMgr, false, false));
+	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(0, 600), glm::vec2(100, 100), rendererMgr, false, false));
+	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(100, 600), glm::vec2(100, 100), rendererMgr, false, false));
+	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(200, 600), glm::vec2(100, 100), rendererMgr, false, false));
+	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(300, 700), glm::vec2(100, 100), rendererMgr, false, false));
+	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(300, 600), glm::vec2(100, 100), rendererMgr, false, false));
+
+	//Drawing Right ground
+	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(900, 700), glm::vec2(100, 100), rendererMgr, false, false));
+	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(1000, 700), glm::vec2(100, 100), rendererMgr, false, false));
+	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(1100, 700), glm::vec2(100, 100), rendererMgr, false, false));
+	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(1200, 700), glm::vec2(100, 100), rendererMgr, false, false));
+	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(1300, 700), glm::vec2(100, 100), rendererMgr, false, false));
+	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(900, 600), glm::vec2(100, 100), rendererMgr, false, false));
+	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(1000, 600), glm::vec2(100, 100), rendererMgr, false, false));
+	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(1100, 600), glm::vec2(100, 100), rendererMgr, false, false));
+	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(1200, 600), glm::vec2(100, 100), rendererMgr, false, false));
+	bodies.push_back(new OverCover2D::RigidBody2D("textures/gnd1.png", phy_world.get(), glm::vec2(1300, 600), glm::vec2(100, 100), rendererMgr, false, false));
+	//////////////// River Drawing/////////////////////////////////////////////////////////////////////////////////
+	bodies.push_back(new OverCover2D::RigidBody2D("textures/water.png", phy_world.get(), glm::vec2(400, 700), glm::vec2(100, 100), rendererMgr, false, false));
+	bodies.push_back(new OverCover2D::RigidBody2D("textures/water.png", phy_world.get(), glm::vec2(500, 700), glm::vec2(100, 100), rendererMgr, false, false));
+	bodies.push_back(new OverCover2D::RigidBody2D("textures/water.png", phy_world.get(), glm::vec2(600, 700), glm::vec2(100, 100), rendererMgr, false, false));
+	bodies.push_back(new OverCover2D::RigidBody2D("textures/water.png", phy_world.get(), glm::vec2(700, 700), glm::vec2(100, 100), rendererMgr, false, false));
+	bodies.push_back(new OverCover2D::RigidBody2D("textures/water.png", phy_world.get(), glm::vec2(800, 700), glm::vec2(100, 100), rendererMgr, false, false));
+	//***********************GOAT**********************************
+	bodies.push_back(new OverCover2D::RigidBody2D("textures/goat.png", phy_world.get(), glm::vec2(200, 500), glm::vec2(100, 100), rendererMgr, false, true));
+	m_avatars.push_back(new Avatars(bodies[23], 1));
+	bodies.push_back(new OverCover2D::RigidBody2D("textures/cabbage1.png", phy_world.get(), glm::vec2(300, 500), glm::vec2(100, 100), rendererMgr, false, true));
+	m_avatars.push_back(new Avatars(bodies[24], 2));
+	bodies.push_back(new OverCover2D::RigidBody2D("textures/wolfy1.png", phy_world.get(), glm::vec2(100, 500), glm::vec2(100, 100), rendererMgr, false, true));
+	m_avatars.push_back(new Avatars(bodies[25], 3));
+	m_player.init("textures/boat1.png", phy_world.get(), glm::vec2(400, 600), glm::vec2(100, 100), rendererMgr, false);
+
+
+	winImg->Create("textures/win.png", 500.0f, 200.0f, 100.0f, 300.0f);
+	loseImg->Create("textures/lose.png", 500.0f, 200.0f, 100.0f, 300.0f);
+	//rendererMgr.CreateSpriteArray(winImg);
+	sprite->Create("textures/f.png", 0.0f, 0.0f, 768, 1366);
+	rendererMgr.CreateSpriteArray(sprite);
+}
 bool Scene1::checkBoatRight()
 {
 	if(m_player.getBody()->GetPosition().x>450 && m_player.getBody()->GetPosition().x < 500)
@@ -187,7 +169,18 @@ bool Scene1::checkBoatLeft()
 	return false;
 	
 }
-
+void Scene1::onLose()
+{
+	gameState = -1;
+	rendererMgr.CreateSpriteArray(loseImg);
+	m_player.MAG = 0;
+}
+void Scene1::onWin()
+{
+	gameState = 1;
+	rendererMgr.CreateSpriteArray(winImg);
+	m_player.MAG = 0;
+}
 void Scene1::EventHandler()
 {
 	
@@ -201,10 +194,10 @@ void Scene1::EventHandler()
 	if (parent->window->winKeyPressed(68))
 		cameraMgr->MoveRight();
 	if (parent->window->winKeyPressed(262))
-		if (checkBoatRight())
+		if (checkBoatRight() && gameState==0)
 			checkGame();
 	if (parent->window->winKeyPressed(263))
-		if (checkBoatLeft())
+		if (checkBoatLeft() && gameState == 0)
 			checkGame();
 	if (parent->window->winKeyPressed(0))
 	{
@@ -326,10 +319,7 @@ void Scene1::EventHandler()
 						break;
 					}
 					
-				}
-
-			}
-		}
+				}}}
 
 	}
 	//Code to update the position of avatars to the boats position
@@ -344,10 +334,10 @@ void Scene1::EventHandler()
 			}
 		}
 	}
-//	if (m_player.getBody()->GetPosition().x > 450 && m_player.getBody()->GetPosition().x < 750)
-	//{
-		//checkGame();
-	//}
+
+}
+void Scene1::gameMechanics()
+{
 }
 void Scene1::phyInit()
 {

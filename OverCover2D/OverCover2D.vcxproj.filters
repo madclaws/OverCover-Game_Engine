@@ -99,6 +99,12 @@
     <ClCompile Include="RigidBody2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="audio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="audioManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera2D.h">
@@ -180,6 +186,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RigidBody2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="audio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="audioManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
