@@ -1,6 +1,6 @@
 
 	#include "Scene1.h"
-
+#pragma comment(lib,"irrKlang.lib")
 
 
 	Scene1::Scene1()
@@ -28,6 +28,8 @@ void Scene1::build()
 	shaderMgr = resourceMgr->LoadShaders("Shaders/v1.vert", "Shaders/f1.frag");
 	inputMgr = OverCover2D::InputManager::GetInstance();
 	phyInit();
+	engine = irrklang::createIrrKlangDevice();
+	parent->window->GUIinit();
 	sprite = new OverCover2D::Sprite();
 	 winImg = new OverCover2D::Sprite();
 	loseImg = new OverCover2D::Sprite();
@@ -37,7 +39,7 @@ void Scene1::build()
 	drawLevel();
 	rendererMgr.Init();
 	std::cout << "Scene Build Successfully..........................................";
-
+	engine->play2D("sounds/braid.ogg", true);
 }
 
 void Scene1::destroy()
@@ -70,6 +72,7 @@ void Scene1::update()
 	EventHandler();
 	phy_world->Step(1.0f / 60.0f, 6, 2);
 	//newbox->Update();
+
 	for (int i = 0; i < bodies.size(); i++)
 	{
 		bodies[i]->Update();
@@ -81,6 +84,7 @@ void Scene1::update()
 	shaderMgr.SetMatrix4U("projection", projection, 0);
 	cameraMgr->View = cameraMgr->LookAt();
 	shaderMgr.SetMatrix4U("view", cameraMgr->View, 0);
+	parent->window->GUIdraw();
 }
 
 void Scene1::checkGame()
@@ -185,13 +189,13 @@ void Scene1::EventHandler()
 {
 	
 	//Avatars* t_avatar=new Avatars();
-	if (parent->window->winKeyPressed(87))
+	if (parent->window->winKeyPressed(87) && parent->window->LEVELEDITOR)
 		cameraMgr->MoveUp();
-	if (parent->window->winKeyPressed(83))
+	if (parent->window->winKeyPressed(83) && parent->window->LEVELEDITOR)
 		cameraMgr->MoveDown();
-	if (parent->window->winKeyPressed(65))
+	if (parent->window->winKeyPressed(65) && parent->window->LEVELEDITOR)
 		cameraMgr->MoveLeft();
-	if (parent->window->winKeyPressed(68))
+	if (parent->window->winKeyPressed(68) && parent->window->LEVELEDITOR)
 		cameraMgr->MoveRight();
 	if (parent->window->winKeyPressed(262))
 		if (checkBoatRight() && gameState==0)
@@ -360,6 +364,7 @@ void Scene1::phyInit()
 
 Scene1::~Scene1()
 {
+	engine->drop();
 }
 
 
