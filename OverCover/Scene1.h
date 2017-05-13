@@ -16,6 +16,8 @@
 #include<iostream>
 #include<memory>
 #include"Avatars.h"
+#include<IRRK\irrKlang.h>
+
 class Scene1:public OverCover2D::IGameScene
 {
 
@@ -37,6 +39,7 @@ public:
 	player m_player;
 	std::vector<int> leftground;
 	std::vector<int> rightground;
+	irrklang::ISoundEngine* engine;
 	int gameState = 0;
 	void onWin();
 	void onLose();

@@ -154,7 +154,9 @@ namespace OverCover2D {
 	}
 	void scrollcallback(GLFWwindow* window, GLdouble xscroll, GLdouble yscroll)
 	{
+		
 		Window* winusrptr = (Window*)glfwGetWindowUserPointer(window);
+		if(winusrptr->LEVELEDITOR)
 		winusrptr->inputmanager->SetYscroll(yscroll);
 	}
 	void cursorposcallback(GLFWwindow* _window, GLdouble _x, GLdouble _y)
